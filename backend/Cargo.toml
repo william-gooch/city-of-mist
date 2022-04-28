@@ -1,0 +1,20 @@
+[package]
+name = "backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+argon2 = "0.4.0"
+async-session = "3.0.0"
+async-trait = "0.1.53"
+common = { path = "../common", features = ["db"] }
+dotenv = "0.15.0"
+futures = "0.3.21"
+serde = "1.0.136"
+serde_json = "1.0.79"
+tokio = { version = "1.17.0", features = ["macros"] }
+tokio-stream = { version = "0.1.8", features = ["sync"] }
+tokio-util = "0.7.1"
+warp = "0.3.2"

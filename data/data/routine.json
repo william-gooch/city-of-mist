@@ -1,0 +1,149 @@
+{
+    "concept": {
+        "example_answers": [
+            "I work as ___.",
+            "I take care of ___.",
+            "I spend time ___."
+        ],
+        "initial_blurb": "Think about your character's modern-day life. What is her daily routine? How does she spend her time? When she wakes up in the morning (or whenever), what kind of day is waiting for her? What kind of night?",
+        "question": "What routine activity takes up most of your time?"
+    },
+    "improvements": [
+        {
+            "description": "When you have some downtime, if you do not choose to recover all your burnt tags, you still recover one burnt tag.",
+            "name": "Incidental Shuteye"
+        },
+        {
+            "description": "Once per scene, if you are in the middle of your routine and you make a Core Move as part of your routine, you can choose to make it Dynamite!",
+            "name": "All In A Day's Work"
+        },
+        {
+            "description": "Every session, you can choose to get up to three Clues on a location or person within the domain of your routine. The first Clue is free. When you take the second Clue, the MC gets to ask you a question, which you must answer truthfully. On the third Clue, you expose yourself to danger (as in the Investigate move).",
+            "name": "Good Memory"
+        },
+        {
+            "description": "Choose and answer a power tag question from the Training, Mission, or Defining Relationship themebooks that reflects your background, your dedication, or the people involved in your daily routine. Write down the answer as a new power tag on this theme.",
+            "name": "Why I Do This"
+        },
+        {
+            "description": "Choose a Core Move that best represents the most common action you take during your daily routine. Whenever you use it with tags from this theme, it's Dynamite!",
+            "name": "Getting Good At This"
+        }
+    ],
+    "name": "Routine",
+    "phrase": {
+        "example_answers": [
+            "(Police officer) \"I can't risk it. Just a few more years to retirement.\"",
+            "(Crazy homeless hobo) \"Doomsday is upon us!\"",
+            "(Corporate board member) \"The good of the company comes first.\""
+        ],
+        "prompts": [
+            "How you feel about your routine",
+            "Why you hold on to your routine",
+            "What you need to believe to carry out your routine"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "city official", "archaeologist", "police officer", "office building caretaker", "hobo", "burger flipper", "single dad", "corporate board member"
+            ],
+            "question": "What do you do with your time?"
+        },
+        "B": {
+            "example_answers": [
+                "city waterways access", "popular antiques merchant", "the badge", "union membership", "nobody bothers me", "employee rights", "a quiet night", "company resources"
+            ],
+            "question": "What privileges come with the territory of what you do?"
+        },
+        "C": {
+            "example_answers": [
+                "emergency services radio", "forgery kit", "standard issue pistol", "a mop", "shopping cart full of junk", "McYummy uniform", "diaper bag", "a tailor-made suit"
+            ],
+            "question": "What sort of tools do you use?"
+        },
+        "D": {
+            "example_answers": [
+                "my boss", "business connections", "previous field training officer", "pest control", "the pigeons", "the new guy", "Sam - my eldest daughter", "this week's personal assistant"
+            ],
+            "question": "Who usually helps you?"
+        },
+        "E": {
+            "example_answers": [
+                "knows every street", "general history", "the City's organized crime", "logistics", "junk can tell stories", "health & safety regulations", "daytime television shows", "outsmart the competition"
+            ],
+            "question": "What did you learn on your daily activities?"
+        },
+        "F": {
+            "example_answers": [
+                "plumbing", "smuggling", "asking questions", "befriending hotshots", "mad street preaching", "cooking", "schedule coordination", "evaluating risk"
+            ],
+            "question": "What specific activity do you engage in as part of your main occupation?"
+        },
+        "G": {
+            "example_answers": [
+                "understands how water moves", "disable security systems", "get out of handcuffs", "remove blood stains", "hide in the dumpster", "juggling", "who needs sleep anyway", "embezzling"
+            ],
+            "question": "What trick have you picked up doing what you do?"
+        },
+        "H": {
+            "example_answers": [
+                "hold my breath", "haggler", "drilled in field tactics", "looks harmless", "eidetic memory", "can hold my own under stress", "calm in the storm", "elegance"
+            ],
+            "question": "What quality do you now possess because of your routine?"
+        },
+        "I": {
+            "example_answers": [
+                "secret underwater hideout", "the antiques shop", "Mickey's bar", "lord of the cafeteria (after hours)", "I own the streets", "my tiny apartment", "smoke on the porch", "luxurious office"
+            ],
+            "question": "Where do you carry out your routine, or where do you go to escape it?"
+        },
+        "J": {
+            "example_answers": [
+                "hard-working man", "a passion for the past", "commitment to the job", "the mailman", "endless curiosity", "dreams of being an actress", "love for my family", "the thrill of winning"
+            ],
+            "question": "What brings you to the same place every day?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them is a regular part of your routine. If your routine is to promote them, care for them, or help them, or if they help you with your routine, take a Help point on them. If your routine is to work against them or they might interfere with your routine, take a Hurt point on them.",
+            "You think one of them has a penchant for mayhem or drama and could destabilize your routine if you let them. Take a Hurt point on them.",
+            "One of them views your routine as rather prosaic, mundane, or repetitive. Ask them whether they look down on it or they admire your for it. If they look down on it, take a Hurt point on them. If they admire you for it, take a Help point on them."
+        ]
+    },
+    "theme_type": "Logos",
+    "title": {
+        "example_answers": [
+            "(Police officer) Beat Nights",
+            "(Crazy homeless hobo) Manic Street Preacher",
+            "(Corporate board member) Corporate Shark"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "wet and smelly", "black market heat", "a pain behind the eyes", "all alone", "the voices in my head", "sorely underpaid", "cranky kids who won't go to bed", "pangs of remorse"
+            ],
+            "question": "At the end of your day, what are you left with?"
+        },
+        "B": {
+            "example_answers": [
+                "\"You have no authority here!\"", "small-time operation", "standard issue gear", "\"It's only the janitor\"", "so hungry", "risk of being fired", "can't always be there", "dog-eat-dog"
+            ],
+            "question": "What are the mundane limits or downsides of your routine?"
+        },
+        "C": {
+            "example_answers": [
+                "waterworks crisis", "City customs", "\"Calling all unitsâ¦\"", "irritable building manager", "another downpour", "unmanageable workload", "kids fight", "the Chairwoman"
+            ],
+            "question": "Who or what can interfere with your routine?"
+        },
+        "D": {
+            "example_answers": [
+                "like a fish out of water", "overcompensating", "must follow procedure", "old geezer", "socially inept", "too afraid to go big", "no idea what I want", "hates to compromise"
+            ],
+            "question": "What happens when you are thrown out of your routine?"
+        }
+    }
+}

@@ -1,0 +1,151 @@
+{
+    "concept": {
+        "example_answers": [
+            "It wants to turn all ___ into ___.",
+            "It wants to fight ___.",
+            "It wants everyone to become ___.",
+            "It wants to spread ___.",
+            "It wants to control or shape ___."
+        ],
+        "initial_blurb": "Think about your Mythos. In the legend, was your Mythos responsible for a major change in the world around her? Was she able to control an element or even create it out of thin air? Was she a great warrior or somehow able to influence others? How did she do that?",
+        "question": "What change does your Mythos wish to effect in the world?"
+    },
+    "improvements": [
+        {
+            "description": "When you Hit With All You've Got with power tags from this theme, it's Dynamite!",
+            "name": "On Fire"
+        },
+        {
+            "description": "When you burn a tag for a hit in this theme, you can mark Crack on one of your Logos themes instead of marking that tag as burnt.",
+            "name": "Ruptured Rift"
+        },
+        {
+            "description": "When you Hit With All You've Got, you always get to control the collateral damage.",
+            "name": "Mythos Mastery"
+        },
+        {
+            "description": "When you make the move Stop. Holding. Back. with your Mythos' Expression powers, if you roll 6 or less, treat it as 7-9 instead.",
+            "name": "Contain the Surge"
+        },
+        {
+            "description": "You can either sense something related to your Mythos' expression or prevent others from sensing something by means of your expression. Choose a power tag question from the Divination or Subversion themebooks and answer it. Write down the answer as a new power tag on this theme.",
+            "name": "Ripples"
+        }
+    ],
+    "name": "Expression",
+    "phrase": {
+        "example_answers": [
+            "(Pestilence) \"How can I control my desire to consume all?\"",
+            "(Snow Queen) \"Is there any warmth left in my heart?\"",
+            "(Pied Piper of Hamelin) \"Where should I lead my followers?\""
+        ],
+        "prompts": [
+            "Doubts about your power's effect on the world and how to best use it",
+            "Fears about what wielding such powers might do to you",
+            "Questions about the identity of your sworn enemies or how to fight them"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "burning whips", "bless with good fortune", "turn solid matter into liquid", "psychic blasts of pain", "uncanny charisma", "ultimate fighter"
+            ],
+            "question": "What is the most common way you use your Mythos to affect the world?"
+        },
+        "B": {
+            "example_answers": [
+                "take away good fortune", "turn liquids into solids", "quench fire", "cure diseases"
+            ],
+            "question": "What useful reverse effect can you exert?"
+        },
+        "C": {
+            "example_answers": [
+                "intense heat", "bigger explosions", "airborne spores", "irresistible", "armor-piercing", "soothing presence", "indomitable"
+            ],
+            "question": "What useful quality does your main effect have?"
+        },
+        "D": {
+            "example_answers": [
+                "better in damp conditions, the more the merrier, feeds off fear, back-to-back fighting."
+            ],
+            "question": "What conditions or situations enhance your Mythos' expression?"
+        },
+        "E": {
+            "example_answers": [
+                "reduce buildings to rubbles, good for abducting children, easily manipulates metals, \"you can run but you can't hide\""
+            ],
+            "question": "Against what targets are your expression powers more effective?"
+        },
+        "F": {
+            "example_answers": [
+                "burning whips -> bright flare", "blow freezing cold -> encase someone in ice", "celestial martial arts -> falling star roundhouse kick", "infect with disease -> latent infection", "plant growth -> poisonous biting plants"
+            ],
+            "question": "What special variants or specific uses of your Mythos' main form of expression have you mastered?"
+        },
+        "G": {
+            "example_answers": [
+                "super strength -> summon lightning weapon", "play hypnotic tune -> deafening blast", "burning whips -> underwater propulsion"
+            ],
+            "question": "What additional expression, not necessarily related to the main one, does your Mythos have?"
+        },
+        "H": {
+            "example_answers": [
+                "bounce arrows off walls", "selectively hit targets in an area", "affect through walls"
+            ],
+            "question": "What trick shots or special maneuvers can you do with your expression powers?"
+        },
+        "I": {
+            "example_answers": [
+                "firebrand", "ruthless", "icy demeanor", "terrifying", "trustworthy appearance"
+            ],
+            "question": "What attitude to you adopt when expressing your Mythos?"
+        },
+        "J": {
+            "example_answers": [
+                "plasma barrier", "absorb electricity", "impenetrable mind", "parry"
+            ],
+            "question": "How can you use your power to shield yourself, especially from similar effects?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them once witnessed you expressing your Mythos at full power. Ask them what they thought about it. If it scared them, take a Hurt point on them. If they appreciated it, take a Help point on them.",
+            "You feel like one of them wants you to hold back and refrain from expressing your Mythos. Ask them what is their reason. Take a Hurt point on them.",
+            "To your Mythos, one of them seems like the modern-day version of a character in its legend. If they were your foe in the legend, take a Hurt point on them. If they were your ally or loved one, or if you were their rescuer, take a Help point on them."
+        ]
+    },
+    "theme_type": "Mythos",
+    "title": {
+        "example_answers": [
+            "(Pestilence) Touch of Decay",
+            "(Snow Queen) A Frozen Heart",
+            "(Pied Piper of Hamelin) Play Them Like A Flute"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "weaker in dry conditions", "cannot operate in the light of day", "only effective against a single opponent"
+            ],
+            "question": "What situations or conditions weaken or suppress your Mythos' expression?"
+        },
+        "B": {
+            "example_answers": [
+                "does not work on gods or spirits", "cannot shape organic matter", "weaker against loved ones"
+            ],
+            "question": "What targets are immune or resistant to your Mythos' expression?"
+        },
+        "C": {
+            "example_answers": [
+                "uncontrolled firestorm", "can't tell allies from foes", "entangled in plants"
+            ],
+            "question": "What happens when you lose control over your Mythos' expression?"
+        },
+        "D": {
+            "example_answers": [
+                "icicles everywhere", "signature markings on victims", "over-zealous thralls", "people find me repulsive"
+            ],
+            "question": "What are the repercussions of bringing your Mythos into the world?"
+        }
+    }
+}

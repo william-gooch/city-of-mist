@@ -1,0 +1,150 @@
+{
+    "concept": {
+        "example_answers": [
+            "I am often ___.",
+            "I want others to ___.",
+            "Other people find me ___.",
+            "I think / feel that, as far as people go, I am ___."
+        ],
+        "initial_blurb": "Think about your character's modern-day life. How does she behave? What kind of personality traits does she display? Is she playing a role for the world to see? What does she think or feel about herself?",
+        "question": "What are you like?"
+    },
+    "improvements": [
+        {
+            "description": "Once per session, you can impose +1 tier when you Convince or get +1 Juice when you Change the Game using tags from this theme.",
+            "name": "This Is My Moment"
+        },
+        {
+            "description": "Choose a single power tag from this theme. When you burn it for a hit, you get an automatic result of 9 (instead of 7) and a Power of 3, for a total unmodified score of 12. Statuses apply to both your automatic result and your Power, as usual.",
+            "name": "It's Showtime"
+        },
+        {
+            "description": "When you replace this theme, you can choose to take a new Personality theme instead of a Mythos theme. As usual, you lose all your improvements, including this one, and gain Build-Up points instead. Your new personality must be entirely different than the theme you discarded.",
+            "name": "Reinvent Myself"
+        },
+        {
+            "description": "When you sacrifice something you truly want in order to abide by your Mission's Identity, you not only mark Attention on the theme (as usual) but also remove one crack from it, if any.",
+            "name": "When Hell Freezes Over"
+        },
+        {
+            "description": "Choose a Core Move that best represents your personality. Whenever you use it with tags from this theme, it's Dynamite!",
+            "name": "Getting Good At This"
+        }
+    ],
+    "name": "Personality",
+    "phrase": {
+        "example_answers": [
+            "(Deranged professor) \"Sorry the professor is not in right now. Can I take a message?\"",
+            "(Manipulator) \"If you want to get ahead, always say what they want to hear.\"",
+            "(Quiet and discreet) \"I'm not here!\""
+        ],
+        "prompts": [
+            "A typical quote that encapsulates your personality",
+            "How you would like others to see you or treat you",
+            "What you think about yourself"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "Truly wants to do good", "tough as nails", "self-reliant", "my own type of eccentric", "limitless creativity", "opportunist", "I wish I could just disappear"
+            ],
+            "question": "What lies at the core of your personality?"
+        },
+        "B": {
+            "example_answers": [
+                "handsome", "glamorous", "rugged", "hipster look", "bottle-bottom glasses", "people see what they want to see", "easily overlooked"
+            ],
+            "question": "What is the first thing people notice about you?"
+        },
+        "C": {
+            "example_answers": [
+                "charming, bullshit detector, good judge of character, sarcastic remarks, creep people out, talk anyone into anything, never spills the beans"
+            ],
+            "question": "What interpersonal skills do you have thanks to your personality?"
+        },
+        "D": {
+            "example_answers": [
+                "threatening", "seductive", "authoritative", "intelligent", "pitiful", "appear as a professional", "dangerous"
+            ],
+            "question": "When you want, you can also come across as..."
+        },
+        "E": {
+            "example_answers": [
+                "celebrity", "sowing rumors", "DIY repairs", "perfect pitch", "devise a deranged plan", "press pass", "no criminal record"
+            ],
+            "question": "What special skill or status did you pursue because of your personality?"
+        },
+        "F": {
+            "example_answers": [
+                "incorruptible", "emotionally impervious", "common sense", "free thinker", "cautious", "talk my way out of anything", "\"You wouldn't hurt a child", "would you?\""
+            ],
+            "question": "What aspect of your personality keeps you safe or helps you resist influence?"
+        },
+        "G": {
+            "example_answers": [
+                "cornfed", "jewelry baby!", "underarm holster", "fashionable carry-all bag", "lab coat", "designer suits", "hidden kitchen cleaver"
+            ],
+            "question": "What quality or item best expresses your personal style or enhances it?"
+        },
+        "H": {
+            "example_answers": [
+                "pick-up lines", "sniff out a social disaster", "light sleeper", "all the dance moves", "stink bombs formula", "sales pitch", "people-watching"
+            ],
+            "question": "What useful habit or routine have you cultivated thanks to your personality?"
+        },
+        "I": {
+            "example_answers": [
+                "city current affairs", "shopping", "reported conspiracies", "city nightlife", "recent scientific breakthroughs", "local big players", "psychology"
+            ],
+            "question": "What typically interests you?"
+        },
+        "J": {
+            "example_answers": [
+                "push myself", "be kind to others", "lead from the front", "I'll try anything once", "try to appear sane", "get rich quick schemes"
+            ],
+            "question": "How do you strive to improve yourself?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them dislikes something about your behavior and is repeatedly making comments about it or trying to get you to change. Ask them what do they dislike and what would it take for them to be happy with you. Whatever they say, take a Hurt point on them.",
+            "One of them accepts you the way you are, maybe even likes your personality. Take a Help point on them.",
+            "The personality of one of them seems to be the exact opposite of yours (even if they don't have a theme for it). If it makes it easier for your personality to shine or for you to be yourself, take a Help point on them. If it comes into conflict with your personality, take a Hurt point on them."
+        ]
+    },
+    "theme_type": "Logos",
+    "title": {
+        "example_answers": [
+            "(Deranged professor) A Few Sandwiches Short Of A Picnic",
+            "(Manipulator) Smooth Operator",
+            "(Quiet and discreet) Wallflower"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "clingy attention seeker", "bitter", "distrustful", "tries too hard", "overexcited and unintelligible", "self-promoting", "people think I'm a freak"
+            ],
+            "question": "What happens when you let yourself go too far?"
+        },
+        "B": {
+            "example_answers": [
+                "hostile crowd", "hyenas in evening gowns", "soft spot for children", "wasted on the common people", "psychiatric drugs", "bad angle", "small spaces"
+            ],
+            "question": "What sort of people or conditions make your personality less effective?"
+        },
+        "C": {
+            "example_answers": [
+                "memorable face", "sore joints", "harsh frown", "tangled headphones cable", "unkempt mass of hair", "poor man's shoes", "delicate"
+            ],
+            "question": "What aspects of your appearance, style, or physique can get in the way?"
+        },
+        "D": {
+            "example_answers": [
+                "fit of rage", "mental breakdown", "petrified", "drama queen", "analysis paralysis", "speechless", "trauma re-enactment"
+            ],
+            "question": "What happens when you are pushed to the corner?"
+        }
+    }
+}

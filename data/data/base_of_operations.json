@@ -1,0 +1,145 @@
+{
+    "concept": {
+        "example_answers": [
+            "It's a rather regular ___.",
+            "It's the home / workshop / place of worship / source of power / burial place of my Mythos.",
+            "It's a secret / public ___ in the City."
+        ],
+        "initial_blurb": "Think about your character's goals and how she plans to achieve them. What kind of resources does she need? Where would be a good place for her to hunker down when the going gets tough or to pri- vately work on her projects? Alternatively, think of your character's Mythos. In the legend, was there a specific place your Mythos is associated with? Was your Mythos in possession of a homestead or a secret lair?",
+        "question": "What kind of place would best serve my character's activities?"
+    },
+    "improvements": [
+        {
+            "description": "Once per session, you can reach into a storage space in your base of operations and pull out a useful object. You gain an appropriate temporary story tag.",
+            "name": "Storage Space"
+        },
+        {
+            "description": "Decide on a status that can be inflicted by the security measures in your base. Its tier is equal to two plus your Power (based on any relevant tags you or your base have). Every time someone tries to enter your base uninvited, they take that status once, unless they found a way to circumvent those security measures. They can Face Danger.",
+            "name": "Boobytraps"
+        },
+        {
+            "description": "When you Sneak Around with tags from this theme, it's Dynamite!",
+            "name": "Away From Prying Eyes"
+        },
+        {
+            "description": "When you make the moves Look Beyond the Mist or Stop. Holding. Back. in your base, increase your final score by one.",
+            "name": "An Ancient Place"
+        },
+        {
+            "description": "Whenever you Investigate in your base and score 7-9, pick one of the MC's options in the Investigate move. The MC can't choose this option this time.",
+            "name": "Peace of Mind"
+        }
+    ],
+    "name": "Base of Operations",
+    "phrase": {
+        "example_answers": [
+            "(Private investigations office) \"I'll take any case that comes through this door.\"",
+            "(Cave of Ali Baba) \"What other treasures can I add to my collection?\"",
+            "(Castle of the Queen of Hearts) \"OFF WITH HER HEAD!\""
+        ],
+        "prompts": [
+            "An attitude or commitment that befits your operation (Identity)",
+            "A question related to the Mythos in this location (Mystery)",
+            "Fears (Identity) or doubts (Mystery) about your base"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "private office", "no-one can hear you", "cave full of treasures", "through the looking-glass", "impregnable security"
+            ],
+            "question": "What is the most useful feature of your base?"
+        },
+        "B": {
+            "example_answers": [
+                "silent alarm", "cutting wire trap", "the password stone", "playing card soldiers", "private SWAT team"
+            ],
+            "question": "What defenses or devices protect your base from intruders?"
+        },
+        "C": {
+            "example_answers": [
+                "a good place for contemplation", "interrogation light", "know the cave better than anyone", "seat of my power", "good for business"
+            ],
+            "question": "What advantage do you gain when working in your base?"
+        },
+        "D": {
+            "example_answers": [
+                "file cabinet", "torture room", "forgery workshop", "expansive gardens", "hi-tech laboratories"
+            ],
+            "question": "What kind of special facilities does your base include?"
+        },
+        "E": {
+            "example_answers": [
+                "forensics briefcase", "firearms and explosives", "genie lamp", "size-altering mushrooms", "stolen artifacts"
+            ],
+            "question": "What special gear do you store in your base?"
+        },
+        "F": {
+            "example_answers": [
+                "Adam â my secretary", "a vicious hound", "forty thieves", "the king of hearts", "\"Control\""
+            ],
+            "question": "Who works or lives in your base?"
+        },
+        "G": {
+            "example_answers": [
+                "so normal it weakens magic", "the walls echo lies with truth", "generate gold", "I can decapitate anyone by saying \"off with her head!\"", "weird science"
+            ],
+            "question": "What kind of supernatural powers does your base possess?"
+        },
+        "H": {
+            "example_answers": [
+                "half-way decent", "outwardly inconspicuous", "threatening entrance", "guests get lost for hours", "seems like an ordinary skyscraper"
+            ],
+            "question": "What is useful about the appearance of your base?"
+        },
+        "I": {
+            "example_answers": [
+                "Luigi's Ristorante", "secret burial ground", "the subway tunnels", "wonderland", "the corporate safe"
+            ],
+            "question": "What is under your base, or beyond it?"
+        },
+        "J": {
+            "example_answers": [
+                "fire escape stairs", "truck in the garage", "the \"other\" entrance", "transport to any mirror in the City", "private helicopter"
+            ],
+            "question": "What special means of transportation or access does your base offer?"
+        }
+    },
+    "relationships": {
+        "example_answers": []
+    },
+    "theme_type": "Extra",
+    "title": {
+        "example_answers": [
+            "(Private investigations office) Eclipse Investigations",
+            "(Cave of Ali Baba) My Own Fort Knox",
+            "(Castle of the Queen of Hearts) The Castle In The Looking-Glass"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "damn termites!", "watched by the police", "attracts greed", "overgrown", "corporate regulations"
+            ],
+            "question": "What condition or negative aspect of your base makes it harder to use?"
+        },
+        "B": {
+            "example_answers": [
+                "cheap locks", "traces of blood", "well-known location", "unreliable guards", "vulnerable to hacking"
+            ],
+            "question": "What is the most substantial weakness in the security of your base?"
+        },
+        "C": {
+            "example_answers": [
+                "worked through the night", "the aggressiveness rubs off you", "the forty thieves", "my evil reflections", "expenses audit"
+            ],
+            "question": "What happens when you spend too much time in your base?"
+        },
+        "D": {
+            "example_answers": [
+                "misplaced items disappear", "lose control", "locked outside", "laws of physics don't apply", "dangerous artifacts"
+            ],
+            "question": "What are the side effects of the mythos aspects of your base?"
+        }
+    }
+}

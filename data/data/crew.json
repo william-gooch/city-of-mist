@@ -1,0 +1,148 @@
+{
+    "concept": {
+        "example_answers": [
+            "What is our shared goal?",
+            "Who or what brought us together?",
+            "Why do we work together? what does each member contribute to the cause?",
+            "Where do we meet? where do we collect our evidence or prepare for action?",
+            "What sort of resources do we have at our disposal?"
+        ],
+        "initial_blurb": "Review the concept of your crew as a reflection of the series concept you all agreed upon at the beginning of the Exposition Session. Flesh it out together by thinking about the following questions:",
+        "question": ""
+    },
+    "improvements": [
+        {
+            "description": "Once per session, when one of you uses Juice points to help or interfere with another crew member's move, you gain one more point of Juice to do so.",
+            "name": "Tight Like That"
+        },
+        {
+            "description": "One of the items or possessions of your crew is a real gem, perfect for what it was made for. Choose one tag from the crew theme. It must describe an item or a possession. Any Core Move you make using this tag is Dynamite!",
+            "name": "Quality Matters"
+        },
+        {
+            "description": "When two or more of you Face Danger against the same status and you get a hit, you may choose to extend the hit to one other crew member, at the cost of exposing yourself. On a 10+, they take no status and you take the status with -1 tier. On a 7-9, they take the status with -1 tier and you take the full status. If the move is Dynamite!, on a 12+, you can choose to fully protect both of you (instead of choosing one of the other 12+ options).",
+            "name": "Sacrifice"
+        },
+        {
+            "description": "Once per session, you can recover a burnt crew power tag.",
+            "name": "Pull It Together"
+        },
+        {
+            "description": "Choose together one crew member who is the black sheep of the crew. When the black sheep of the crew acts against your Mystery or Identity, it's expected, so it does not weaken your crew. For everyone else, overlooking the black sheep's actions does not count as acting against your Mystery or Identity either. You can choose a new black sheep at the beginning or end of each session.",
+            "name": "Black Sheep"
+        }
+    ],
+    "name": "Crew",
+    "phrase": {
+        "example_answers": [
+            "(Paramilitary mercenaries) \"Get it done. Get Paid. Don't ask questions.\"",
+            "(High school detective team) \"What strange forces are meddling with our school and why?\"",
+            "(Greek gods) \"It's either us or the Titans.\""
+        ],
+        "prompts": [
+            "Something you all agree must be done or must never be allowed. (Identity)",
+            "The central question in a case you all want to solve. (Mystery)",
+            "A code of conduct you all abide by. (Identity)",
+            "A strange riddle which is the key to your destiny. (Mystery)"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "catch overlooked details", "tactical coordination", "a prayer of protection", "watch each other's back", "the bond of Zeus's children"
+            ],
+            "question": "How do you help, assist, or support one another?"
+        },
+        "B": {
+            "example_answers": [
+                "Havana Club", "headquarters on the docks", "Sylvia's book shop", "the classroom", "the Olympus dimension"
+            ],
+            "question": "Where do you meet, work, rest, or prepare for action?"
+        },
+        "C": {
+            "example_answers": [
+                "good-cop-bad-cop technique", "storm the target", "a summoning ritual", "breaking and entry", "toy with the mortals"
+            ],
+            "question": "What have you learned to do well together?"
+        },
+        "D": {
+            "example_answers": [
+                "Lily â our moral compass", "the Client", "spirit animal", "the professor", "almighty Zeus"
+            ],
+            "question": "Who is guiding, backing, or assisting your operation?"
+        },
+        "E": {
+            "example_answers": [
+                "rooftops", "armored assault vehicle", "knowledge of the subway tunnels", "the van", "Hermes' winged sandals"
+            ],
+            "question": "How do you get around?"
+        },
+        "F": {
+            "example_answers": [
+                "morally gray situations", "under the cloak of darkness", "on hallowed ground", "lots of witnesses", "admired and worshipped"
+            ],
+            "question": "What environments or situations are you most comfortable in?"
+        },
+        "G": {
+            "example_answers": [
+                "police informant", "the hackers at Oversight", "unexplained intuitions", "you don't fool us", "telepathy"
+            ],
+            "question": "What special sources of information do you have?"
+        },
+        "H": {
+            "example_answers": [
+                "neighborhood support", "underworld reputation", "known in the Otherworld", "the corrupt fear us", "government connections"
+            ],
+            "question": "What sort of reputation or name have you made for yourselves?"
+        },
+        "I": {
+            "example_answers": [
+                "ruthless punishment", "divide and conquer", "harmony and peace", "keep a cool head", "divine superiority"
+            ],
+            "question": "What approach or tactic do you share in tackling challenges?"
+        },
+        "J": {
+            "example_answers": [
+                "dark clothing", "arsenal of firearms", "mystical supplies", "boobytraps", "Pandora's box"
+            ],
+            "question": "What kind of special gear, resource, or power is at your disposal?"
+        }
+    },
+    "relationships": {
+        "example_answers": []
+    },
+    "theme_type": "Crew",
+    "title": {
+        "example_answers": [
+            "(Paramilitary mercenaries) Guns for Hire",
+            "(High school detective team) The City High Gang",
+            "(Greek gods) The Olympians"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "no clear leadership", "overconfident", "in over our heads", "we keep losing each other", "egotistical backstabbers"
+            ],
+            "question": "What is flawed or lacking in the way you operate together?"
+        },
+        "B": {
+            "example_answers": [
+                "who is watching the suspect?", "friendly fire", "big mouth", "stumble into each other", "vying for the spotlight"
+            ],
+            "question": "How do you get each other into trouble?"
+        },
+        "C": {
+            "example_answers": [
+                "exposed family members", "the Client", "Cult of the Seventh Circle", "not taken seriously", "uncle Poseidon"
+            ],
+            "question": "Who or what are you all afraid of?"
+        },
+        "D": {
+            "example_answers": [
+                "legal problems", "never involve personal matters", "real-life problems", "too afraid to look", "we're only human"
+            ],
+            "question": "What places or situations do you find tough to handle?"
+        }
+    }
+}

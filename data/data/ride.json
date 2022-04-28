@@ -1,0 +1,146 @@
+{
+    "concept": {
+        "example_answers": [
+            "It's a car / motorbike / bicycle / skateboard / boat / jetski / plane / helicopter / glider / etc.",
+            "It's my Mythos' steed.",
+            "It's a legendary beast or item, the ___.",
+            "It's a modern vehicle imbued with the Mythos of ___."
+        ],
+        "initial_blurb": "Think about your character's activities and the City locations she needs to visit, as well as the threats she normally faces. What kind of transportation would best serve her? What would suit her style? Alternatively, think of your character's Mythos. In the legend, was there a specific beast or vehicle your Mythos used in order to get around? Was there a device that helped your Mythos get from place to place?",
+        "question": "What vehicle or riding beast does my character use for travel?"
+    },
+    "improvements": [
+        {
+            "description": "When you Take the Risk with tags from this theme, it's Dynamite!",
+            "name": "Showoff"
+        },
+        {
+            "description": "Once per session, if you can ready yourself for an action involving your ride, you can choose to receive an appropriate tier-2 status.",
+            "name": "Rev Up"
+        },
+        {
+            "description": "Once per session, when you're in or on your ride, you can choose to transfer a status you take to your ride (if it can reasonably protect you). You do not Face Danger using your own tags; you can Face Danger for your ride instead, if possible, with its relevant tags.",
+            "name": "Protective"
+        },
+        {
+            "description": "When anyone tries to mount, drive, or pilot your ride without your permission, your Ride takes an instant ongoing tier-5 status of your choice, such as stubborn-beast-5 or lockdown-5. You can remove this status at will.",
+            "name": "Loyal Steed"
+        },
+        {
+            "description": "Once per session, you can have your ride waiting for you conveniently where you need it (if it can reasonably get there or if you could have left it there in advance).",
+            "name": "Getaway"
+        }
+    ],
+    "name": "Ride",
+    "phrase": {
+        "example_answers": [
+            "(Old-school federal agent car) \"I'll be asking the questions today.\"",
+            "(Ninja spider riding beast) \"Shadows are my armor.\"",
+            "(Baba Yaga's flying mortar) \"Who is brave enough to face me?\""
+        ],
+        "prompts": [
+            "A style or approach that you adopt while on your Ride (Identity)",
+            "Musings about what you can accomplish with your Ride (Mystery)",
+            "Inhibitions and limitations that you or your Ride have about what it can do (Identity)"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "old-school federal Ford car", "wall climbing", "paddle harder", "flying mortar & pestle", "fast swimmer", "semi-trailer"
+            ],
+            "question": "How does your ride enable you to travel?"
+        },
+        "B": {
+            "example_answers": [
+                "100 HP", "long legs", "fastest downhill", "in pursuit of my victim", "the lighter the load the faster I go", "fuel-injection system"
+            ],
+            "question": "What makes your ride fast or allows it to go even faster?"
+        },
+        "C": {
+            "example_answers": [
+                "a spacious trunk", "giant spider", "bicycle basket", "strangely deep", "hold onto my fin", "trailer container"
+            ],
+            "question": "What allows your ride to carry more?"
+        },
+        "D": {
+            "example_answers": [
+                "block the road", "squeeze into small spaces", "bike stunts", "swoop down", "evasive swimming", "ram"
+            ],
+            "question": "What maneuvers can you do with your ride?"
+        },
+        "E": {
+            "example_answers": [
+                "here on formal business", "hair-raising monstrosity", "innocuous", "terror-inspiring screech", "friendly critter", "blue-collar camaraderie"
+            ],
+            "question": "What impression does your ride make on onlookers?"
+        },
+        "F": {
+            "example_answers": [
+                "machine-gun hidden in grill", "shoots a sticky web", "watergun", "pestle made of stone", "tailfin smack", "two giant bullhorns"
+            ],
+            "question": "What weapons are stored in, mounted on, or are a part of your ride?"
+        },
+        "G": {
+            "example_answers": [
+                "dashboard lights warn me of danger", "vanish into shadow", "impossible jump", "summon at will", "communicate with other oceanic life", "incredible strength"
+            ],
+            "question": "What special feature does your ride have thanks to its mythos?"
+        },
+        "H": {
+            "example_answers": [
+                "sturdy chassis", "uncanny reflexes", "easily fixed", "made of stone", "persevering little creature", "impenetrable hide"
+            ],
+            "question": "What helps your ride avoid or survive punishment?"
+        },
+        "I": {
+            "example_answers": [
+                "listen to police frequencies", "sense movement on surface", "dynamo flashlight", "bird's eye view", "sonar", "trailer full of surveillance equipment"
+            ],
+            "question": "What surveillance or reconnaissance abilities does your ride have?"
+        },
+        "J": {
+            "example_answers": [
+                "drive with lights out", "the color of darkness", "makes no sound", "invisibility spell", "can dive for one hour", "fake license plates"
+            ],
+            "question": "How does your ride avoid detection?"
+        }
+    },
+    "relationships": {
+        "example_answers": []
+    },
+    "theme_type": "Extra",
+    "title": {
+        "example_answers": [
+            "(Old-school federal agent car) This Is How We Roll",
+            "(Ninja spider riding beast) JorÅgumo Spawn",
+            "(Baba Yaga's flying mortar) Flying Mortar"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "flat tire", "exposed in open spaces", "no traction", "flight path obstructions", "water-dependent", "guzzler"
+            ],
+            "question": "What could slow down or impede your ride?"
+        },
+        "B": {
+            "example_answers": [
+                "body of tin", "soft underbelly", "broken chain", "hallowed ground", "gullible", "weak trailer connector"
+            ],
+            "question": "What is your ride's most prominent vulnerability?"
+        },
+        "C": {
+            "example_answers": [
+                "locked steering wheel", "fear of bright light", "bad brakes", "poor maneuverability", "blood in the water", "takes long to slow down"
+            ],
+            "question": "Under what conditions does your ride become unresponsive?"
+        },
+        "D": {
+            "example_answers": [
+                "bureaucracy", "hungry for blood", "stolen bike", "reluctant to swoop on hard-working victims", "poachers", "stuck in a labyrinth"
+            ],
+            "question": "How does your ride's mythos or backstory get you into trouble?"
+        }
+    }
+}

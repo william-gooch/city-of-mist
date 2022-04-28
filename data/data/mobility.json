@@ -1,0 +1,150 @@
+{
+    "concept": {
+        "example_answers": [
+            "It can run / jump / swim / fly / tunnel / glide / catapult / jet / etc. at great speeds or to a great distance.",
+            "It can transport itself / others by means of ___.",
+            "It can propel itself with ___.",
+            "It easily overcomes obstacles such as ___."
+        ],
+        "initial_blurb": "Think about your Mythos. In the legend, did your Mythos travel from one place to another in a miraculous way? Did she possess the power to transport or move others? Did she display the ability to avoid or escape confinement?",
+        "question": "How does your Mythos move you or others?"
+    },
+    "improvements": [
+        {
+            "description": "When you Take the Risk with power tags from this theme, it's Dynamite!",
+            "name": "Nine Lives"
+        },
+        {
+            "description": "Once per session, when you or someone rolls 6 or less and the MC makes a move, you can make a single (additional) move before the MC's move takes place. You move is considered to precede the MC's move and can affect or even nullify it (e.g., by reducing its tier, granting you a status, or simply changing the circumstances).",
+            "name": "Do Try To Keep Up"
+        },
+        {
+            "description": "Once per session, you can have your character show up or already be at a scene anywhere in the City (including cutscenes). Alternately, you can ask the MC to start a scene anywhere in the City, with your character present.",
+            "name": "Ain't No Mountain High Enough"
+        },
+        {
+            "description": "You can stop just before things get messy. Once per scene, when you score a 7-9 on Take the Risk, after hearing the MC's hard bargain or ugly choice, you can choose to forego the success of your feat and walk away unharmed.",
+            "name": "Hit the Brakes"
+        },
+        {
+            "description": "Once per session, if you can ready yourself for an action involving your mobility powers, you can choose to take an appropriate tier-2 status.",
+            "name": "Rev Up"
+        }
+    ],
+    "name": "Mobility",
+    "phrase": {
+        "example_answers": [
+            "(Tlaloc) \"Who can I trust to protect the Fifth Sun?\"",
+            "(Roc) \"Where have they hidden my egg?\"",
+            "(Jack and the Beanstalk) \"What is up there?\""
+        ],
+        "prompts": [
+            "Questions about things that are hidden or inaccessible in the City",
+            "Wondering how far, how fast, or how deep you can travel",
+            "Seeking a way to outrun or outmaneuver a threat"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "super-speed", "uncanny parkour artist", "emerge out of bodies of water", "enormous wings", "grow giant beanstalks"
+            ],
+            "question": "What is your Mythos' most useful form of movement?"
+        },
+        "B": {
+            "example_answers": [
+                "tear space-time apart", "merge with a large mass of water", "fury of the roc", "unrestrained growth"
+            ],
+            "question": "How do you go into overdrive?"
+        },
+        "C": {
+            "example_answers": [
+                "act just before it happens", "makeshift katana", "turn into water", "powerful beak and talons", "lockpicking vines"
+            ],
+            "question": "What allows you to avoid restraints or confinement?"
+        },
+        "D": {
+            "example_answers": [
+                "short-range teleportation", "move in the shadows", "skim the water", "claw through barriers", "roots can tunnel into the earth"
+            ],
+            "question": "What secondary mode of movement have you learned to use?"
+        },
+        "E": {
+            "example_answers": [
+                "good catcher", "nimble as a fox", "flow down narrow spaces", "deadly swoop", "beanstalk acrobatics"
+            ],
+            "question": "What style or technique of movement have you mastered?"
+        },
+        "F": {
+            "example_answers": [
+                "dodge bullets", "block martial art strike", "expel blood toxins", "thick plumage", "beanstalk breaks the fall"
+            ],
+            "question": "What specific harmful effects does your mobility allow you to avoid?"
+        },
+        "G": {
+            "example_answers": [
+                "surprise from behind", "katana whirlwind attack", "flashflood", "wing bash", "catapult around stem"
+            ],
+            "question": "How do you use your mobility to gain advantage in a fight?"
+        },
+        "H": {
+            "example_answers": [
+                "bestow superspeed", "secret ninja shortcuts", "turn others into water", "the strength to carry a bull", "bridges out of vines"
+            ],
+            "question": "What allows you to move others?"
+        },
+        "I": {
+            "example_answers": [
+                "put someone into a time-loop", "darts with numbing ointment", "engulf in a waterspout", "pin down with giant foot", "coiling vines"
+            ],
+            "question": "How can you use your powers to restrain others' movement?"
+        },
+        "J": {
+            "example_answers": [
+                "out-of-time pocket dimension", "hidden vantage point", "communicate through water", "a convocation of loyal eagles", "a window left open"
+            ],
+            "question": "What special resource does your mobility give you access to?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "Whether out of love, greed, power-trip, or concern, one of them is trying to slow you down, constrict your movement or freedom of action, or tie you down. Why? And how do they do so? Take a Hurt point on them.",
+            "You took one of them on a âmagic carpet rideâ, a trip they will never forget. What happened there? Ask them if it made them feel closer to you. If so, take a Help point on them. If they kept their distance since, take a Hurt point on them.",
+            "One of them once pushed you to go as fast or as far as you can. What were the circumstances? If it ended well, take a Help point on them. If it ended badly, take a Hurt point on them."
+        ]
+    },
+    "theme_type": "Mythos",
+    "title": {
+        "example_answers": [
+            "(Tlaloc) Wherever there is water, there I am.",
+            "(Roc) Feathered Fury",
+            "(Jack and the Beanstalk) Magic Beans"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "temporal distortions", "slippery foothold", "strong water currents", "bad weather", "concrete pavement"
+            ],
+            "question": "What impedes you or slows you down?"
+        },
+        "B": {
+            "example_answers": [
+                "space-time overload", "overlooked details", "uncontrolled liquidation", "exhausted by dogfighting", "vertigo"
+            ],
+            "question": "What happens when you go too fast, too far, etc.?"
+        },
+        "C": {
+            "example_answers": [
+                "claustrophobia", "fragile", "susceptible to evaporation", "aggressive behaviour", "criminal record"
+            ],
+            "question": "What happens when you're caught?"
+        },
+        "D": {
+            "example_answers": [
+                "flickers in and out of time", "neighborhood sightings", "clothes always wet", "leaves a trail of feathers", "persecution complex"
+            ],
+            "question": "What residual evidence does your movement leave on you, on others, or in the environment?"
+        }
+    }
+}

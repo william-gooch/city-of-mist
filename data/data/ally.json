@@ -1,0 +1,147 @@
+{
+    "concept": {
+        "example_answers": [
+            "___, who feels ___ towards me.",
+            "___ , who, like me, wants to ___.",
+            "___ , who plans to use me to ___.",
+            "___, my animal companion(s).",
+            "___, whose motives are mysterious to me."
+        ],
+        "initial_blurb": "Think about your character's agenda and what she is trying to accomplish. What sort of help could she use the most? What individuals would be best at giving her support, guidance, and backing? Does she need more firepower, a different skillset, social representation, or more information? Is there anyone she already met who would become her ally?\nAlternately, think of your character's Mythos. In the legend, did your Mythos have a companion? Or a supernatural being that guided her path and protected her from greater threats? Was there an animal, mundane or legendary, who befriended your Mythos?",
+        "question": "Who is helping me?"
+    },
+    "improvements": [
+        {
+            "description": "Choose one of your ally's power tags which describes an ability or an item. Your ally can pass it on to you. You can use this power tag yourself even when your ally is not around. You do not need to Change the Game to do so.",
+            "name": "Sharing is Caring"
+        },
+        {
+            "description": "Once per session, you can have your ally show up at a scene anywhere in the City, even if you're not there, if it's even remotely possible that they can get there.",
+            "name": "Gets Around"
+        },
+        {
+            "description": "Once per session, when you make a move with your ally by your side, you can trade a miss result for a 7-9.",
+            "name": "Back-to-back"
+        },
+        {
+            "description": "Once a session, you can choose an opponent to tag team with your ally (it may be a collective). While one of you is fighting that opponent, the other teammate cannot be harmed by that opponent, but can only take action to recover, prepare for the fight, or defend from other threats.",
+            "name": "Tag Team"
+        },
+        {
+            "description": "Choose any improvement from any of the Mythos or Logos themebooks. You can use this improvement only when taking actions as your ally and using your ally's tags.",
+            "name": "Serious Firepower"
+        }
+    ],
+    "name": "Ally",
+    "phrase": {
+        "example_answers": [
+            "(Teenage wiccan) \"Who among my teachers uses black magic?\"",
+            "(Mayor's office informer) \"Do exactly as I say or we're all screwed.\"",
+            "(Fairy godmother) \"What does destiny have in store for you?\""
+        ],
+        "prompts": [
+            "A statement that they often make and affects your relationship (Identity)",
+            "A personal question (Mystery) or goal (Identity) that they expect your help with, such as a case they are working on or an enemy they swore to fight",
+            "A general curiosity or an interest that holds their attention (Mystery)"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "basic thaumaturgy", "scout ahead", "inside information", "follow my heart", "mobbing"
+            ],
+            "question": "What does your ally help you with?"
+        },
+        "B": {
+            "example_answers": [
+                "schoolgirl", "totem spirit", "bureaucrat", "fairy godmother", "notorious gang"
+            ],
+            "question": "What is your ally's profession, training, social position, or special nature?"
+        },
+        "C": {
+            "example_answers": [
+                "running away, share senses, embezzlement, protection from creatures of darkness, knife-fighting"
+            ],
+            "question": "What other abilities does your ally possess?"
+        },
+        "D": {
+            "example_answers": [
+                "she admires me", "I am the chosen one", "masterplan", "endless compassion", "ratpack loyalty"
+            ],
+            "question": "What drives your ally to help you?"
+        },
+        "E": {
+            "example_answers": [
+                "banishing spell", "iron beak", "legal mumbo-jumbo", "blind with bright light", "aggressive swagger"
+            ],
+            "question": "How does your ally fight off opposition?"
+        },
+        "F": {
+            "example_answers": [
+                "hide", "flock the enemy", "counter-surveillance tactics", "\"You cannot pass this sigil\"", "blend in with the locals"
+            ],
+            "question": "What can your ally do to protect you or themselves?"
+        },
+        "G": {
+            "example_answers": [
+                "hit the books", "spirits of the ancestors", "shady government deals", "the Compass of Conscience", "word on the street"
+            ],
+            "question": "What special sources of information can your ally tap into?"
+        },
+        "H": {
+            "example_answers": [
+                "magical ingredients", "a shiny object", "off-the-books extraction team", "fairy dust", "illegal firearms"
+            ],
+            "question": "What resources, artifacts, or gear does your ally possess?"
+        },
+        "I": {
+            "example_answers": [
+                "fellow wiccans", "the dead walk with me", "call the mayor", "the Pleiades", "owner of a criminal haven"
+            ],
+            "question": "Who does your ally know?"
+        },
+        "J": {
+            "example_answers": [
+                "she's no match for me", "telepathic link", "aligned agendas", "good intentions", "we've been through a lot together"
+            ],
+            "question": "Why do you trust your ally?"
+        }
+    },
+    "relationships": {
+        "example_answers": []
+    },
+    "theme_type": "Extra",
+    "title": {
+        "example_answers": [
+            "(Teenage wiccan) Giggles & Witchcraft",
+            "(Mayor's office informer) Our Inside Man",
+            "(Fairy godmother) Someone Watching Over Me"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "conspicuous in a crowd", "eerie atmosphere", "secret agenda", "overprotective", "easily provoked"
+            ],
+            "question": "How does your ally get you in trouble?"
+        },
+        "B": {
+            "example_answers": [
+                "novice spellcaster", "limited grasp of technology", "\"There's no need to get physical\"", "requires a fairy's wand to focus", "zero tactical coordination"
+            ],
+            "question": "What are the shortcomings of your ally's abilities, methods, gear, or attitude?"
+        },
+        "C": {
+            "example_answers": [
+                "stubborn", "immortal aloofness", "conniving", "naive", "chatterbox", "survival mentality"
+            ],
+            "question": "What characteristic of your ally is most bothersome to you?"
+        },
+        "D": {
+            "example_answers": [
+                "easy target", "archers & gunmen", "\"I think they're on to me\"", "creatures of darkness", "police brutality"
+            ],
+            "question": "Who or what is most likely to hurt your ally?"
+        }
+    }
+}

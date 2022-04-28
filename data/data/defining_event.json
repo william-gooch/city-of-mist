@@ -1,0 +1,149 @@
+{
+    "concept": {
+        "example_answers": [
+            "When I was [age], ___.",
+            "One day, ___.",
+            "There was a time in my life when ___."
+        ],
+        "initial_blurb": "Think about your character's modern-day life, particularly her past. Where does she come from? What did she do? What time in her life influenced and shaped her the most?",
+        "question": "What happened to you that changed your life forever?"
+    },
+    "improvements": [
+        {
+            "description": "Whenever someone else mentions your defining event in a way that irks or offends you, you can choose to go into an emotional state and take an appropriate tier-2 status of your choice for the rest of the scene or until you calm down, whichever comes sooner. When it's over, the MC will give you an ongoing tier-1 status to reflect the aftermath of your behavior.",
+            "name": "Touchy Subject"
+        },
+        {
+            "description": "When other PCs get a Clue on you, or when the MC asks you a question to which you must reply with a straight answer or a solid lead, they can't ask you about your defining event.",
+            "name": "Take It To The Grave"
+        },
+        {
+            "description": "Choose and answer a power tag question from the Training, Routine, or Defining Relationship themebooks that reflects something of who you were before, something that now re-emerges. Write down the answer as a new power tag on this theme.",
+            "name": "Echoes From The Past"
+        },
+        {
+            "description": "Whenever the MC or another player invokes one of this theme's weakness tags, you can say \"I'm over it\" and count the tag as a power tag instead. Mark Crack.",
+            "name": "Over It"
+        },
+        {
+            "description": "You've become comfortable with who you are now. Choose a Core Move that best reflects the way you use this theme's tags. Whenever you use it with tags from this theme, it's Dynamite!",
+            "name": "Getting Good at This"
+        }
+    ],
+    "name": "Defining Event",
+    "phrase": {
+        "example_answers": [
+            "(Unwillingly killed loved one) \"I will never forgive myself.\"",
+            "(Mountain-top experience) \"Peace within and without is the path to enlightenment.\"",
+            "(Big heist) \"One last job, they said. Never again.\""
+        ],
+        "prompts": [
+            "A world view that you adopted following your defining event",
+            "Something you promised to yourself or someone else following your defining event",
+            "How you perceive yourself in light of your defining event"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "filled with rage", "a sense of unity with all life", "driven to mete out justice", "ambition"
+            ],
+            "question": "What kind of strong emotion did your defining event leave you with?"
+        },
+        "B": {
+            "example_answers": [
+                "ex-celebrity", "youthful curiosity", "inherited fortune", "love of the local community"
+            ],
+            "question": "What part of your old self, while deeply changed, still serves you?"
+        },
+        "C": {
+            "example_answers": [
+                "Helix Labs access card", "a rusty sword", "a picture of my enemy", "fancy clothes"
+            ],
+            "question": "What mundane but useful object did you obtain during your defining event, that has been with you ever since?"
+        },
+        "D": {
+            "example_answers": [
+                "leader of a secret order of knights", "the chosen one", "head of a corporation", "City mayor"
+            ],
+            "question": "What authority was vested in you during your defining event or after it?"
+        },
+        "E": {
+            "example_answers": [
+                "media connections", "a majestic eagle", "a trusted butler", "a secret sponsor", "a gang of lowlifes and rejects"
+            ],
+            "question": "Who did you bond or connect with in the aftermath of your defining event?"
+        },
+        "F": {
+            "example_answers": [
+                "meditation", "swordsmanship", "light sleep", "lying shamelessly", "wilderness survival"
+            ],
+            "question": "What skill or mundane ability did you pick up during or due to your defining event?"
+        },
+        "G": {
+            "example_answers": [
+                "manual of medical conditions", "a sacred prayer", "the underworld", "City finances"
+            ],
+            "question": "What knowledge did you gain access to thanks to your defining event?"
+        },
+        "H": {
+            "example_answers": [
+                "\"can't be too safe\"", "humility", "always prepared", "power-hungry", "survival of the fittest"
+            ],
+            "question": "What approach to life did you adopt following your defining event?"
+        },
+        "I": {
+            "example_answers": [
+                "acute sense of smell", "great reflexes", "sprinter", "fake smile"
+            ],
+            "question": "What physical change or improvement stemmed from your defining event?"
+        },
+        "J": {
+            "example_answers": [
+                "secret admirer", "commands reverence", "fearsome", "no one dares to refuse me"
+            ],
+            "question": "How do people treat you because of your defining event?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them was present in your defining event. What was their part in it? Take a Help or Hurt point on them or accordingly.",
+            "One of them is trying to help you (or make you) get over your defining event and move on. If you appreciate it, take a Help point on them. If you resent it, take a Hurt point on them.",
+            "In the aftermath of your defining event, one of them was there to help you pick up your life without judging or asking questions. Take a Help point on them."
+        ]
+    },
+    "theme_type": "Logos",
+    "title": {
+        "example_answers": [
+            "(Unwillingly killed loved one) Never Say His Name",
+            "(Mountain-top experience) Path of Tranquility",
+            "(Big heist) The Museum Job"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "emotional", "craves guidance", "vengeful", "hollow inside", "angry at ex-partner"
+            ],
+            "question": "What emotional scar or baggage did your defining event leave you with?"
+        },
+        "B": {
+            "example_answers": [
+                "rejected as a freak", "oath of solitude", "pretends to be a playboy", "angry voters", "a never-ending to-do list"
+            ],
+            "question": "Following your defining event, what responsibility or social burdens do you have to shoulder?"
+        },
+        "C": {
+            "example_answers": [
+                "Helix Labs investigators", "agents of the rival faction", "nightmares and flashbacks", "enamored"
+            ],
+            "question": "Who or what is haunting you because of your defining event?"
+        },
+        "D": {
+            "example_answers": [
+                "light sensitivity", "training injury", "over-exhaustion", "asthma attack", "twisted psyche"
+            ],
+            "question": "What is now broken within you, physically or mentally, due to your defining event?"
+        }
+    }
+}

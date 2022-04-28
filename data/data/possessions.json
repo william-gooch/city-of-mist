@@ -1,0 +1,150 @@
+{
+    "concept": {
+        "example_answers": [
+            "It's all about one item: the ___.",
+            "Gear or equipment that helps me with ___.",
+            "A collection of ___.",
+            "My entire estate."
+        ],
+        "initial_blurb": "Think about your character's modern-day life. What does she normally carry around on her person? What interesting items does she keep in her purse, in a locked desk drawer, or a compartment hidden under the rug? What does she own?",
+        "question": "What do you keep or carry in my possession?"
+    },
+    "improvements": [
+        {
+            "description": "Once per session, create a temporary tag that describes an item.",
+            "name": "Found it!"
+        },
+        {
+            "description": "Whenever you have an ongoing tag that you created which describes an item, you can make it into a permanent power tag (of this theme). If you already have a permanent power tag created by this move, you must discard it to use this move again. You can discard the permanent power tag whenever you wish.",
+            "name": "It's The Gift That Keeps On Giving"
+        },
+        {
+            "description": "Choose a power tag question from the Training or Routine themebooks that reflects skills or benefits associated with your possessions, and answer it. Write down the answer as a new power tag on this theme.",
+            "name": "Tools Of The Trade"
+        },
+        {
+            "description": "Once per scene, you can let another player use a power tag from this theme, provided that tag describes an item or thing that can be given, and that you can reasonably give it to them (or could have previously given it to them). You do not need to make the Change The Game move to do so.",
+            "name": "Quartermaster"
+        },
+        {
+            "description": "One of your items or possessions is a real gem, perfect for what it was made for. Choose one tag from this theme. It must describe an item or possession. Any Core Move you make using this tag is Dynamite!",
+            "name": "Quality Matters"
+        }
+    ],
+    "name": "Possessions",
+    "phrase": {
+        "example_answers": [
+            "(Surveillance gear) \"This government is going down.\"",
+            "(Pawn shop) \"Everyone deserves a second chance.\"",
+            "(Getaway car) \"They'll never catch me!\""
+        ],
+        "prompts": [
+            "What these specific possessions mean to you",
+            "A general belief about possessions, wealth, gear, etc.",
+            "What you intend to do with your possessions"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "a magnifying glass", "a pair of old revolvers", "safe-cracking tools", "a world-renowned painting", "my multi-billion dollar company", "a warehouse full of junk", "a necklace that belonged to my mother"
+            ],
+            "question": "What is the most important thing in your possession?"
+        },
+        "B": {
+            "example_answers": [
+                "an arsenal of medieval weapons", "a pawn shop full of wonders", "Burke Industries Inc.", "a farm at the edge of the city"
+            ],
+            "question": "How would you describe your possessions in general?"
+        },
+        "C": {
+            "example_answers": [
+                "a police badge", "a shotgun", "black catsuit", "a golden ring", "a luxurious yacht", "hobo rags", "a picture of the man who killed my mother"
+            ],
+            "question": "What other important item is in your possession?"
+        },
+        "D": {
+            "example_answers": [
+                "magnifying glass -> fingerprint kit", "a pair of old revolvers -> hollow point rounds", "a shotgun -> cable-gun extension", "cherry red 66' Chevy -> liquid nitrogen tank", "a luxurious yacht -> helipad and helicopter", "a sniper rifle -> telescopic sight"
+            ],
+            "question": "What component or attachment added to one of your items can change or improve its function?"
+        },
+        "E": {
+            "example_answers": [
+                "gunslinging stunts", "quick draw", "pick a lock", "sales pitch", "throw money at the problem", "hostile takeover", "find a needle in a haystack", "threatening monologue"
+            ],
+            "question": "What kind of stunts or moves do you typically do with your possessions?"
+        },
+        "F": {
+            "example_answers": [
+                "concealed holster", "unregistered warehouse", "no license plate", "sound suppressor", "fake paperwork"
+            ],
+            "question": "What helps you conceal your possessions or the fact you are using them?"
+        },
+        "G": {
+            "example_answers": [
+                "thick steel chain", " alarm system", " private security", " inventory list", " pickpocket alertness", " Growlie"
+            ],
+            "question": "What keeps your possessions safe?"
+        },
+        "H": {
+            "example_answers": [
+                "firearms workshop", "jeweler", "animal husbandry", "DIY guru", "repair kit"
+            ],
+            "question": "How do you handle, fix, or take care of your possessions?"
+        },
+        "I": {
+            "example_answers": [
+                "adjusted sights", "robust", "fastest bike in town", "good traction", "refreshing", "one of a kind"
+            ],
+            "question": "What useful quality do your possessions have?"
+        },
+        "J": {
+            "example_answers": [
+                "magnifying glass, police badge -> standard issue pistol", "safe-cracking tools, black catsuit -> glass cutter", "yacht, helicopter -> sports car"
+            ],
+            "question": "What item completes a set with your other power tags?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them admires what you have (and maybe secretly desires it, too). Take a Help point on them.",
+            "One of them thinks THEY should be in possession of your things. Ask them why. Whatever they answer, take a Hurt point on them.",
+            "When you acquired your possessions, one of them was involved. If they helped you or even gave you your possessions, take a Help point on them. If they got in your way or tried to take your possessions, take a Hurt point on them."
+        ]
+    },
+    "theme_type": "Logos",
+    "title": {
+        "example_answers": [
+            "(Surveillance gear) Stevo's Conspiracy-Busting Van",
+            "(Pawn shop) Second Chance Pawnbrokers",
+            "(Getaway car) Red Hot"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "chipped away", "slippery grip", "guzzler", "expensive to use", "loud", "older model", "weapon jam", "ugly as hell", "short-range"
+            ],
+            "question": "What technical or practical flaw do your items or possessions have?"
+        },
+        "B": {
+            "example_answers": [
+                "possessive", "big spender", "too reliant on gear", "reclusive nutjob", "constantly fidgeting with equipment"
+            ],
+            "question": "What bad habits or traits related to your possessions do you display?"
+        },
+        "C": {
+            "example_answers": [
+                "rusty", "dirt in the mechanism", "useless in crowded places", "can't read in the dark", "need a quiet space"
+            ],
+            "question": "What conditions could render your possessions less effective?"
+        },
+        "D": {
+            "example_answers": [
+                "sentimental value", "never strike an unarmed foe", "concerned board of directors", "police in hot pursuit", "running out of ammo"
+            ],
+            "question": "Who or what can prevent you from putting your possessions to use?"
+        }
+    }
+}

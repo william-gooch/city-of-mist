@@ -1,0 +1,151 @@
+{
+    "concept": {
+        "example_answers": [
+            "I am a master of ___.",
+            "In the past, I trained in ___.",
+            "I have learned the art of ___.",
+            "I know all there is to know about ___."
+        ],
+        "initial_blurb": "Think about your character's modern-day life. Is she an expert, a scholar, or a master? Has she spent a lot of time honing a skill or studying a field?",
+        "question": "What is your field of expertise?"
+    },
+    "improvements": [
+        {
+            "description": "Once per scene, you can let another player use a power tag from this theme, provided that tag describes a skill that you can reasonably teach them (or could have taught them in advance). You do not need to make the Change The Game move to do so.",
+            "name": "Expert Advice"
+        },
+        {
+            "description": "Once per session, you can create a temporary story tag that reflects a useful method or detail covered by your training, within reason.",
+            "name": "Broad Training"
+        },
+        {
+            "description": "Choose and answer a power tag question from the Routine, Defining Event, or Mission themebooks that describes how you are applying your training today or an outcome of the way you acquired this training. Write down the answer as a new power",
+            "name": "Sense of Purpose"
+        },
+        {
+            "description": "Choose a single power tag from this theme. When you burn it for a hit, you get an automatic result of 9 (instead of 7) and a Power of 3, for a total unmodified score of 12. Statuses apply to both your automatic result and your Power, as usual.",
+            "name": "It's Showtime"
+        },
+        {
+            "description": "Choose a Core Move that best represents the actions you most often use your training for. Whenever you use it with tags from this theme, it's Dynamite!",
+            "name": "Getting Good At This"
+        }
+    ],
+    "name": "Training",
+    "phrase": {
+        "example_answers": [
+            "(Circus acrobat) \"Nothing is more important than my freedom.\"",
+            "(Spy) \"No one can ever see the real me.\"",
+            "(City architecture expert) \"I must tell you just one more detail about this buildingâ¦\""
+        ],
+        "prompts": [
+            "A doctrine, conviction, or attitude that has become ingrained in you due to your training",
+            "The goal or purpose for which you started your training",
+            "Opinions you hold on your peers or competitors"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "boxing", "martial arts", "computers", "circus acrobatics", "applied chemistry", "law", "metalworking", "logical deduction", "instigator of civil unrest"
+            ],
+            "question": "What do you do, or know, best?"
+        },
+        "B": {
+            "example_answers": [
+                "stealth", "mean right hook", "use opponent's strength", "making bombs", "firearm modification", "art appraisal"
+            ],
+            "question": "Within your field of expertise, at which specific skill or subject do you excel?"
+        },
+        "C": {
+            "example_answers": [
+                "climbing", "gambling", "research methods", "animal handling", "crime scene investigation", "technical troubleshooting"
+            ],
+            "question": "What other tangent field have you ventured into indirectly?"
+        },
+        "D": {
+            "example_answers": [
+                "eye on the door", "dodge", "hotwire an engine", "threaten with violence", "chant the golden crane sutra"
+            ],
+            "question": "What move, method, maneuver, habit, or trick did you pick up during your training?"
+        },
+        "E": {
+            "example_answers": [
+                "marksmanship", "can take a pounding", "hardboiled", "poker face", "an eye for details", "careful and measured", "hardliner"
+            ],
+            "question": "What quality or trait did your training foster?"
+        },
+        "F": {
+            "example_answers": [
+                "Grand Master Xian", "Old Man River", "prof. Chandra", "a university chum", "Buster the demolitions dog"
+            ],
+            "question": "Name a teacher, trainer, or fellow trainee that you can rely on for help in this field."
+        },
+        "G": {
+            "example_answers": [
+                "improvised weapons", "lock-picking tools", "rappelling harness", "evidence bag", "botany textbook"
+            ],
+            "question": "What piece of equipment related to your training do you normally have access to?"
+        },
+        "H": {
+            "example_answers": [
+                "crowd-pleaser", "military strategy", "the Knight Templars", "spot structural weakness"
+            ],
+            "question": "Against who or what does your training give the best results?"
+        },
+        "I": {
+            "example_answers": [
+                "under the cover of darkness", "laboratory access", "\"When I see it, I'll know\"", "experienced Alpine survivalist"
+            ],
+            "question": "Under what conditions does your technique work best?"
+        },
+        "J": {
+            "example_answers": [
+                "get into the suspect's head", "experimental car engines", "pin-down opponent with footwork", "money laundering"
+            ],
+            "question": "What unusual new application of your training are you exploring?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them was there to support you while you trained, perhaps even mentored you. Take a Help point on them.",
+            "One of them looks down on your training and finds it morally questionable, inefficient, or distasteful. If it makes you want to impress them, take a Help point on them. If it makes you want to punch them, take a Hurt point on them.",
+            "One of them helps you keep your act sharp. If it's because they're competing with you or threatening you, take a Hurt point on them; otherwise, take a Help point on them."
+        ]
+    },
+    "theme_type": "Logos",
+    "title": {
+        "example_answers": [
+            "(Circus acrobat) Born to Fly",
+            "(Spy) That Quiet Guy",
+            "(City architecture expert) Architecture Buff"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "scattered notes", "short-sighted", "designed for single combat", "outdated methods", "inexperienced"
+            ],
+            "question": "What is the most problematic flaw in your technique?"
+        },
+        "B": {
+            "example_answers": [
+                "tyrannical tendencies", "over-confident", "sleepless nights", "busted knee"
+            ],
+            "question": "How did your training adversely affect your psyche or body?"
+        },
+        "C": {
+            "example_answers": [
+                "underworld reputation", "academic rival", "\"they threaten to shut down my research\"", "pushy fans"
+            ],
+            "question": "Who is after you due to your prominence in the field?"
+        },
+        "D": {
+            "example_answers": [
+                "mean right hook -> exposed after right hook", "threaten with violence -> threats require a disguise", "making bombs -> need to prepare"
+            ],
+            "question": "Name a flaw unique to a specific move or method you described in your power tags."
+        }
+    }
+}
+

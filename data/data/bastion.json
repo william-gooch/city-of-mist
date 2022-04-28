@@ -1,0 +1,149 @@
+{
+    "concept": {
+        "example_answers": [
+            "It makes me impervious to ___.",
+            "It allows me to ward off ___ with ___.",
+            "It renders ___ ineffective by ___."
+        ],
+        "initial_blurb": "Think about your Mythos. In the legend, was your Mythos responsible for protecting something? Was she able to withstand punishment or endure great toils? Was she a unique being or creature with superhuman durability? What exactly were her powers?",
+        "question": "How does your Mythos protect its agenda?"
+    },
+    "improvements": [
+        {
+            "description": "When you Face Danger with power tags from this theme, it's Dynamite!",
+            "name": "Unbreakable"
+        },
+        {
+            "description": "When you burn a tag in this theme for a hit in order to Face a Danger affecting you and your allies, allies who can benefit from your protection don't roll Face Danger but use your result instead.",
+            "name": "Got your Back"
+        },
+        {
+            "description": "When you get a hit on Face Danger, you can always choose to extend the outcome to one person or object around you that you can protect, at the cost of exposing yourself. On a 10+, they take no status and you take the status with -1 tier. On 7-9, they take the status with -1 tier and you take the full status. If the move is Dynamite!, on a 12+, you can choose to fully protect both of you (instead of one of the other 12+ options).",
+            "name": "Sacrifice"
+        },
+        {
+            "description": "When your Face Danger move is Dynamite!, on a 12+, you can choose the following option instead of the other options: you absorb the harmful effect or disable its source, granting either you or your opponent an appropriate temporary tier-2 status of your choice.",
+            "name": "Sorry, was that your gun?"
+        },
+        {
+            "description": "When your Face Danger move is Dynamite!, on a 12+, if you choose to reflect the status you were given, you can redirect it to any target, not just your attacker",
+            "name": "Redirected Hostility"
+        }
+    ],
+    "name": "Bastion",
+    "phrase": {
+        "example_answers": [
+            "(Talos) \"Why do I feel like I'm different?\"",
+            "(Poltergeist) \"Who killed me and why?\"",
+            "(Fairy Godmother) \"What is the dark force rising in the City?\""
+        ],
+        "prompts": [
+            "Wondering who or what you were meant to protect",
+            "Questions about the threats you are meant to stop",
+            "A dark desire to find out what could be your undoing"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "grow bone armor", "can't die â already dead", "ghost â no physical body", "radiates authority", "regrow organs", "dragon scales"
+            ],
+            "question": "What quality or ability granted by your Mythos most often protects you?"
+        },
+        "B": {
+            "example_answers": [
+                "a great golden shield", "summon ghostly guardians", "ward off darkness"
+            ],
+            "question": "What means do you have of extending protection to others?"
+        },
+        "C": {
+            "example_answers": [
+                "impressive", "reflective surface", "both astral and physical", "unbreakable", "change skin texture and color", "absorbs life force"
+            ],
+            "question": "What particular trait of your defense makes it useful?"
+        },
+        "D": {
+            "example_answers": [
+                "does not breathe", "impervious to mortal weapons", "maze-like mind", "eternal youth"
+            ],
+            "question": "Against what type of attack or influence is your defense especially effective?"
+        },
+        "E": {
+            "example_answers": [
+                "a body made of fire -> flames lash out", "a great golden shield -> throw shield", "always held in high esteem -> biting retort"
+            ],
+            "question": "How can you use your defense actively?"
+        },
+        "F": {
+            "example_answers": [
+                "dragon scales -> resistant to fire", "grow bone armor -> harden internal organs", "invulnerability -> harm only makes me stronger"
+            ],
+            "question": "What secondary defensive effect does your defense have?"
+        },
+        "G": {
+            "example_answers": [
+                "godlike invulnerability -> inhuman strength", "made of clay -> melt into the earth", "dragon scales -> fire breath", "ghost â no physical body -> possess others' bodies"
+            ],
+            "question": "What other effect or quality, not necessarily defensive, came with your defense?"
+        },
+        "H": {
+            "example_answers": [
+                "protector of the weak", "guardian of Shangri La", "Dulcinea (of Don Quixote)"
+            ],
+            "question": "Who or what were your powers meant to protect?"
+        },
+        "I": {
+            "example_answers": [
+                "grow bone armor -> grow roots", "cloak of protection -> glide through the air", "beauty that cannot be tarnished -> inspire change of heart"
+            ],
+            "question": "When in a clinch, how can you use your defense to change the odds in your favour?"
+        },
+        "J": {
+            "example_answers": [
+                "hunker down", "provide cover for others", "furious rage", "stampede", "scare tactics", "embrace the enemy"
+            ],
+            "question": "What tactics do you employ when you use your defense?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "You once protected something very dear to one of them, possibly even from them. If they were grateful, take a Help point on them. If they were not, take a Hurt point on them.",
+            "One of them makes you feel weak and vulnerable or one of them actually has the capacity to break through your defenses. Take a Hurt point on them.",
+            "You feel as if one of them is the one you are meant to protect. Take a Help point on them."
+        ]
+    },
+    "theme_type": "Mythos",
+    "title": {
+        "example_answers": [
+            "(Talos) Bronzen Construct",
+            "(Poltergeist) Untouchable",
+            "(Fairy Godmother) Protector of the Light"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "monstrous", "corpse-like visage", "shining armor is easy to spot", "bronzen"
+            ],
+            "question": "How do your defensive powers affect your appearance?"
+        },
+        "B": {
+            "example_answers": [
+                "cumbersome", "ghost â cannot touch the world", "blindspot", "wears off quickly"
+            ],
+            "question": "What are the unwanted implications of your defense?"
+        },
+        "C": {
+            "example_answers": [
+                "\"I can't protect them all!\"", "holy water", "bludgeoning", "mystical weapons"
+            ],
+            "question": "To what attacks is your defense susceptible?"
+        },
+        "D": {
+            "example_answers": [
+                "foolhardy", "paranoid", "cannot feel emotions", "savior mentality", "ravenous"
+            ],
+            "question": "What personality trait derived from your defense gets you into trouble?"
+        }
+    }
+}

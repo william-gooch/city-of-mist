@@ -1,0 +1,20 @@
+[package]
+name = "common"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+entity = { path = "../entity", optional = true }
+migration = { path = "../migration", optional = true }
+
+derive-getters = "0.2.0"
+derive-new = "0.5.9"
+derive_builder = "0.10.2"
+serde = { version = "1.0.136", features = ["derive"] }
+serde_json = "1.0.78"
+
+[features]
+default = []
+db = ["migration", "entity"]

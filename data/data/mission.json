@@ -1,0 +1,149 @@
+{
+    "concept": {
+        "example_answers": [
+            "I must / I swore to ___.",
+            "Following ___, I decided I will never stop ___.",
+            "This City needs ___."
+        ],
+        "initial_blurb": "Think about your character's modern-day life. What goal is she always thinking about? What has she dedicated her life to?",
+        "question": "What is your goal?"
+    },
+    "improvements": [
+        {
+            "description": "Tell everyone at the table what is the next objective or milestone on your mission. You take a gung-ho-1 status which applies to all actions you take to achieve that objective. If this status is removed, you regain it on your next Montage (Downtime) move. When you complete the objective, remove the status and mark Crack. You can then announce a new objective or milestone. You can only have one Gung Ho objective and status at a time.",
+            "name": "Gung Ho"
+        },
+        {
+            "description": "When you try to Convince someone to join your cause, it's Dynamite!",
+            "name": "Follow me!"
+        },
+        {
+            "description": "Choose a power tag question from the Training or Possessions themebooks that reflects something you acquired in order to complete your mission and answer it. Write down the answer as a new power tag on this theme.",
+            "name": "Can't Be Too Ready"
+        },
+        {
+            "description": "When you sacrifice something you truly want in order to abide by your Mission's Identity, you not only mark Attention on the theme (as usual) but also remove one crack from it, if any.",
+            "name": "When Hell Freezes Over"
+        },
+        {
+            "description": "Choose a Core Move that best represents your most common course of action on your mission. Whenever you use it with tags from this theme, it's Dynamite!",
+            "name": "Getting Good At This"
+        }
+    ],
+    "name": "Mission",
+    "phrase": {
+        "example_answers": [
+            "(Philanthropist) \"The citizens of this city deserve better than this!\"",
+            "(Vendetta) \"She'll pay for what she did to my family.\"",
+            "(Aspirations) \"Get rich or die trying.\""
+        ],
+        "prompts": [
+            "A strong conviction that drives you forward on your mission",
+            "The reason for which you undertook the mission",
+            "Hatred or disdain to anyone or anything who might stand in your way"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "brawl", "seasoned negotiator", "tracking", "map of the subway system", "sawed-off shotgun"
+            ],
+            "question": "What do you need most in order to carry out your mission?"
+        },
+        "B": {
+            "example_answers": [
+                "dodge", "throw a punch", "bypass electric locks", "quick reload", "Arthur's tactics"
+            ],
+            "question": "What were you forced to learn while on your mission?"
+        },
+        "C": {
+            "example_answers": [
+                "contacts in every neighborhood", "an unknown informer", "a beautiful cartographer", "gang of petty crooks"
+            ],
+            "question": "Who is helping you on your mission?"
+        },
+        "D": {
+            "example_answers": [
+                "Anatoly's underground operation", "urban tales and legends", "social welfare", "common passwords"
+            ],
+            "question": "What knowledge do you have about the target or goal of your mission?"
+        },
+        "E": {
+            "example_answers": [
+                "snooping around", "disguise", "interrogation", "lies lies lies", "all out attack", "\"an eye for an eye\"", "smoke âem out"
+            ],
+            "question": "What sort of tactics or methods do you employ to reach your goal?"
+        },
+        "F": {
+            "example_answers": [
+                "athletic", "a widely supported public figure", "alert", "lots of money", "aware of every tiny movement around me", "passionate about art"
+            ],
+            "question": "Pursuing your mission has made you..."
+        },
+        "G": {
+            "example_answers": [
+                "faith in the church", "good citizen", "sheer determination", "I hate my boss", "true love"
+            ],
+            "question": "What useful position or status did you have to earn for the mission to succeed?"
+        },
+        "H": {
+            "example_answers": [
+                "arguing", "(gossiping about) high-school rumors", "pub crawling", "chessboard war", "breaking & entering", "giving a sermon", "planning machinations"
+            ],
+            "question": "Name an activity that you share."
+        },
+        "I": {
+            "example_answers": [
+                "safe house", "a key to the lost chest", "the recipe to an amazing sandwich", "a red sports car", "the mayor's phone number"
+            ],
+            "question": "What do you have that might help you with your mission?"
+        },
+        "J": {
+            "example_answers": [
+                "ready for the kill, puzzle cracker, getaway car, a wooden stake, police connections"
+            ],
+            "question": "What part of your plan to realize your goal have you honed the most?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them is of great importance to your cause. If they play an instrumental role in your plans to achieve your goal, take a Help point on them. If they are a potential threat to your cause, take a Hurt point on them.",
+            "One of them has aided you in your efforts and earned your earnest gratitude and respect. Take a Help point on them.",
+            "One of them thinks your mission is doomed to fail or must never be allowed to succeed (they don't have to tell you which). Ask them if they show it or hide it. If they show it, take a Hurt point on them. If they hide it, take a Help point on them."
+        ]
+    },
+    "theme_type": "Logos",
+    "title": {
+        "example_answers": [
+            "(Philanthropist) Heart of Gold",
+            "(Vendetta) Lilith Must Die",
+            "(Aspirations) Hungry For More"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "known vigilante", "nervous", "impossible schedule", "domestic problems", "a cureless disease", "consumed by hatred", "fugitive"
+            ],
+            "question": "What are the side effects or burdens of pursuing the mission?"
+        },
+        "B": {
+            "example_answers": [
+                "unreliable allies", "they know I'm coming", "little brother", "Arthur's cunning", "the Queen's mirror"
+            ],
+            "question": "What are the weak points or wildcards in your plan?"
+        },
+        "C": {
+            "example_answers": [
+                "too eager", "bouts of despair", "cocky,\"money is not an object\"", "gullible"
+            ],
+            "question": "Which approach or psychological disposition will get in the way of your endeavors?"
+        },
+        "D": {
+            "example_answers": [
+                "overpowering competition", "the status-quo", "Morgana", "\"I don't know where to start\"", "can't do this alone"
+            ],
+            "question": "Why have you not succeeded so far?"
+        }
+    }
+}

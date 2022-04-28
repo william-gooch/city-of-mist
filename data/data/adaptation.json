@@ -1,0 +1,218 @@
+{
+    "concept": {
+        "example_answers": [
+            "It has a range/collection/set of ___.",
+            "It can control and/or shape ___.",
+            "It changes based on ___."
+        ],
+        "initial_blurb": "Think about your Mythos. In the legend, did your Mythos possess many different powers? Was she able to shape a substance, element, form, or concept to respond to various challenges? What was the unifying element in all of the manifestations of her powers?",
+        "question": "How does your Mythos adapt to the circumstances?"
+    },
+    "improvements": [
+        {
+            "description": "When you Change the Game with power tags from this theme, it's Dynamite!",
+            "name": "Game Changer"
+        },
+        {
+            "description": "Once per session, you get a free batch of 2 Juice with a method that relates to this theme and to the circumstances of the current scene. You cannot add this batch to another batch.",
+            "name": "Tap Into The Source"
+        },
+        {
+            "description": "When you spend a Clue to ask the MC or one of the other players \u201cWhat would be most useful to me in this situation?\u201d, they answer as usual. If you then have any remaining Clues in the same batch, you can convert them to Juice, one for one, and use it to come up with the thing you need most. This Juice has the same method as the Clues it came from.",
+            "name": "I Have Just The Thing"
+        },
+        {
+            "description": "When you use tags from this theme in a creative way, choose one of the most affected characters and ask whoever is playing it (the MC or another player) whether they saw it coming. They must answer honestly. If they didn't, take a temporary status creative-stroke-1 (or similar).",
+            "name": "Creative Stroke"
+        },
+        {
+            "description": "You've learned to master a specific type of manifestation. Choose a power tag question from any of the other Mythos themebooks except Relic and answer it. Write down the answer as a new power tag on this theme.",
+            "name": "Specialization"
+        }
+    ],
+    "name": "Adaptation",
+    "phrase": {
+        "example_answers": [
+            "(Merlin) \"Where is the Holy Grail now?\"",
+            "(Doppelganger) \"What is the ultimate power I could steal?\"",
+            "(Geppetto) \"Who or what can breathe life into my toys?\""
+        ],
+        "prompts": [
+            "Philosophical questions about the nature or source of your powers",
+            "Seeking something that is greater than your powers",
+            "Fears of losing touch with your original nature"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "cast a magic spell",
+                "lord of the tempests",
+                "shapeshifting",
+                "steal other people's powers",
+                "puppeteer & toymaker",
+                "necromancer"
+            ],
+            "question": "What Mythos power allows you to respond differently to every situation?"
+        },
+        "B": {
+            "example_answers": [
+                "transportation spells",
+                "create bad weather",
+                "beasts of the forest",
+                "steal protective powers",
+                "\"My toys can speak!\"",
+                "zombie army"
+            ],
+            "question": "What narrow group of effects within your Mythos' domain have you mastered?"
+        },
+        "C": {
+            "example_answers": [
+                "a sleeping curse",
+                "smite down with lightning",
+                "the True Shape of the Lion",
+                "leave them powerless",
+                "exploding wind-up toy",
+                "rotting touch"
+            ],
+            "question": "What specific manifestation of your Mythos is your favourite?"
+        },
+        "D": {
+            "example_answers": [
+                "easier with a spellbook",
+                "under the open sky",
+                "ritual of the wild",
+                "prolonged contact with victim",
+                "cluttered workshop",
+                "dead of the night"
+            ],
+            "question": "What specific circumstances enhance your ability to adapt?"
+        },
+        "E": {
+            "example_answers": [
+                "cushion a fall with feathers",
+                "scale a barrier on a gust of wind",
+                "grow gills",
+                "make it look like the original",
+                "\"I'll figure out this device in a jiffy...\"",
+                "summon the ghost of an enemy's loved one"
+            ],
+            "question": "What situations do you have a quick solution for or are accustomed to?"
+        },
+        "F": {
+            "example_answers": [
+                "counterspell",
+                "impervious to all weather",
+                "sniff out other shapeshifters",
+                "\"You cannot steal from the thief!\"",
+                "disable machinery",
+                "banish the dead"
+            ],
+            "question": "What do your powers naturally protect you from?"
+        },
+        "G": {
+            "example_answers": [
+                "knowledge over power",
+                "wrath of the seas and heavens",
+                "all life is one",
+                "survival of the fittest",
+                "necessity is the mother of invention",
+                "nostalgia"
+            ],
+            "question": "What attitude or emotion lies at the core of your adaptive powers?"
+        },
+        "H": {
+            "example_answers": [
+                "imps and fairies",
+                "conjure rain elementals",
+                "horns and fangs",
+                "decoys of myself",
+                "build child-sized puppets",
+                "animate dead bodies"
+            ],
+            "question": "What specific class of things or beings can you produce or summon?"
+        },
+        "I": {
+            "example_answers": [
+                "deflect & dazzle",
+                "electrocute wet targets",
+                "shapeshift limbs out of harm's way",
+                "hit someone with their own power",
+                "deploy contraptions from hiding",
+                "overrun the living"
+            ],
+            "question": "What strategy or combination of effects do you employ in battle?"
+        },
+        "J": {
+            "example_answers": [
+                "enchant a weapon",
+                "conjure heavy fog",
+                "mass shapeshift",
+                "grant someone the powers of another",
+                "annoying bells and whistles",
+                "suck out their life-force"
+            ],
+            "question": "How can you enhance or weaken others with your powers?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them once challenged you to push the boundaries and flexibility of your adaptive powers at a critical moment. What happened? Take a Help point on them.",
+            "You think one of them is a one-trick-pony, approaching every situation with the same solutions over and over again. In fact, this has hurt our crew before. Under what circumstances?",
+            "One of them is blown away by the vastness and diversity of your abilities. Ask them how it makes them feel. If it fascinates them, take a Help point on them. If it confuses them and they're weirded out, take a Hurt point on them."
+        ]
+    },
+    "theme_type": "Mythos",
+    "title": {
+        "example_answers": [
+            "(Merlin) Wizard & Guide",
+            "(Doppelganger) Other People's Powers",
+            "(Geppetto) A Love for Toymaking"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "only works with a magic wand",
+                "needs moisture in the air",
+                "must maintain a connection with nature",
+                "must gain the victim's trust",
+                "missing parts",
+                "dead too long"
+            ],
+            "question": "What are your powers of adaptivity dependent on?"
+        },
+        "B": {
+            "example_answers": [
+                "dark magic is forbidden",
+                "struggles to calm weather",
+                "afraid of shapeshifting into aggressive animals",
+                "can't hold more than one power at a time",
+                "puppets don't really look real",
+                "hard to control the swarm"
+            ],
+            "question": "What results are harder for your Mythos to achieve?"
+        },
+        "C": {
+            "example_answers": [
+                "susceptible to areas of thick Mist",
+                "blocked by shelter",
+                "instinctively drawn to native forms of current location",
+                "flammable toys",
+                "hallowed grounds"
+            ],
+            "question": "What hinders your Mythos or limits its possibilities?"
+        },
+        "D": {
+            "example_answers": [
+                "obsessed with other sorcerers",
+                "easily infuriated",
+                "animalistic behavior",
+                "lost sense of self-worth",
+                "constantly fidgeting with parts",
+                "no regard for the living"
+            ],
+            "question": "What bad habits did you pick up due to your adaptive powers?"
+        }
+    }
+}

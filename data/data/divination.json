@@ -1,0 +1,150 @@
+{
+    "concept": {
+        "example_answers": [
+            "It enhances my senses, such as ___.",
+            "It allows me to communicate with ___.",
+            "It allows me to tap into new sources of information such as ___.",
+            "It gathers information from ___ by ___."
+        ],
+        "initial_blurb": "Think about your Mythos. In the legend, was your Mythos able to know or sense things beyond what was humanly possible? Was she in touch with a special source of information? Could she communicate with otherworldly beings? How so?",
+        "question": "How does your Mythos learn about the world around it?"
+    },
+    "improvements": [
+        {
+            "description": "When you Investigate with power tags from this theme, it's Dynamite!",
+            "name": "Open Book"
+        },
+        {
+            "description": "Once per scene, you get one free Clue.",
+            "name": "Ahead of the Game"
+        },
+        {
+            "description": "Whenever you Investigate with power tags from this theme and score 7-9, choose one of the MC's options in the Investigate move. The MC can't choose this option this time.",
+            "name": "Seasoned Investigator"
+        },
+        {
+            "description": "When you use a Clue to ask the MC \"What's going to happen next?\", the MC can't give you just a hint and must instead give you a straight answer. If you use the MC's answer to your advantage on your next move, you gain an appropriate temporary tier-1 status.",
+            "name": "Prophetic"
+        },
+        {
+            "description": "You're more than just a bucket of knowledge or a hub of heightened awareness. When push comes to shove, you can fend for yourself. Choose a power tag question from the Expression or Bastion themebooks and answer it. Write down the answer as a new power tag on this theme.",
+            "name": "A Fighting Chance"
+        }
+    ],
+    "name": "Divination",
+    "phrase": {
+        "example_answers": [
+            "(Witch) \"Where can I find the Book of Shadows?\"",
+            "(Baron Samedi) \"Do the dead deserve another chance?\"",
+            "(Wenchang Wang) \"How can I battle ignorance?\""
+        ],
+        "prompts": [
+            "Burning questions about something your Divination can't pierce",
+            "Investigation of something only you were able to uncover",
+            "Concerns about the beings or sources your powers consult"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "flashes of what was here before", "a wolf's instincts", "instant book reading", "premonitions", "torment poor souls", "read minds"
+            ],
+            "question": "What allows you to uncannily know things you wouldn't normally know?"
+        },
+        "B": {
+            "example_answers": [
+                "flashes of other parts of the City", "sniff out intruders", "psychometry", "sense a person's guilt"
+            ],
+            "question": "What other type of knowledge can you access with your powers?"
+        },
+        "C": {
+            "example_answers": [
+                "perfect spatial sense", "knows all about hunters", "whispers of ancient history", "expose hidden secrets", "secrets taken to the grave"
+            ],
+            "question": "What subject is the easiest for you to learn about?"
+        },
+        "D": {
+            "example_answers": [
+                "consciousness expanding pills", "book of shadows", "in vino veritas", "mirrors", "the blood reveals"
+            ],
+            "question": "What items or substances serve as a conduit for your knowledge?"
+        },
+        "E": {
+            "example_answers": [
+                "undetectable", "covers the entire City", "I can smell it as well", "the stronger the emotion â the more I see."
+            ],
+            "question": "What quality of your divination makes it especially effective?"
+        },
+        "F": {
+            "example_answers": [
+                "predict a foe's next move", "sense minute earth tremors", "a marksman's eye"
+            ],
+            "question": "What advantage does your divination give you in a fight?"
+        },
+        "G": {
+            "example_answers": [
+                "see in complete darkness", "can hear a pin drop", "gut feeling when being deceived"
+            ],
+            "question": "In what ways have your normal senses been enhanced by your Mythos?"
+        },
+        "H": {
+            "example_answers": [
+                "shoot around corners", "\"I can tell you like meâ¦\"", "ouija board scam", "blind driving"
+            ],
+            "question": "What creative ways of using your divination have you developed?"
+        },
+        "I": {
+            "example_answers": [
+                "put someone in a time-loop", "deafening roar", "suck up all the light", "terrorize with a glimpse of one's death"
+            ],
+            "question": "How can you affect others with your power?"
+        },
+        "J": {
+            "example_answers": [
+                "flashes of beyond", "visceral sense of danger", "sisterhood of all women", "secrets only the Void knows"
+            ],
+            "question": "What new frontier of knowledge lies at the edge of your divination?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "You used your powers to learn a shocking secret about one of them, without their knowledge. If it made you feel closer to them, take a Help point on them. If you were disgusted or horrified, or if you plan to use it against them, take a Hurt point on them.",
+            "You used your powers to reveal a weakness of one of them. Ask them what it is. If you're going to protect them, take a Help point on them. If you're going to exploit it, take a Hurt point on them.",
+            "One of them came to you for advice regarding their Mythos and you decided to help them (why?). Since then, they take your advice very seriously. Take a Help point on them."
+        ]
+    },
+    "theme_type": "Mythos",
+    "title": {
+        "example_answers": [
+            "(Witch) Hubble Bubble",
+            "(Baron Samedi) The Dead Don't Lie",
+            "(Wenchang Wang) Master of The Written Word"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "disturbing flashes of coming horror", "sensory overload", "haunted", "the pain of knowing."
+            ],
+            "question": "What happens when your divination overwhelms you?"
+        },
+        "B": {
+            "example_answers": [
+                "cannot penetrate fog", "blind in sterile environment", "\"Thou shall not pass my sigils!\"", "\"The hearth protects themâ¦\""
+            ],
+            "question": "What can hinder or block your divination?"
+        },
+        "C": {
+            "example_answers": [
+                "too long ago", "the future is fickle", "one little boy", "only as far as the eye can see"
+            ],
+            "question": "What is beyond the reach of your divination?"
+        },
+        "D": {
+            "example_answers": [
+                "a pouch full of beads and bones", "must touch skin", "I need more time"
+            ],
+            "question": "What must you have in order to use your divination?"
+        }
+    }
+}

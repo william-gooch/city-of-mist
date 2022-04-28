@@ -1,0 +1,150 @@
+{
+    "concept": {
+        "example_answers": [
+            "It can mask or veil ___.",
+            "It can secretly tamper with ___.",
+            "It employs cunning ___.",
+            "It's difficult or impossible to detect by ___."
+        ],
+        "initial_blurb": "Think about your Mythos. In the legend, did your Mythos operate secretly or deceptively? Was she able to move and act undetected? Did she use her powers to undermine authority or erode stability of either people or organizations? How so?",
+        "question": "How does your Mythos hide its activity in the world?"
+    },
+    "improvements": [
+        {
+            "description": "When you Sneak Around with power tags from this theme, it's Dynamite!",
+            "name": "Cloak & Dagger"
+        },
+        {
+            "description": "When you Sneak Around with power tags from this theme, on a 10+, you can use your powers to hide or mask the actions of another character in the scene.",
+            "name": "Under The Wings Of Darkness"
+        },
+        {
+            "description": "When you Sneak Around with power tags from this theme and get a hit, you also get 1 Clue. When you Investigate with power tags from this theme, on 7-9, the MC or the target player cannot choose to ask you a question back.",
+            "name": "Stalker"
+        },
+        {
+            "description": "Choose one existing NPC or PC. When you Convince them or Sneak Around them using tags from this theme, it's Dynamite! If that character dies or leaves the story, you can choose a new target.",
+            "name": "Oblivious"
+        },
+        {
+            "description": "You have a knack for catching people off guard. If your powers can reasonably affect your target, you always have the clear shot or opening required to make a Hit With All You've Got move (you don't need to make another move to get it).",
+            "name": "Go for the Jugular"
+        }
+    ],
+    "name": "Subversion",
+    "phrase": {
+        "example_answers": [
+            "(Puss in Boots) \"Just how rich can I make my client?\"",
+            "(The Devil's advocate) \"Can I ever find redemption?\"",
+            "(Changeling) \"Who are my real parents?\""
+        ],
+        "prompts": [
+            "Seeking clarity about what is real and what is illusory",
+            "Searching for new ways to subversively advance your Mythos' agenda",
+            "Moral doubts about using your powers to deceive others"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "illusory appearance", "a false air of importance", "cloak of invisibility", "miraculously sneak in and out of anywhere", "corrupt those who hold power", "take another person's identity"
+            ],
+            "question": "What is the principle ability you use to mask or hide your actions?"
+        },
+        "B": {
+            "example_answers": [
+                "induce hypnotic trance", "beguiling boots & garb", "echo of my voice", "bewitched absent-mindedness", "mistaken for an angel", "memory wipe"
+            ],
+            "question": "How do you use your powers to distract others?"
+        },
+        "C": {
+            "example_answers": [
+                "make hypnotic suggestion", "produce fake gold", "threatening whispers", "\"let's bet on it\"", "demonic seduction", "appear like one's close confidant"
+            ],
+            "question": "What useful quality does your main effect have?"
+        },
+        "D": {
+            "example_answers": [
+                "waltz in unregarded", "sway them to shower me with gifts", "smite with the strength of twelve men", "impossible thievery", "weaken one's faith", "silent kill"
+            ],
+            "question": "What do you do best under the cover of secrecy?"
+        },
+        "E": {
+            "example_answers": [
+                "stronger against simple-minded people", "the rich will be poor", "\"You are blinded by your pride\"", "the king will never catch me", "corrupt the purest souls", "just an unpretentious Joe or Jane"
+            ],
+            "question": "Who is most likely to fall prey to your subversive activity?"
+        },
+        "F": {
+            "example_answers": [
+                "mind reading", "intuit every detail of one's wealth", "see the invisible", "sense one's darkest desires", "steal their memories"
+            ],
+            "question": "How does operating secretly allow you to learn new information?"
+        },
+        "G": {
+            "example_answers": [
+                "summon fox helpers", "the pizza parlor owner's youngest son", "Alberich's biker gang", "the Master Thief", "Lucifer himself", "unwitting loved ones"
+            ],
+            "question": "Who are you in league with?"
+        },
+        "H": {
+            "example_answers": [
+                "laws of Man don't apply to me", "\"Oh pleaseâ¦ you don't expect me to fall for that?\"", "protected from scrying", "can't steal from a thief", "divine immunity", "masked true identity"
+            ],
+            "question": "What is unlikely to affect you thanks to your powers?"
+        },
+        "I": {
+            "example_answers": [
+                "intoxicated delirium", "hungry for blood", "harder to see in the dark", "vanish in the crowd", "infernal courtroom superiority"
+            ],
+            "question": "What circumstances or conditions improve your ability to act undetected?"
+        },
+        "J": {
+            "example_answers": [
+                "creep without a sound", "control the wearer of the boots", "seduce powerful women", "make a lock open", "siphon one's vitality", "momentarily shift into Faerie"
+            ],
+            "question": "What other tangential subversive power have you developed?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them saw something that incriminated you or revealed what you truly are. What was it and under what circumstances? If you have since made them your confidant, take a Help point on them. Otherwise, take a Hurt point on them.",
+            "You share a secret with one of them, something that the other crew members don't know. Take a Help point on them, but if this crewmate ever blows the lid on your secret, take a Hurt point on them too.",
+            "One of them makes you feel exposed. You find their powers, abilities, or personality invasive. Take a Hurt point on them."
+        ]
+    },
+    "theme_type": "Mythos",
+    "title": {
+        "example_answers": [
+            "(Puss in Boots) Purrrfect Salesman",
+            "(The Devil's advocate) Illegal Advice",
+            "(Changeling) Switchback Persona"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "elaborate trickery is easier to expose", "exaggerations don't check out", "they can see my footstepsâ¦", "wise advice", "revealed by the holy light of heaven", "cold iron"
+            ],
+            "question": "What could expose you?"
+        },
+        "B": {
+            "example_answers": [
+                "just a kid", "empty pockets", "the shameful deeds of the past", "caught in the act", "victims always have hope for redemption", "an ugly goblin"
+            ],
+            "question": "What is revealed when you are exposed?"
+        },
+        "C": {
+            "example_answers": [
+                "reality sucks", "the pizza parlor owner's youngest son", "âI'm nothing without the cloakâ", "police magnet", "Lilith herself", "the Gatekeepers"
+            ],
+            "question": "Who or what are you hiding from?"
+        },
+        "D": {
+            "example_answers": [
+                "(don't) play with mortals", "greediness killed the cat", "superiority complex", "must tease and taunt my victims", "grows fond of my protege", "fake personality"
+            ],
+            "question": "What disadvantageous psychological tendencies have you developed in the shadows or behind your mask?"
+        }
+    }
+}

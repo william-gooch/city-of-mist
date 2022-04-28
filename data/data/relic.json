@@ -1,0 +1,152 @@
+{
+    "concept": {
+        "example_answers": [
+            "It's a receptacle used to hold ___.",
+            "It's a device that can ___.",
+            "It's a weapon forged to ___.",
+            "It's a ___ made to protect ___ from ___.",
+            "It was an insignificant object, until it was ___.",
+            "It was a set of items which together ___."
+        ],
+        "initial_blurb": "Think about your Mythos. In the legend, is there an item of great power? Is it more interesting to you than the people who wield it? What powers did this item have?",
+        "question": "For what purpose was your Mythos made?"
+    },
+    "improvements": [
+        {
+            "description": "Mark a power tag from this theme as burnt to immediately retrieve your Relic from anywhere in the City. Mark Fade to immediately remove all statuses from your Relic (including tier-6 statuses). This can reform your Relic in case it was destroyed or broken.",
+            "name": "Eternal Bond"
+        },
+        {
+            "description": "Choose a Core Move that best represents the actions you most often use your Relic for. Whenever you use it with tags from this theme, it's Dynamite!",
+            "name": "Made For This"
+        },
+        {
+            "description": "You tap into the deepest place of power within your Relic â and unleash it. When you Stop. Holding. Back. you can choose to forego the roll and gain an automatic 10+ by marking an additional Fade on this theme. If your sacrifice is Significant or No Return, you mark Fade twice instead of once (in No Return, you also burn this theme's tags). If your sacrifice is Ultimate, you replace this theme.",
+            "name": "Ultimate Unlock"
+        },
+        {
+            "description": "Some of the power of your Relic rubbed off on you. Choose a power tag question from any of the other Mythos themebooks and answer it. Write down the answer as a new power tag on this theme.",
+            "name": "Transference"
+        },
+        {
+            "description": "Choose a Mythos themebook that best represents the powers of your Relic. Choose a theme improvement from that themebook.",
+            "name": "The Mythos Within"
+        }
+    ],
+    "name": "Relic",
+    "phrase": {
+        "example_answers": [
+            "(Mojo bag) \"What did that witch doctor do to my unborn child?\"",
+            "(Hagoromo) \"Where can I find the one who seeks enlightenment?\"",
+            "(Solomon's Seal) \"What are the Shedim planning behind my back?\""
+        ],
+        "prompts": [
+            "Questions about the predetermined destiny of your Relic",
+            "Fears of losing yourself to your Relic or becoming too reliant on it",
+            "Seeking the maker of the Relic"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "can turn into any weapon", "a fetish for voodoo spells", "grants control over sea and water", "flying feathered robe", "enslaver of demons", "Spear of Lugh"
+            ],
+            "question": "What is the main useful feature or part of your relic?"
+        },
+        "B": {
+            "example_answers": [
+                "slice through opposition", "a spell to ward off evil spirits", "create a spring of water", "aerial mastery", "summon Asmodeus", "precise hurling"
+            ],
+            "question": "Name another way in which you use the same feature."
+        },
+        "C": {
+            "example_answers": [
+                "destructive physical force", "protection from unnatural harm", "wrathful", "feather-light", "wisdom of heaven", "strive for the welfare of my clan"
+            ],
+            "question": "What essential useful quality lies at the core of your relic?"
+        },
+        "D": {
+            "example_answers": [
+                "inconspicuous in bracelet form", "creepy decorations", "a weapon worthy of a God", "colorful plumage", "signet of kings", "disappears when a mortal holds it"
+            ],
+            "question": "What cosmetic attributes does your relic possess?"
+        },
+        "E": {
+            "example_answers": [
+                "indestructible", "a spell for luck in gambling", "rock-shattering prongs", "shapeshift into a bird", "summon Naamah", "Cauldron of the Dagda"
+            ],
+            "question": "What other feature, part or item does your relic include?"
+        },
+        "F": {
+            "example_answers": [
+                "rings in the presence of wrongdoing", "reveal enchantments", "clairvoyance through water", "recognize spiritual beings for what they are", "see one's demons", "sense who is the ruler of this place"
+            ],
+            "question": "What is revealed to you through the use of your relic?"
+        },
+        "G": {
+            "example_answers": [
+                "ignores armor", "doubly potent against aggressors", "mold the fate of mortals", "enchanting attraction", "âYou shall obey", "demon.â", "hungers for Fomorian blood"
+            ],
+            "question": "What or who was your relic designed to affect most?"
+        },
+        "H": {
+            "example_answers": [
+                "ancient swordsmanship", "crafting new spells", "speak with aquatic life", "play the biwa (lute)", "demonology", "perseverance"
+            ],
+            "question": "What have you learned from your relic?"
+        },
+        "I": {
+            "example_answers": [
+                "bigger explosions", "blessing of prosperity", "a storm is brewing", "turn ethereal", "army of demons", "the Cauldron revives the mortally wounded"
+            ],
+            "question": "What happens when your relic goes into overdrive?"
+        },
+        "J": {
+            "example_answers": [
+                "transform into armor", "a prayer of hope", "ride the waves", "the lotus of enlightenment", "summon Baal", "Sword of Nuada"
+            ],
+            "question": "What aspect or element of your relic are you only beginning to unlock?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "Once, in a moment of crisis, one of them tried to borrow your Relic. What happened next? If you didn't like that, take a Hurt point on them. If you thought they did right by your Relic, take a Help point on them.",
+            "One of them has more knowledge about your Relic than you do. Ask them whether they're sharing it with you. If so, take a Help point on them. If not, take a Hurt point on them.",
+            "To your Mythos, one of them seems like the modern-day version of the character who was supposed to own this Relic, the character who steals it, or the character whom this Relic was meant to destroy or save. Take a Help or Hurt point on them accordingly."
+        ]
+    },
+    "theme_type": "Mythos",
+    "title": {
+        "example_answers": [
+            "(Mojo bag) Bag of Many Blessings",
+            "(Hagoromo) Kimono of Celestial Beauty",
+            "(Solomon's Seal) Kiss My Ring, Demon"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "leaves signature markings on victims", "only as strong as I am pure", "requires a nearby body of water", "easily slips off", "I always hear demons", "cumbersome"
+            ],
+            "question": "What is the most troublesome shortcoming of your relic?"
+        },
+        "B": {
+            "example_answers": [
+                "hermetic wizardry", "lost on the faithless", "the Olympian gods", "mortal love â the earthly tether", "rampant demons are harder to control", "asleep in times of peace"
+            ],
+            "question": "What can interfere with the powers of your relic?"
+        },
+        "C": {
+            "example_answers": [
+                "Lady of the Lake and the folk of Avalon", "bad juju", "the heat of a forge", "too easily torn", "infernal incantations", "dissention in my clan"
+            ],
+            "question": "What can damage or destroy your relic?"
+        },
+        "D": {
+            "example_answers": [
+                "bloodthirsty", "eccentric mumbling", "condescending prick", "distant and aloof", "demonic rage", "obese"
+            ],
+            "question": "What has changed in you for the worse because of your relic?"
+        }
+    }
+}

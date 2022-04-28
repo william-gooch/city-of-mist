@@ -1,0 +1,3 @@
+
+[workspace]
+members = ["common", "entity", "migration", "data", "backend", "frontend"]

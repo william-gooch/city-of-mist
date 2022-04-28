@@ -1,0 +1,149 @@
+{
+    "concept": {
+        "example_answers": [
+            "My (grand)parent / sibling / spouse / (grand)child / lover / best friend / mentor or guru / neighbor / partner / employer / etc.",
+            "My family / friends / social circle / community / company / gang / teammates / etc.",
+            "The club / cult / association / movement / etc. I belong to."
+        ],
+        "initial_blurb": "Think about your character's modern-day life. Which individual or group means the world to her, plays a major role in her life, or has the most influence on her? With whom does she feel she belongs?",
+        "question": "What happened to you that changed your life forever?"
+    },
+    "improvements": [
+        {
+            "description": "When you have downtime and you choose to give this theme attention, you can choose to remove one Crack from this theme instead of receiving Attention.",
+            "name": "Forever"
+        },
+        {
+            "description": "When you get a hit on Face Danger, you can always choose to extend the outcome to the object of your defining relationship (in addition to yourself), if it even remotely makes sense.",
+            "name": "Protect At All Costs"
+        },
+        {
+            "description": "Choose a power tag question from the Defining Event or Personality themebooks that reflects a transformation you went through because of your relationship and answer it. Write down the answer as a new power tag on this theme.",
+            "name": "Shared Experiences"
+        },
+        {
+            "description": "Once per session, when you make a move with the object of your defining relationship at your side, you can trade a miss result for a 7-9.",
+            "name": "Back-to-Back"
+        },
+        {
+            "description": "Choose two Core Moves that best reflect your attitude towards the object of your defining relationship. When you make those moves against them, they're Dynamite!",
+            "name": "Who's the Boss"
+        }
+    ],
+    "name": "Defining Relationship",
+    "phrase": {
+        "example_answers": [
+            "(Crazy lover) \"Nothing will ever stand in the way of our love!\"",
+            "(Partner in crime) \"This will never work without Izzy. \"",
+            "(Congregation) \"I won't let my flock be mistreated or misled.\""
+        ],
+        "prompts": [
+            "A statement about what you would sacrifice for the object of your defining relationship",
+            "A belief about how much you need the object of your defining relationship",
+            "A wish you have for that person or group"
+        ]
+    },
+    "power_tag_questions": {
+        "A": {
+            "example_answers": [
+                "a cushy bank account", "true love", "she keeps me on edge", "I always have a home to go to", "a partner in crime", "a sense of belonging", "a network of spies"
+            ],
+            "question": "Why is this relationship so important to you?"
+        },
+        "B": {
+            "example_answers": [
+                "business acumen", "clever boy", "dirty infighting", "love can heal anything", "con artist", "many hands make light work", "secretive operation"
+            ],
+            "question": "Name a useful quality or skill they have and that they can use to help you."
+        },
+        "C": {
+            "example_answers": [
+                "certified accountant", "better excuses", "never be caught off guard", "hide my true feelings", "demolitions", "police procedures and how to avoid them", "ancient languages"
+            ],
+            "question": "What were you forced to learn because of this relationship?"
+        },
+        "D": {
+            "example_answers": [
+                "wealthier than ever before", "popular", "suave and attractive", "angry at the world", "good team player", "determined", "a good liar"
+            ],
+            "question": "Being around them has made you..."
+        },
+        "E": {
+            "example_answers": [
+                "family 'friends' in high places", "my best friend", "HER", "an angel in a black limo", "Ari Schmidt", "Maria the flower girl", "the White Rose"
+            ],
+            "question": "When you call for help, who will aid you? (the answer can be your relationship)"
+        },
+        "F": {
+            "example_answers": [
+                "access to family assets", "a picture of us", "a serrated combat knife", "an old compass", "fake ID", "a prayer book", "a cyanide pill"
+            ],
+            "question": "What gift, heirloom, tool, etc. did they give you?"
+        },
+        "G": {
+            "example_answers": [
+                "my own person", "daring", "tougher than before", "free of confinement", "familiar with every scam in the book", "compassionate", "willing to go all the way"
+            ],
+            "question": "To deal with them, you need to be..."
+        },
+        "H": {
+            "example_answers": [
+                "arguing", "(gossiping about) high-school rumors", "pub crawling", "chessboard war", "breaking & entering", "giving a sermon", "planning machinations"
+            ],
+            "question": "Name an activity that you share."
+        },
+        "I": {
+            "example_answers": [
+                "a battery of lawyers", "face always hidden", "I'd do anything for her", "self-control", "handheld radio", "crimeworld connections", "personality-switching techniques"
+            ],
+            "question": "What helps you protect them?"
+        },
+        "J": {
+            "example_answers": [
+                "the mansion", "football field bleachers", "my motorcycle", "Museum of the Arts", "Ambrosia nightclub", "the cathedral", "the private gentlemen's club"
+            ],
+            "question": "Where do you spend time together?"
+        }
+    },
+    "relationships": {
+        "example_answers": [
+            "One of them has openly or subtly challenged your relationship, trying to influence either you, the other party, or both to end it. Why? What do they get out of it? Take a Hurt point on them.",
+            "One of them once helped you save your relationship or the object of your relationship. What were the circumstances? How did they help? Take a Help point on them.",
+            "One of them is your ex (former lover, partner, mentor, employer, etc.) or otherwise preceded your current relationship (biological parent, member of a group you were previously affiliated with). Ask them whether they give their blessing to your new relationship. If they do, take a Help point on them. If they don't, take a Hurt point on them."
+        ]
+    },
+    "theme_type": "Logos",
+    "title": {
+        "example_answers": [
+            "(Crazy lover) My Naughty Girlfriend",
+            "(Partner in crime) Izzy Malone, Easy Money",
+            "(Congregation) Deliver Us From Evil"
+        ]
+    },
+    "weakness_tag_questions": {
+        "A": {
+            "example_answers": [
+                "financial trouble", "cutting insults", "always gets into trouble", "sickly old man", "forgets to watch his back", "easily tempted", "brought to light"
+            ],
+            "question": "How can they be hurt or impeded?"
+        },
+        "B": {
+            "example_answers": [
+                "\"the old wo/man will find out\"", "freezes when sees Kaito", "something to prove", "haunted by shame", "taking too many risks", "vengeful towards those who hurt the community", "always being watched"
+            ],
+            "question": "What negative effect do they have on you?"
+        },
+        "C": {
+            "example_answers": [
+                "my successful brother-in-law", "the most beautiful girl in school", "her ex", "Gabriel", "drinking problems", "everyday preoccupations", "federal agents"
+            ],
+            "question": "Who or what else is vying for their attention or time?"
+        },
+        "D": {
+            "example_answers": [
+                "a disgrace to the family", "\"You're a freak!\"", "lost interest", "fallen angel", "running from the police", "fear of being excommunicated", "suspected of treason"
+            ],
+            "question": "Under what circumstances would they be unable to help you?"
+        }
+    }
+}
