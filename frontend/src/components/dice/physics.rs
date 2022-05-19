@@ -1,9 +1,9 @@
-use web_sys::console::log_1;
+use rapier3d::{na::*, prelude::*};
 use std::cell::Ref;
-use std::ops::Deref;
 use std::cell::RefCell;
+use std::ops::Deref;
 use std::rc::Rc;
-use rapier3d::{prelude::*, na::*};
+use web_sys::console::log_1;
 
 pub struct PhysicsState {
     rigid_body_set: RigidBodySet,
@@ -62,7 +62,8 @@ impl Physics {
                 Isometry3::translation(0.0, 0.0, scale),
                 SharedShape::halfspace(-Vector3::z_axis()),
             ),
-        ]).build();
+        ])
+        .build();
         collider_set.insert(container);
 
         let physics_hooks = ();
@@ -83,10 +84,8 @@ impl Physics {
             event_handler,
         };
         let state = Rc::new(RefCell::new(state));
-        
-        Self {
-            state
-        }
+
+        Self { state }
     }
 
     pub fn add_rigid_body(&self, rigid_body: RigidBody) -> RigidBodyHandle {
@@ -96,14 +95,28 @@ impl Physics {
 
     pub fn remove_rigid_body(&self, rigid_body_handle: RigidBodyHandle) {
         let state = &mut *self.state.borrow_mut();
-        state.rigid_body_set.remove(rigid_body_handle, &mut state.island_manager, &mut state.collider_set, &mut state.joint_set);
+        state.rigid_body_set.remove(
+            rigid_body_handle,
+            &mut state.island_manager,
+            &mut state.collider_set,
+            &mut state.joint_set,
+        );
     }
 
-    pub fn get_rigid_body(&self, rigid_body_handle: RigidBodyHandle) -> impl Deref<Target = RigidBody> + '_ {
-        Ref::map(self.state.borrow(), |state| { &state.rigid_body_set[rigid_body_handle] })
+    pub fn get_rigid_body(
+        &self,
+        rigid_body_handle: RigidBodyHandle,
+    ) -> impl Deref<Target = RigidBody> + '_ {
+        Ref::map(self.state.borrow(), |state| {
+            &state.rigid_body_set[rigid_body_handle]
+        })
     }
 
-    pub fn add_collider_with_parent(&self, collider: Collider, rigid_body_handle: RigidBodyHandle) -> ColliderHandle {
+    pub fn add_collider_with_parent(
+        &self,
+        collider: Collider,
+        rigid_body_handle: RigidBodyHandle,
+    ) -> ColliderHandle {
         let state = &mut *self.state.borrow_mut();
         let cset = &mut state.collider_set;
         let rset = &mut state.rigid_body_set;

@@ -1,3 +1,4 @@
+use crate::campaign::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -6,6 +7,8 @@ pub struct User {
 
     pub email: String,
     pub username: String,
+
+    pub campaigns: Vec<Campaign>,
 }
 
 #[cfg(feature = "db")]
@@ -18,6 +21,8 @@ impl From<user::Model> for User {
             id: entity.id,
             email: entity.email,
             username: entity.username,
+
+            campaigns: Vec::new(),
         }
     }
 }

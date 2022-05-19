@@ -28,6 +28,9 @@ pub enum Tag {
 
 #[derive(Serialize, Deserialize, PartialEq, Clone, Debug, Default, Builder, Getters)]
 pub struct Theme {
+    #[builder(default)]
+    pub id: Option<i32>,
+
     #[builder(setter(into))]
     pub theme_descriptor: String,
 
@@ -36,10 +39,79 @@ pub struct Theme {
     #[builder(setter(into))]
     pub mystery_or_identity: String,
 
+    pub theme_type: ThemeType,
+
     #[builder(default)]
     pub attention: i8,
     #[builder(default)]
     pub fade_or_crack: i8,
     #[builder(default)]
     pub tags: Vec<Tag>,
+}
+
+#[cfg(feature = "db")]
+use entity::sea_orm::ActiveValue::*;
+#[cfg(feature = "db")]
+use entity::theme;
+
+#[cfg(feature = "db")]
+impl From<theme::ThemeType> for ThemeType {
+    fn from(theme_type: theme::ThemeType) -> Self {
+        match theme_type {
+            theme::ThemeType::Mythos => ThemeType::Mythos,
+            theme::ThemeType::Logos => ThemeType::Logos,
+            theme::ThemeType::Crew => ThemeType::Crew,
+            theme::ThemeType::Extra => ThemeType::Extra,
+        }
+    }
+}
+
+#[cfg(feature = "db")]
+impl Into<theme::ThemeType> for ThemeType {
+    fn into(self: ThemeType) -> theme::ThemeType {
+        match self {
+            ThemeType::Mythos => theme::ThemeType::Mythos,
+            ThemeType::Logos => theme::ThemeType::Logos,
+            ThemeType::Crew => theme::ThemeType::Crew,
+            ThemeType::Extra => theme::ThemeType::Extra,
+        }
+    }
+}
+
+#[cfg(feature = "db")]
+impl From<theme::Model> for Theme {
+    fn from(entity: theme::Model) -> Self {
+        Self {
+            id: Some(entity.id),
+            theme_descriptor: entity.theme_descriptor.into(),
+
+            title: entity.title,
+            mystery_or_identity: entity.mystery_or_identity,
+            theme_type: entity.theme_type.into(),
+
+            attention: entity.attention,
+            fade_or_crack: entity.fade_or_crack,
+            tags: serde_json::from_value(entity.tags).unwrap(),
+        }
+    }
+}
+
+#[cfg(feature = "db")]
+impl Into<(theme::ActiveModel,)> for Theme {
+    fn into(self: Theme) -> (theme::ActiveModel,) {
+        let theme_model = theme::ActiveModel {
+            id: self.id.map_or_else(|| NotSet, Set),
+            theme_descriptor: Set(self.theme_descriptor.into()),
+
+            title: Set(self.title),
+            mystery_or_identity: Set(self.mystery_or_identity),
+            theme_type: Set(self.theme_type.into()),
+
+            attention: Set(self.attention),
+            fade_or_crack: Set(self.fade_or_crack),
+            tags: Set(serde_json::to_value(self.tags).unwrap()),
+        };
+
+        (theme_model,)
+    }
 }

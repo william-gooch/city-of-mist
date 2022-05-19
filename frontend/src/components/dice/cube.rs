@@ -1,15 +1,15 @@
-use web_sys::console::log_3;
 use super::model::Model;
+use super::physics::Physics;
+use super::shader::Shader;
+use super::texture::Texture;
+use crate::utils::*;
+use rand::Rng;
+use rapier3d::na::*;
+use rapier3d::prelude::*;
 use std::rc::Rc;
 use wasm_bindgen::closure::Closure;
 use wasm_bindgen::JsCast;
-use web_sys::{
-    HtmlImageElement, WebGl2RenderingContext, WebGlBuffer, WebGlTexture,
-};
-use super::physics::Physics;
-use rapier3d::prelude::*;
-use rapier3d::na::*;
-use crate::utils::*;
+use web_sys::{HtmlImageElement, WebGl2RenderingContext, WebGlBuffer, WebGlTexture};
 
 #[cfg_attr(rustfmt, rustfmt_skip)]
 static CUBE_VERTICES: [f32; 8 * 36] = [
@@ -57,35 +57,106 @@ static CUBE_VERTICES: [f32; 8 * 36] = [
     -0.5,  0.5, -0.5,   0.0,  1.0,  0.0,  0.0 / 3.0, 1.0 / 2.0,
 ];
 
+#[derive(Clone, Default)]
+pub struct CubeBuilder {
+    transform: Option<Isometry3<f32>>,
+    linvel: Option<Vector3<f32>>,
+    angvel: Option<Vector3<f32>>,
+    color_primary: Option<Vector4<f32>>,
+    color_secondary: Option<Vector4<f32>>,
+    texture: Option<Texture>,
+}
+
+impl CubeBuilder {
+    pub fn build(self, physics: Physics) -> Result<Cube, &'static str> {
+        Ok(Cube::new(
+            physics,
+            self.texture.ok_or("No texture specified")?,
+            self.transform.unwrap_or_else(|| Isometry3::identity()),
+            self.linvel.unwrap_or_else(|| vector!(0.0, 0.0, 0.0)),
+            self.angvel.unwrap_or_else(|| vector!(0.0, 0.0, 0.0)),
+            self.color_primary
+                .unwrap_or_else(|| vector!(1.0, 0.0, 0.0, 0.0)),
+            self.color_secondary
+                .unwrap_or_else(|| vector!(0.0, 0.0, 0.0, 0.0)),
+        ))
+    }
+
+    pub fn texture(mut self, texture: Texture) -> Self {
+        self.texture = Some(texture);
+        self
+    }
+
+    pub fn random_transform(mut self, rng: &mut impl Rng) -> Self {
+        self.transform =
+            Some(RandomIsometry(RandomPosition(-0.1, 0.1, 0.5, 0.5, -0.1, 0.1)).get(rng));
+        self
+    }
+
+    pub fn random_linvel(mut self, rng: &mut impl Rng) -> Self {
+        self.linvel = Some(RandomVelocity(5.0, 5.0).get(rng));
+        self
+    }
+
+    pub fn random_angvel(mut self, rng: &mut impl Rng) -> Self {
+        self.angvel = Some(RandomAngVel(6.28).get(rng));
+        self
+    }
+
+    pub fn color_primary(mut self, color_primary: Vector4<f32>) -> Self {
+        self.color_primary = Some(color_primary);
+        self
+    }
+
+    pub fn color_secondary(mut self, color_secondary: Vector4<f32>) -> Self {
+        self.color_secondary = Some(color_secondary);
+        self
+    }
+}
+
 pub struct Cube {
     scale: f32,
+    color_primary: Vector4<f32>,
+    color_secondary: Vector4<f32>,
     value: Option<i8>,
     vbo: Option<WebGlBuffer>,
     transform: Isometry3<f32>,
-    texture: Option<WebGlTexture>,
+    texture: Texture,
     physics: Physics,
     rigid_body_handle: RigidBodyHandle,
 }
 
 impl Cube {
-    pub fn new(physics: Physics) -> Self {
+    pub fn new(
+        physics: Physics,
+        texture: Texture,
+        transform: Isometry3<f32>,
+        linvel: Vector3<f32>,
+        angvel: Vector3<f32>,
+        color_primary: Vector4<f32>,
+        color_secondary: Vector4<f32>,
+    ) -> Self {
         let scale = 0.03;
 
         let rigid_body = RigidBodyBuilder::new_dynamic()
-            .translation(vector![0.0, 0.5, 0.0])
-            .linvel(RandomVelocity(5.0, 5.0).get())
-            .angvel(RandomAngVel(6.28).get())
+            .position(transform)
+            .linvel(linvel)
+            .angvel(angvel)
             .build();
-        let collider = ColliderBuilder::cuboid(scale, scale, scale).restitution(0.7).build();
+        let collider = ColliderBuilder::cuboid(scale, scale, scale)
+            .restitution(0.7)
+            .build();
         let rigid_body_handle = physics.add_rigid_body(rigid_body);
         physics.add_collider_with_parent(collider, rigid_body_handle);
 
         Self {
             scale: scale * 2.0,
+            color_primary,
+            color_secondary,
             value: None,
             vbo: None,
-            transform: Isometry3::identity(),
-            texture: None,
+            transform,
+            texture,
             physics,
             rigid_body_handle,
         }
@@ -96,78 +167,10 @@ impl Cube {
     }
 
     fn transform(&self) -> Isometry3<Real> {
-        self.physics.get_rigid_body(self.rigid_body_handle).position().clone()
-    }
-
-    pub fn setup_texture(&mut self, gl: &WebGl2RenderingContext) {
-        let texture = gl.create_texture().unwrap();
-        gl.bind_texture(WebGl2RenderingContext::TEXTURE_2D, Some(&texture));
-
-        let level = 0;
-        let internal_format = WebGl2RenderingContext::RGBA as i32;
-        let width = 1;
-        let height = 1;
-        let border = 0;
-        let src_format = WebGl2RenderingContext::RGBA;
-        let src_type = WebGl2RenderingContext::UNSIGNED_BYTE;
-        let pixel = [0, 0, 255, 255]; // opaque blue
-        gl.tex_image_2d_with_i32_and_i32_and_i32_and_format_and_type_and_opt_u8_array(
-            WebGl2RenderingContext::TEXTURE_2D,
-            level,
-            internal_format,
-            width,
-            height,
-            border,
-            src_format,
-            src_type,
-            Some(&pixel),
-        ).unwrap();
-
-        gl.tex_parameteri(
-            WebGl2RenderingContext::TEXTURE_2D,
-            WebGl2RenderingContext::TEXTURE_WRAP_S,
-            WebGl2RenderingContext::CLAMP_TO_EDGE as i32,
-        );
-        gl.tex_parameteri(
-            WebGl2RenderingContext::TEXTURE_2D,
-            WebGl2RenderingContext::TEXTURE_WRAP_T,
-            WebGl2RenderingContext::CLAMP_TO_EDGE as i32,
-        );
-        gl.tex_parameteri(
-            WebGl2RenderingContext::TEXTURE_2D,
-            WebGl2RenderingContext::TEXTURE_MIN_FILTER,
-            WebGl2RenderingContext::LINEAR as i32,
-        );
-
-        let img = Rc::new(HtmlImageElement::new().unwrap());
-        {
-            let gl = gl.clone();
-            let img = img.clone();
-            let _img = img.clone();
-            let texture = texture.clone();
-
-            let onload = Closure::wrap(Box::new(move || {
-                gl.bind_texture(WebGl2RenderingContext::TEXTURE_2D, Some(&texture));
-
-                gl.tex_image_2d_with_u32_and_u32_and_html_image_element(
-                    WebGl2RenderingContext::TEXTURE_2D,
-                    level,
-                    internal_format,
-                    src_format,
-                    src_type,
-                    &_img,
-                )
-                .unwrap();
-
-                gl.generate_mipmap(WebGl2RenderingContext::TEXTURE_2D);
-            }) as Box<dyn FnMut()>);
-
-            img.set_onload(Some(onload.as_ref().unchecked_ref()));
-            onload.forget();
-        }
-        img.set_src("assets/tex-die.png");
-
-        self.texture = Some(texture);
+        self.physics
+            .get_rigid_body(self.rigid_body_handle)
+            .position()
+            .clone()
     }
 }
 
@@ -193,8 +196,6 @@ impl Model for Cube {
         gl.enable_vertex_attrib_array(1);
         gl.enable_vertex_attrib_array(2);
 
-        self.setup_texture(gl);
-
         self.vbo = Some(buffer);
     }
 
@@ -215,6 +216,11 @@ impl Model for Cube {
 
     fn get_matrix(&self) -> Matrix4<f32> {
         Similarity::from_isometry(self.transform(), self.scale).to_homogeneous()
+    }
+
+    fn set_uniforms(&self, shader: &Shader) {
+        shader.set_vec4("uColorPrimary", &self.color_primary);
+        shader.set_vec4("uColorSecondary", &self.color_secondary);
     }
 }
 

@@ -1,5 +1,5 @@
-use web_sys::WebGlTexture;
-use rapier3d::{prelude::*, na::*};
+use super::texture::Texture;
+use rapier3d::{na::*, prelude::*};
 use web_sys::{WebGl2RenderingContext, WebGlProgram, WebGlShader};
 
 pub struct ShaderBuilder {
@@ -61,15 +61,23 @@ impl Shader {
         self.context.use_program(Some(&self.program));
     }
 
+    pub fn set_vec4(&self, name: &str, vector: &Vector4<Real>) {
+        let loc = self.context.get_uniform_location(&self.program, name);
+        self.context
+            .uniform4fv_with_f32_array(loc.as_ref(), vector.as_slice());
+    }
+
     pub fn set_mat4(&self, name: &str, matrix: &Matrix4<Real>) {
         let loc = self.context.get_uniform_location(&self.program, name);
         self.context
             .uniform_matrix4fv_with_f32_array(loc.as_ref(), false, matrix.as_slice());
     }
 
-    pub fn set_texture(&self, name: &str, texture: &WebGlTexture) {
-        self.context.active_texture(WebGl2RenderingContext::TEXTURE0);
-        self.context.bind_texture(WebGl2RenderingContext::TEXTURE_2D, Some(texture));
+    pub fn set_texture(&self, name: &str, texture: &Texture) {
+        self.context
+            .active_texture(WebGl2RenderingContext::TEXTURE0);
+        self.context
+            .bind_texture(WebGl2RenderingContext::TEXTURE_2D, Some(texture.texture()));
 
         let loc = self.context.get_uniform_location(&self.program, name);
         self.context.uniform1i(loc.as_ref(), 0);

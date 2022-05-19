@@ -22,7 +22,6 @@ impl Related<super::theme::Entity> for Entity {
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
-pub enum Relation {
-}
+pub enum Relation {}
 
 impl ActiveModelBehavior for ActiveModel {}

@@ -27,18 +27,18 @@ pub struct ErrorType {
     pub code: u16,
 }
 
-pub async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
+pub async fn handle_rejection(err: Rejection) -> Result<Box<dyn Reply>, Infallible> {
     if err.is_not_found() {
-        Ok(warp::reply::with_status(
+        Ok(Box::new(warp::reply::with_status(
             warp::reply::json(&ErrorType {
                 msg: "NOT_FOUND".into(),
                 detail: None,
                 code: StatusCode::NOT_FOUND.into(),
             }),
             StatusCode::NOT_FOUND,
-        ))
+        )))
     } else if let Some(err) = err.find::<Unauthorized>() {
-        Ok(warp::reply::with_status(
+        Ok(Box::new(warp::reply::with_status(
             warp::reply::json(&ErrorType {
                 msg: "UNAUTHORIZED".into(),
                 detail: Some(
@@ -54,9 +54,9 @@ pub async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> 
                 code: StatusCode::UNAUTHORIZED.into(),
             }),
             StatusCode::UNAUTHORIZED,
-        ))
+        )))
     } else if let Some(err) = err.find::<BadRequest>() {
-        Ok(warp::reply::with_status(
+        Ok(Box::new(warp::reply::with_status(
             warp::reply::json(&ErrorType {
                 msg: "BAD_REQUEST".into(),
                 detail: Some(
@@ -70,16 +70,16 @@ pub async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> 
                 code: StatusCode::BAD_REQUEST.into(),
             }),
             StatusCode::BAD_REQUEST,
-        ))
+        )))
     } else {
         println!("Unhandled error: {:?}", err);
-        Ok(warp::reply::with_status(
+        Ok(Box::new(warp::reply::with_status(
             warp::reply::json(&ErrorType {
                 msg: "INTERNAL_SERVER_ERROR".into(),
                 detail: None,
                 code: StatusCode::INTERNAL_SERVER_ERROR.into(),
             }),
             StatusCode::INTERNAL_SERVER_ERROR,
-        ))
+        )))
     }
 }

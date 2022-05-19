@@ -1,21 +1,22 @@
-use super::physics::Physics;
-use std::cell::RefCell;
-use super::cube::Cube;
+use super::cube::{Cube, CubeBuilder};
 use super::model::Model;
+use super::physics::Physics;
 use super::shader::{Shader, ShaderBuilder};
-use rapier3d::{prelude::*, na::*};
+use super::texture::Texture;
+use rand::SeedableRng;
+use rapier3d::{na::*, prelude::*};
+use std::cell::RefCell;
 use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
-use web_sys::console::log;
-use web_sys::console::log_1;
-use web_sys::{WebGl2RenderingContext, WebGlProgram, WebGlShader};
+use web_sys::WebGl2RenderingContext;
 use yew::prelude::*;
 
 pub struct Renderer {
     canvas_ref: NodeRef,
     context: Option<WebGl2RenderingContext>,
     shader: Option<Shader>,
+    dice_texture: Option<Texture>,
     models: Vec<Cube>,
     physics: Physics,
     on_value: Callback<Vec<i8>>,
@@ -29,6 +30,7 @@ impl Renderer {
             context: None,
             models: vec![],
             shader: None,
+            dice_texture: None,
             physics,
             on_value,
         }
@@ -71,6 +73,8 @@ impl Renderer {
                 r#"
             precision mediump float;
 
+            uniform vec4 uColorPrimary;
+            uniform vec4 uColorSecondary;
             uniform sampler2D uDiffuse;
 
             varying vec3 normal;
@@ -79,7 +83,9 @@ impl Renderer {
             void main() {
                 vec3 sun = normalize(vec3(1.0, 2.0, 3.0));
                 float diffuse_factor = abs(dot(sun, normal)) * 0.5 + 0.5;
-                vec3 diffuse = diffuse_factor * texture2D(uDiffuse, uv).xyz;
+                vec3 diffuse = diffuse_factor
+                    * (texture2D(uDiffuse, uv).x * uColorPrimary.xyz)
+                    + (texture2D(uDiffuse, uv).y * uColorSecondary.xyz);
                 float transparency = 1.0;
                 vec3 color = diffuse;
                 gl_FragColor = vec4(color, transparency);
@@ -91,9 +97,9 @@ impl Renderer {
         shader.activate();
         self.shader = Some(shader);
 
-        self.models
-            .iter_mut()
-            .for_each(|model| model.setup(&context));
+        self.dice_texture = Some(Texture::new(&context, "assets/tex-die.png"));
+
+        self.update_models();
 
         let rc_self = Rc::new(RefCell::new(self));
         {
@@ -110,6 +116,14 @@ impl Renderer {
         Renderer::resize(&rc_self);
 
         rc_self
+    }
+
+    fn update_models(&mut self) {
+        if let Some(context) = &self.context {
+            self.models
+                .iter_mut()
+                .for_each(|model| model.setup(context));
+        }
     }
 
     fn resize(_this: &Rc<RefCell<Self>>) {
@@ -132,10 +146,14 @@ impl Renderer {
 
     fn update(this: &Rc<RefCell<Self>>, time: f32) {
         let mut this = this.borrow_mut();
-        let values: Vec<i8> = this.models.iter_mut().filter_map(|model| {
-            model.update(time);
-            model.value()
-        }).collect();
+        let values: Vec<i8> = this
+            .models
+            .iter_mut()
+            .filter_map(|model| {
+                model.update(time);
+                model.value()
+            })
+            .collect();
         if values.len() == this.models.len() {
             this.on_value.emit(values);
         }
@@ -161,29 +179,41 @@ impl Renderer {
                 &Vector3::z(),
             )
             .to_matrix();
-            // let p = Perspective3::<Real>::new(
-            //     (canvas.width() as Real) / (canvas.height() as Real),
-            //     45.0,
-            //     0.01,
-            //     1.0,
-            // )
-            // .to_homogeneous();
             let r = 0.3;
             let a = (canvas.width() as Real) / (canvas.height() as Real);
-            let p = Matrix4::<Real>::new_orthographic(
-                -r * a, r * a,
-                -r, r,
-                0.0, 100.0,
-            );
+            let p = Matrix4::<Real>::new_orthographic(-r * a, r * a, -r, r, 0.0, 100.0);
             let mvp = p * v * m;
             this.shader.as_ref().unwrap().set_mat4("mvp", &mvp);
+            model.set_uniforms(this.shader.as_ref().unwrap());
             model.draw(&context);
         });
     }
 
-    pub fn roll_dice(this: &Rc<RefCell<Self>>)  {
+    pub fn roll_dice_seeded(this: &Rc<RefCell<Self>>, seed: u64) {
         let this = &mut *this.borrow_mut();
-        this.models = vec![Cube::new(this.physics.clone()), Cube::new(this.physics.clone())];
+        if let Some(texture) = &this.dice_texture {
+            let mut rng = rand::rngs::StdRng::seed_from_u64(seed);
+            let cube_1 = CubeBuilder::default()
+                .texture(texture.clone())
+                .color_primary(vector!(0.86, 0.82, 0.79, 0.0))
+                .color_secondary(vector!(0.3, 0.3, 0.3, 0.0))
+                .random_transform(&mut rng)
+                .random_linvel(&mut rng)
+                .random_angvel(&mut rng)
+                .build(this.physics.clone())
+                .unwrap();
+            let cube_2 = CubeBuilder::default()
+                .texture(texture.clone())
+                .color_primary(vector!(0.14, 0.18, 0.21, 0.0))
+                .color_secondary(vector!(0.7, 0.7, 0.7, 0.0))
+                .random_transform(&mut rng)
+                .random_linvel(&mut rng)
+                .random_angvel(&mut rng)
+                .build(this.physics.clone())
+                .unwrap();
+            this.models = vec![cube_1, cube_2];
+            this.update_models();
+        }
     }
 
     pub fn do_loop(this: &Rc<RefCell<Self>>) {
@@ -213,7 +243,8 @@ impl Renderer {
 }
 
 fn request_animation_frame(f: &Closure<dyn FnMut()>) {
-    web_sys::window().unwrap()
+    web_sys::window()
+        .unwrap()
         .request_animation_frame(f.as_ref().unchecked_ref())
         .unwrap();
 }

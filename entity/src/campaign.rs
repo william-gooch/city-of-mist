@@ -1,25 +1,21 @@
 use sea_orm::entity::prelude::*;
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel)]
-#[sea_orm(table_name = "users")]
+#[sea_orm(table_name = "campaigns")]
 pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
 
-    pub email: String,
-    pub username: String,
-
-    pub password_hash: String,
-    pub password_salt: String,
+    pub name: String,
 }
 
-impl Related<super::campaign::Entity> for Entity {
+impl Related<super::user::Entity> for Entity {
     fn to() -> RelationDef {
-        super::campaign_member::Relation::Campaign.def()
+        super::campaign_member::Relation::User.def()
     }
 
     fn via() -> Option<RelationDef> {
-        Some(super::campaign_member::Relation::User.def().rev())
+        Some(super::campaign_member::Relation::Campaign.def().rev())
     }
 }
 

@@ -10,7 +10,7 @@ impl MigratorTrait for Migrator {
     fn migrations() -> Vec<Box<dyn MigrationTrait>> {
         vec![
             Box::new(m20220404_000001_create_users::Migration),
-            Box::new(m20220504_000001_create_themes_characters::Migration)
+            Box::new(m20220504_000001_create_themes_characters::Migration),
         ]
     }
 }

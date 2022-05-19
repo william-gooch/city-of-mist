@@ -55,11 +55,22 @@ impl Component for ThemeCard {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
+        if let None = self.state.character {
+            return html! {};
+        };
+
         let card = ctx.props().card;
         let theme = match card {
-            ThemeCardType::Core(idx) => &self.state.character.core_themes[idx],
-            ThemeCardType::Crew => &self.state.character.crew_theme,
-            ThemeCardType::Extra(idx) => &self.state.character.extra_themes[idx],
+            ThemeCardType::Core(idx) => &self.state.character.as_ref().unwrap().core_themes[idx],
+            ThemeCardType::Crew => self
+                .state
+                .character
+                .as_ref()
+                .unwrap()
+                .crew_theme
+                .as_ref()
+                .unwrap(),
+            ThemeCardType::Extra(idx) => &self.state.character.as_ref().unwrap().extra_themes[idx],
         };
 
         let class = format!(
@@ -94,9 +105,19 @@ impl Component for ThemeCard {
             self.dispatch
                 .reduce_callback_with(move |state, e: MouseEvent| {
                     let mut theme = match card {
-                        ThemeCardType::Core(idx) => &mut state.character.core_themes[idx],
-                        ThemeCardType::Crew => &mut state.character.crew_theme,
-                        ThemeCardType::Extra(idx) => &mut state.character.extra_themes[idx],
+                        ThemeCardType::Core(idx) => {
+                            &mut state.character.as_mut().unwrap().core_themes[idx]
+                        }
+                        ThemeCardType::Crew => state
+                            .character
+                            .as_mut()
+                            .unwrap()
+                            .crew_theme
+                            .as_mut()
+                            .unwrap(),
+                        ThemeCardType::Extra(idx) => {
+                            &mut state.character.as_mut().unwrap().extra_themes[idx]
+                        }
                     };
                     match e.which() {
                         1 => {
@@ -117,9 +138,19 @@ impl Component for ThemeCard {
             self.dispatch
                 .reduce_callback_with(move |state, e: MouseEvent| {
                     let mut theme = match card {
-                        ThemeCardType::Core(idx) => &mut state.character.core_themes[idx],
-                        ThemeCardType::Crew => &mut state.character.crew_theme,
-                        ThemeCardType::Extra(idx) => &mut state.character.extra_themes[idx],
+                        ThemeCardType::Core(idx) => {
+                            &mut state.character.as_mut().unwrap().core_themes[idx]
+                        }
+                        ThemeCardType::Crew => state
+                            .character
+                            .as_mut()
+                            .unwrap()
+                            .crew_theme
+                            .as_mut()
+                            .unwrap(),
+                        ThemeCardType::Extra(idx) => {
+                            &mut state.character.as_mut().unwrap().extra_themes[idx]
+                        }
                     };
                     match e.which() {
                         1 => {
@@ -151,26 +182,30 @@ impl Component for ThemeCard {
             </div>
                 <h3 class="card-phrase">{ &theme.mystery_or_identity() }</h3>
                 <ul class="card-power-tags">
-                {for theme.tags().iter().filter_map(|tag| match tag {
-                                                                        Tag::Power { name, burned } => Some(html! {
-                                                                            <li>
-                                                                            {name}
-                                                                            {if *burned { html! {<span class="burned-indicator">{"⚫"}</span>} } else { html! {<></>} }}
-                                                                            </li>
-                                                                        }),
-                                                                        _ => None,
-                                                                    })}
+                {for theme.tags().iter().filter_map(|tag| {
+                    match tag {
+                        Tag::Power { name, burned } => Some(html! {
+                            <li>
+                            {name}
+                            {if *burned { html! {<span class="burned-indicator">{"⚫"}</span>} } else { html! {<></>} }}
+                            </li>
+                        }),
+                        _ => None,
+                    }
+                })}
             </ul>
                 <ul class="card-weakness-tags">
-                {for theme.tags().iter().filter_map(|tag| match tag {
-                                                                        Tag::Weakness { name, invoked } => Some(html! {
-                                                                            <li>
-                                                                            {name}
-                                                                            {if *invoked { html! {<span class="burned-indicator">{"⚫"}</span>} } else { html! {<></>} }}
-                                                                            </li>
-                                                                        }),
-                                                                        _ => None,
-                                                                    })}
+                {for theme.tags().iter().filter_map(|tag| {
+                    match tag {
+                        Tag::Weakness { name, invoked } => Some(html! {
+                            <li>
+                            {name}
+                            {if *invoked { html! {<span class="burned-indicator">{"⚫"}</span>} } else { html! {<></>} }}
+                            </li>
+                        }),
+                        _ => None,
+                    }
+                })}
             </ul>
                 <div class="flip-button" onclick={ctx.link().callback(|_| ThemeCardMsg::Flip)}>{ "Flip" }</div>
                 </div>

@@ -1,0 +1,35 @@
+[package]
+name = "socket"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-trait = "0.1.53"
+futures = "0.3.21"
+parking_lot = { version = "0.12.0", features = ["send_guard"] }
+serde = "1.0.136"
+serde_json = "1.0.79"
+tokio = { version = "1.17.0", features = ["macros"] }
+tokio-stream = { version = "0.1.8", features = ["sync"] }
+tokio-util = "0.7.1"
+wasm-bindgen = { version = "0.2.79", features = ["serde-serialize"] }
+
+warp = { version = "0.3.2", optional = true }
+nanoid = { version = "0.4.0", optional = true }
+
+ws_stream_wasm = { version = "0.7.3", features = ["tokio_io"], optional = true }
+wasm-bindgen-futures = { version = "0.4.30", optional = true }
+
+[dependencies.web-sys]
+version = "0.3.57"
+optional = true
+features = [
+    "WebSocket"
+]
+
+[features]
+default = []
+ws = ["warp", "nanoid"]
+js = ["web-sys", "ws_stream_wasm", "wasm-bindgen-futures"]

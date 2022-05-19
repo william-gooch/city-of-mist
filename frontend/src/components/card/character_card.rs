@@ -41,29 +41,31 @@ impl Component for CharacterCard {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let character = &self.state.character;
+        if let Some(character) = &self.state.character {
+            let class = format!(
+                "card {}character",
+                if self.flipped { "card-flipped " } else { "" },
+            );
 
-        let class = format!(
-            "card {}character",
-            if self.flipped { "card-flipped " } else { "" },
-        );
-
-        html! {
-            <div class={class}>
-                <div class="card-inner">
-                    <div class="card-front">
-                        <img alt="Character Card" src="assets/character-card.png" />
-                        <h1 class="card-title">{ &character.name }</h1>
-                        <h3 class="card-mythos">{ &character.mythos }</h3>
-                        <h3 class="card-logos">{ &character.logos }</h3>
-                        <div class="flip-button" onclick={ctx.link().callback(|_| CharacterCardMsg::Flip)}>{ "Flip" }</div>
-                    </div>
-                    <div class="card-back">
-                        <img alt="Character Card" src="assets/com-build-up.png" />
-                        <div class="flip-button" onclick={ctx.link().callback(|_| CharacterCardMsg::Flip)}>{ "Flip" }</div>
+            html! {
+                <div class={class}>
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img alt="Character Card" src="assets/character-card.png" />
+                            <h1 class="card-title">{ &character.name }</h1>
+                            <h3 class="card-mythos">{ &character.mythos }</h3>
+                            <h3 class="card-logos">{ &character.logos }</h3>
+                            <div class="flip-button" onclick={ctx.link().callback(|_| CharacterCardMsg::Flip)}>{ "Flip" }</div>
+                        </div>
+                        <div class="card-back">
+                            <img alt="Character Card" src="assets/com-build-up.png" />
+                            <div class="flip-button" onclick={ctx.link().callback(|_| CharacterCardMsg::Flip)}>{ "Flip" }</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+        } else {
+            html! {}
         }
     }
 }

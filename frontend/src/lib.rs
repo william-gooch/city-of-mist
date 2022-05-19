@@ -1,6 +1,6 @@
-mod utils;
 mod components;
 mod state;
+mod utils;
 
 use crate::components::app::App;
 use wasm_bindgen::prelude::*;

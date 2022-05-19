@@ -15,11 +15,19 @@ serde_json = "1.0.78"
 wasm-bindgen = { version = "0.2.79", features = ["serde-serialize"] }
 wasm-logger = "0.2.0"
 yew = { git = "https://github.com/yewstack/yew.git", rev="8a16d4fc3d9b96a3aab7c98b3ab61b55deac9d3c" }
+# yew = { git = "https://github.com/yewstack/yew.git", features = ["csr"] }
 yew-router = "0.16.0"
 yewdux = { git = "https://github.com/intendednull/yewdux", rev = "7b5b0a8e76f27471aa7a922d62cf242a57d151fd" }
+# yewdux = { git = "https://github.com/intendednull/yewdux" }
 js-sys = "0.3.57"
-rapier3d = { version = "0.11.1", features = ["wasm-bindgen", "simd-stable"] }
-yew-agent = "0.1.0"
+rapier3d = { version = "0.11.1", features = ["wasm-bindgen", "enhanced-determinism"] }
+yew-agent = { git = "https://github.com/yewstack/yew.git", rev="8a16d4fc3d9b96a3aab7c98b3ab61b55deac9d3c" }
+socket = { path = "../socket", features = ["js"] }
+ws_stream_wasm = { version = "0.7.3", features = ["tokio_io"] }
+wasm-bindgen-futures = "0.4.30"
+send_wrapper = "0.5.0"
+rand = "0.8.5"
+getrandom = { version = "0.2.6", features = ["js"] }
 
 [dependencies.web-sys]
 version = "0.3.57"

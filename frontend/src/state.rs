@@ -1,15 +1,13 @@
 use common::character::*;
-use data::example_character;
+use yewdux::prelude::*;
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 pub struct State {
-    pub character: Character,
+    pub character: Option<Character>,
 }
 
 impl Default for State {
     fn default() -> Self {
-        Self {
-            character: example_character(),
-        }
+        Self { character: None }
     }
 }
