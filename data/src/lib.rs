@@ -11,47 +11,42 @@ pub fn example_character() -> Character {
         .theme_type(ThemeType::Mythos)
         .title("Tooth and Nail")
         .mystery_or_identity("blah")
-        .build()
-        .unwrap();
+        .to_owned();
 
     let bastion = ThemeBuilder::default()
         .theme_descriptor("bastion")
         .theme_type(ThemeType::Mythos)
         .title("Demigod")
         .mystery_or_identity("blah")
-        .build()
-        .unwrap();
+        .to_owned();
 
     let divination = ThemeBuilder::default()
         .theme_descriptor("divination")
         .theme_type(ThemeType::Mythos)
         .title("Animal Senses")
         .mystery_or_identity("blah")
-        .build()
-        .unwrap();
+        .to_owned();
 
     let defining_event = ThemeBuilder::default()
         .theme_descriptor("defining_event")
         .theme_type(ThemeType::Logos)
         .title("Trust Is A Dagger")
         .mystery_or_identity("blah")
-        .build()
-        .unwrap();
+        .to_owned();
 
     let crew = ThemeBuilder::default()
         .theme_descriptor("crew")
         .theme_type(ThemeType::Crew)
         .title("Crew")
         .mystery_or_identity("blah")
-        .build()
-        .unwrap();
+        .to_owned();
 
     CharacterBuilder::default()
         .name("Fenrir")
         .mythos("Fenrir")
         .logos("Vagrant")
-        .core_themes(vec![expression, bastion, divination, defining_event])
-        .crew_theme(Some(crew))
+        .core_themes(Some(vec![expression, bastion, divination, defining_event]))
+        .crew_theme(Some(Some(crew)))
         .build()
         .unwrap()
 }

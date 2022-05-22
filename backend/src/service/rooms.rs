@@ -1,5 +1,5 @@
 use shaku::{Component, Interface};
-use socket::Rooms as SocketRooms;
+use socket::ws::Rooms as SocketRooms;
 
 pub trait Rooms: Interface {
     fn get(&self) -> &SocketRooms;

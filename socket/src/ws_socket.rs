@@ -1,4 +1,3 @@
-use crate::*;
 use async_trait::async_trait;
 use futures::Future;
 use futures::{Sink, SinkExt, Stream, StreamExt};
@@ -12,10 +11,53 @@ use std::ops::Deref;
 use std::ops::DerefMut;
 use std::pin::Pin;
 use std::sync::Arc;
+use tokio::sync::Mutex;
 use tokio::sync::RwLock;
-use tokio::sync::{MappedMutexGuard, Mutex, MutexGuard};
 use warp::ws::{Message, WebSocket};
 use warp::Error;
+
+type EventHandlerReturnType = Result<(), String>;
+type EventHandlerFunc<T> =
+    dyn (Fn(T) -> Pin<Box<dyn Future<Output = EventHandlerReturnType> + Send>>) + Send + Sync;
+
+pub struct EventHandler<T> {
+    callback: Arc<EventHandlerFunc<T>>,
+}
+
+impl<T> EventHandler<T> {
+    pub fn wrap<F, G>(func: F) -> Self
+    where
+        F: (Fn(T) -> G) + Send + Sync + 'static,
+        G: Future<Output = EventHandlerReturnType> + Send + 'static,
+    {
+        let callback: Arc<EventHandlerFunc<T>> = Arc::new(move |args| {
+            let future: Pin<Box<dyn Future<Output = EventHandlerReturnType> + Send>> =
+                Box::pin(func(args));
+            future
+        });
+
+        EventHandler { callback }
+    }
+}
+
+impl<T> std::ops::Deref for EventHandler<T> {
+    type Target = EventHandlerFunc<T>;
+
+    fn deref(&self) -> &Self::Target {
+        &*self.callback
+    }
+}
+
+#[async_trait]
+pub trait Socket {
+    type EventType: Clone;
+    type EventContext: Clone;
+    type EventArgs: Clone;
+    type EventHandler: Deref<Target = EventHandlerFunc<(Self::EventContext, Self::EventArgs)>>;
+
+    fn on(&self, event_type: Self::EventType, callback: Self::EventHandler);
+    async fn emit(&self, event_type: Self::EventType, event_args: Self::EventArgs);
+}
 
 #[derive(Clone)]
 pub struct WsSocket {
@@ -43,8 +85,7 @@ impl Hash for WsSocket {
 impl WsSocket {
     pub fn new(ws: WebSocket, rooms: Rooms) -> Self {
         let (send, mut recv) = ws.split();
-        let handlers: HashMap<<Self as Socket>::EventType, Vec<<Self as Socket>::EventHandler>> =
-            HashMap::new();
+        let handlers: HashMap<String, Vec<<Self as Socket>::EventHandler>> = HashMap::new();
 
         let socket_id = nanoid!();
         let new_self = Self {
@@ -106,9 +147,15 @@ impl WsSocket {
                         if let Some(hs) = h.get(&event_type[..]) {
                             futures::future::join_all(hs.into_iter().map(|handler| {
                                 let event_context = s.clone();
+                                let socket = s.clone();
                                 let event_args = event_args.clone();
                                 async move {
-                                    handler((event_context, event_args)).await;
+                                    if let Err(err) = handler((event_context, event_args)).await {
+                                        socket
+                                            .to(socket.id())
+                                            .emit("error", json!({ "error": err }))
+                                            .await
+                                    }
                                 }
                             }))
                             .await;
@@ -131,16 +178,16 @@ impl WsSocket {
         });
     }
 
-    pub fn to(&self, room_id: String) -> impl DerefMut<Target = Room> + Send + '_ {
-        self.rooms.get(room_id)
+    pub fn to(&self, room_id: impl Into<String>) -> impl DerefMut<Target = Room> + Send + '_ {
+        self.rooms.get(room_id.into())
     }
 
-    pub fn join(&self, room_id: String) {
-        self.rooms.get(room_id).add_member(self.clone());
+    pub fn join(&self, room_id: impl Into<String>) {
+        self.rooms.get(room_id.into()).add_member(self.clone());
     }
 
-    pub fn leave(&self, room_id: String) {
-        self.rooms.get(room_id).remove_member(self);
+    pub fn leave(&self, room_id: impl Into<String>) {
+        self.rooms.get(room_id.into()).remove_member(self);
     }
 
     pub fn leave_all(&self) {
@@ -150,7 +197,7 @@ impl WsSocket {
 
 #[async_trait]
 impl Socket for WsSocket {
-    type EventType = String;
+    type EventType = &'static str;
     type EventContext = WsSocket;
     type EventArgs = serde_json::Value;
     type EventHandler = EventHandler<(Self::EventContext, Self::EventArgs)>;
@@ -169,7 +216,7 @@ impl Socket for WsSocket {
 
     fn on(&self, event_type: Self::EventType, callback: Self::EventHandler) {
         let mut h = tokio::task::block_in_place(move || self.handlers.blocking_write());
-        let hs = h.entry(event_type).or_insert_with(|| Vec::new());
+        let hs = h.entry(event_type.to_owned()).or_insert_with(|| Vec::new());
         (*hs).push(callback);
     }
 }

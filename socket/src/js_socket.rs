@@ -1,25 +1,67 @@
-use crate::*;
-use futures::{Sink, SinkExt, Stream, StreamExt};
-use parking_lot::{Mutex, RwLock};
+use async_trait::async_trait;
+use futures::{Future, Sink, SinkExt, Stream, StreamExt};
 use serde_json::json;
+use std::cell::RefCell;
 use std::collections::HashMap;
 use std::ops::{Deref, DerefMut};
-use wasm_bindgen::closure::WasmClosure;
+use std::pin::Pin;
+use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::spawn_local;
-use web_sys::console::log_1;
-use web_sys::WebSocket;
+use web_sys::console::log_2;
 use ws_stream_wasm::*;
+
+type EventHandlerReturnType = Result<(), String>;
+type EventHandlerFunc<T> = dyn (Fn(T) -> Pin<Box<dyn Future<Output = EventHandlerReturnType>>>);
+
+pub struct EventHandler<T> {
+    callback: Rc<EventHandlerFunc<T>>,
+}
+
+impl<T> EventHandler<T> {
+    pub fn wrap<F, G>(func: F) -> Self
+    where
+        F: (Fn(T) -> G) + 'static,
+        G: Future<Output = EventHandlerReturnType> + 'static,
+    {
+        let callback: Rc<EventHandlerFunc<T>> = Rc::new(move |args| {
+            let future: Pin<Box<dyn Future<Output = EventHandlerReturnType>>> =
+                Box::pin(func(args));
+            future
+        });
+
+        EventHandler { callback }
+    }
+}
+
+impl<T> std::ops::Deref for EventHandler<T> {
+    type Target = EventHandlerFunc<T>;
+
+    fn deref(&self) -> &Self::Target {
+        &*self.callback
+    }
+}
+
+#[async_trait(?Send)]
+pub trait Socket {
+    type EventType: Clone;
+    type EventContext: Clone;
+    type EventArgs: Clone;
+    type EventHandler: Deref<Target = EventHandlerFunc<(Self::EventContext, Self::EventArgs)>>;
+
+    fn on(&self, event_type: Self::EventType, callback: Self::EventHandler);
+    async fn emit(&self, event_type: Self::EventType, event_args: Self::EventArgs);
+}
 
 #[derive(Clone)]
 pub struct JsSocket {
-    id: Arc<RwLock<String>>,
+    id: Rc<RefCell<String>>,
 
-    ws_meta: Arc<Mutex<WsMeta>>,
-    ws_send: Arc<Mutex<Box<dyn Sink<WsMessage, Error = WsErr> + Send + Sync + Unpin>>>,
-    ws_recv: Arc<Mutex<Box<dyn Stream<Item = WsMessage> + Send + Sync + Unpin>>>,
+    ws_meta: Rc<RefCell<WsMeta>>,
+    ws_send: Rc<RefCell<Box<dyn Sink<WsMessage, Error = WsErr> + Unpin>>>,
+    ws_recv: Rc<RefCell<Box<dyn Stream<Item = WsMessage> + Unpin>>>,
 
-    handlers: Arc<RwLock<HashMap<String, Vec<<Self as Socket>::EventHandler>>>>,
+    handlers: Rc<RefCell<HashMap<String, Vec<<Self as Socket>::EventHandler>>>>,
 }
 
 impl JsSocket {
@@ -29,12 +71,12 @@ impl JsSocket {
 
         let socket_id = "".to_owned();
         let mut new_self = Self {
-            id: Arc::new(RwLock::new(socket_id.clone())),
-            ws_meta: Arc::new(Mutex::new(ws_meta)),
-            ws_send: Arc::new(Mutex::new(Box::new(send))),
-            ws_recv: Arc::new(Mutex::new(Box::new(recv))),
+            id: Rc::new(RefCell::new(socket_id.clone())),
+            ws_meta: Rc::new(RefCell::new(ws_meta)),
+            ws_send: Rc::new(RefCell::new(Box::new(send))),
+            ws_recv: Rc::new(RefCell::new(Box::new(recv))),
 
-            handlers: Arc::new(RwLock::new(handlers)),
+            handlers: Rc::new(RefCell::new(handlers)),
         };
 
         new_self.start();
@@ -48,8 +90,15 @@ impl JsSocket {
         self.on(
             "connect".to_owned(),
             EventHandler::wrap(|(socket, args): (JsSocket, serde_json::Value)| async move {
-                let id = args.get("id").unwrap().as_str().unwrap().to_owned();
-                *socket.id.write() = id;
+                let id = args
+                    .get("id")
+                    .ok_or_else(|| "No connection id specified.")?
+                    .as_str()
+                    .ok_or_else(|| "Connection id could not be coerced to string")?
+                    .to_owned();
+                *socket.id.borrow_mut() = id;
+
+                Ok(())
             }),
         );
 
@@ -77,6 +126,10 @@ impl JsSocket {
                     serde_json::from_str(&msg).map_err(|e| format!("JSON error: {}", e))?;
                 let event_type = data.get("type").unwrap().as_str().unwrap().to_owned();
                 let event_args = data.get("args").unwrap().to_owned();
+                log_2(
+                    &format!("Received: {}", event_type).into(),
+                    &JsValue::from_serde(&event_args).unwrap(),
+                );
                 let h = s.handlers();
                 if let Some(hs) = h.get(&event_type[..]) {
                     futures::future::join_all(hs.into_iter().map(|handler| {
@@ -97,29 +150,29 @@ impl JsSocket {
     pub fn handlers(
         &self,
     ) -> impl Deref<Target = HashMap<String, Vec<<Self as Socket>::EventHandler>>> + '_ {
-        self.handlers.read()
+        self.handlers.borrow()
     }
 
     pub fn handlers_mut(
         &self,
     ) -> impl DerefMut<Target = HashMap<String, Vec<<Self as Socket>::EventHandler>>> + '_ {
-        self.handlers.write()
+        self.handlers.borrow_mut()
     }
 
     pub fn id(&self) -> impl Deref<Target = String> + '_ {
-        self.id.read()
+        self.id.borrow()
     }
 
     pub async fn recv(&self) -> Option<WsMessage> {
-        self.ws_recv.lock().next().await
+        self.ws_recv.borrow_mut().next().await
     }
 
     pub async fn send(&self, message: WsMessage) -> Result<(), WsErr> {
-        self.ws_send.lock().send(message).await
+        self.ws_send.borrow_mut().send(message).await
     }
 }
 
-#[async_trait]
+#[async_trait(?Send)]
 impl Socket for JsSocket {
     type EventType = String;
     type EventContext = JsSocket;

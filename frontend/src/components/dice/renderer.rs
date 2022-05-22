@@ -19,6 +19,7 @@ pub struct Renderer {
     dice_texture: Option<Texture>,
     models: Vec<Cube>,
     physics: Physics,
+    cached_value: Option<Vec<i8>>,
     on_value: Callback<Vec<i8>>,
 }
 
@@ -32,6 +33,7 @@ impl Renderer {
             shader: None,
             dice_texture: None,
             physics,
+            cached_value: None,
             on_value,
         }
     }
@@ -40,13 +42,13 @@ impl Renderer {
         let canvas = self
             .canvas_ref
             .cast::<web_sys::HtmlCanvasElement>()
-            .unwrap();
+            .expect("Node reference is not a canvas element.");
         let context = canvas
             .get_context("webgl2")
             .unwrap()
-            .unwrap()
+            .expect("No webgl2 context.")
             .dyn_into::<WebGl2RenderingContext>()
-            .unwrap();
+            .expect("Couldn't convert webgl2 context to correct type.");
         context.enable(WebGl2RenderingContext::DEPTH_TEST);
         self.context = Some(context.clone());
 
@@ -155,7 +157,15 @@ impl Renderer {
             })
             .collect();
         if values.len() == this.models.len() {
-            this.on_value.emit(values);
+            if let Some(mut cached_value) = this.cached_value.as_mut() {
+                if *cached_value != values {
+                    *cached_value = values.clone();
+                    this.on_value.emit(values);
+                }
+            } else {
+                this.cached_value = Some(values.clone());
+                this.on_value.emit(values);
+            }
         }
         this.physics.tick();
     }

@@ -51,7 +51,7 @@ module! {
         providers = [],
 
         use ServiceModule {
-            components = [dyn Auth, dyn Db, dyn CharacterManager, dyn Rooms],
+            components = [dyn Auth, dyn Db, dyn CharacterManager, dyn Rooms, dyn WsHandler],
             providers = []
         }
     }

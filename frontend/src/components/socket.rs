@@ -3,12 +3,14 @@ use common::character::Character;
 use send_wrapper::SendWrapper;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
-use socket::*;
+use socket::js::*;
+use std::cell::RefCell;
 use std::collections::HashSet;
 use std::rc::Rc;
 use std::sync::{Arc, RwLock};
+use wasm_bindgen::{prelude::*, JsCast, JsValue};
 use wasm_bindgen_futures::spawn_local;
-use web_sys::console::log_1;
+use web_sys::console::{log_1, log_2};
 use ws_stream_wasm::WsMeta;
 use yew_agent::{Agent, AgentLink, Context, HandlerId};
 use yewdux::prelude::*;
@@ -35,7 +37,7 @@ pub struct SocketConnection {
     state_dispatch: Dispatch<BasicStore<State>>,
     link: SendWrapper<AgentLink<Self>>,
     socket: Option<JsSocket>,
-    connections: Arc<RwLock<HashSet<HandlerId>>>,
+    connections: Rc<RefCell<HashSet<HandlerId>>>,
 }
 
 impl SocketConnection {
@@ -52,9 +54,11 @@ impl SocketConnection {
             let link = this.link.clone();
             let msg = callback((socket, args));
             async move {
-                for conn in connections.read().unwrap().iter() {
+                for conn in connections.borrow().iter() {
                     link.respond(*conn, msg.clone());
                 }
+
+                Ok(())
             }
         })
     }
@@ -72,9 +76,11 @@ impl SocketConnection {
             let link = this.link.clone();
             let msg = callback((socket, args));
             async move {
-                for conn in connections.read().unwrap().iter() {
+                for conn in connections.borrow().iter() {
                     link.send_message(msg.clone());
                 }
+
+                Ok(())
             }
         })
     }
@@ -105,6 +111,21 @@ impl SocketConnection {
             );
         }
     }
+
+    fn on_connected(connections: &Rc<RefCell<HashSet<HandlerId>>>, id: HandlerId) {
+        if let Ok(mut conns) = connections.try_borrow_mut() {
+            conns.insert(id);
+        } else {
+            let connections = connections.clone();
+            let callback = Closure::wrap(
+                Box::new(move || Self::on_connected(&connections, id)) as Box<dyn Fn()>
+            );
+            web_sys::window()
+                .unwrap()
+                .set_timeout_with_callback(callback.as_ref().unchecked_ref());
+            callback.forget();
+        }
+    }
 }
 
 impl Agent for SocketConnection {
@@ -116,7 +137,7 @@ impl Agent for SocketConnection {
     fn create(link: AgentLink<Self>) -> Self {
         link.send_future(async move {
             log_1(&"hello from socket agent!".into());
-            let (mut ws_meta, ws_stream) = WsMeta::connect("ws://localhost:3030/ws", None)
+            let (ws_meta, ws_stream) = WsMeta::connect("ws://localhost:3030/ws", None)
                 .await
                 .unwrap();
             let socket = JsSocket::new(ws_meta, ws_stream);
@@ -127,16 +148,17 @@ impl Agent for SocketConnection {
         Self {
             state_dispatch: Dispatch::bridge_state(link.callback(|state: Rc<State>| {
                 if let Some(character) = state.character.as_ref() {
-                    SocketState::ClientCharacterUpdate {
-                        character: character.clone(),
-                    }
+                    // SocketState::ClientCharacterUpdate {
+                    //     character: character.clone(),
+                    // }
+                    SocketState::Noop
                 } else {
                     SocketState::Noop
                 }
             })),
             link: SendWrapper::new(link),
             socket: None,
-            connections: Arc::new(RwLock::new(HashSet::new())),
+            connections: Rc::new(RefCell::new(HashSet::new())),
         }
     }
 
@@ -147,10 +169,8 @@ impl Agent for SocketConnection {
                 log_1(&"socket initialized!".into());
                 self.socket = Some(socket);
                 self.setup_events();
-                self.link.send_input(SocketMessage(
-                    "character".to_owned(),
-                    json!({ "cid": 1234 }),
-                ));
+                self.link
+                    .send_input(SocketMessage("character".to_owned(), json!({ "cid": 1 })));
             }
             SocketState::ServerCharacterUpdate { character } => {
                 self.state_dispatch.reduce(|state| {
@@ -160,7 +180,7 @@ impl Agent for SocketConnection {
             SocketState::ClientCharacterUpdate { character } => {
                 self.link.send_input(SocketMessage(
                     "character/update".to_owned(),
-                    json!({ "cid": 1234, "character": character }),
+                    json!({ "cid": 1, "character": character }),
                 ));
             }
         }
@@ -168,6 +188,10 @@ impl Agent for SocketConnection {
 
     fn handle_input(&mut self, msg: Self::Input, _id: HandlerId) {
         let SocketMessage(event_type, event_args) = msg;
+        log_2(
+            &format!("Sent: {}", event_type).into(),
+            &JsValue::from_serde(&event_args).unwrap(),
+        );
         if let Some(s) = &self.socket {
             let s = s.clone();
             spawn_local(async move {
@@ -177,10 +201,10 @@ impl Agent for SocketConnection {
     }
 
     fn connected(&mut self, id: HandlerId) {
-        self.connections.write().unwrap().insert(id);
+        Self::on_connected(&self.connections, id);
     }
 
     fn disconnected(&mut self, id: HandlerId) {
-        self.connections.write().unwrap().remove(&id);
+        self.connections.borrow_mut().remove(&id);
     }
 }

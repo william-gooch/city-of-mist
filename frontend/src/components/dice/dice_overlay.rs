@@ -58,12 +58,8 @@ impl Component for DiceOverlay {
     }
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
-        let onclick = Callback::from(|_| {
-            log_1(&"hello".into());
-        });
-
         html! {
-            <canvas ref={self.canvas_ref.clone()} id="dice-overlay" {onclick} />
+            <canvas ref={self.canvas_ref.clone()} id="dice-overlay" />
         }
     }
 

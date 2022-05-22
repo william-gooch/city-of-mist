@@ -1,5 +1,6 @@
 use crate::state::State;
 use std::rc::Rc;
+use web_sys::console::log_1;
 use yew::prelude::*;
 use yewdux::prelude::*;
 

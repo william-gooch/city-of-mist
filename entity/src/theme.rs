@@ -1,6 +1,7 @@
 use sea_orm::entity::prelude::*;
+use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, PartialEq, DeriveEntityModel)]
+#[derive(Clone, Debug, PartialEq, DeriveEntityModel, Serialize, Deserialize)]
 #[sea_orm(table_name = "themes")]
 pub struct Model {
     #[sea_orm(primary_key)]
@@ -12,13 +13,15 @@ pub struct Model {
     pub mystery_or_identity: String,
     pub theme_type: ThemeType,
 
+    #[sea_orm(column_type = "TinyInteger")]
     pub attention: i8,
+    #[sea_orm(column_type = "TinyInteger")]
     pub fade_or_crack: i8,
     pub tags: serde_json::Value,
 }
 
-#[derive(Debug, Clone, PartialEq, EnumIter, DeriveActiveEnum)]
-#[sea_orm(rs_type = "String", db_type = "Enum", enum_name = "theme_type")]
+#[derive(Debug, Clone, PartialEq, EnumIter, DeriveActiveEnum, Serialize, Deserialize)]
+#[sea_orm(rs_type = "String", db_type = "String(Some(8))")]
 pub enum ThemeType {
     #[sea_orm(string_value = "mythos")]
     Mythos,
@@ -33,8 +36,8 @@ pub enum ThemeType {
     Extra,
 }
 
-#[derive(Debug, Clone, PartialEq, EnumIter, DeriveActiveEnum)]
-#[sea_orm(rs_type = "String", db_type = "Enum", enum_name = "theme_descriptor")]
+#[derive(Debug, Clone, PartialEq, EnumIter, DeriveActiveEnum, Serialize, Deserialize)]
+#[sea_orm(rs_type = "String", db_type = "String(Some(25))")]
 pub enum ThemeDescriptor {
     #[sea_orm(string_value = "adaptation")]
     Adaptation,

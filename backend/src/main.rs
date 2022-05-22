@@ -1,4 +1,6 @@
 #![feature(type_alias_impl_trait)]
+#![feature(entry_insert)]
+#![feature(let_chains)]
 
 mod routes;
 mod service;
@@ -9,7 +11,6 @@ use routes::RoutesModule;
 use service::database::DbImpl;
 use service::ServiceModule;
 use shaku::HasComponent;
-use socket::*;
 use std::env;
 use std::sync::Arc;
 

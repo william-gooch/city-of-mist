@@ -3,6 +3,7 @@ use derive_builder::Builder;
 use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Clone, Debug, Default, Serialize, Deserialize, Builder)]
+#[builder(derive(Deserialize))]
 pub struct Character {
     #[builder(default)]
     pub id: Option<i32>,
@@ -14,20 +15,36 @@ pub struct Character {
     #[builder(setter(into))]
     pub logos: String,
 
-    #[builder(default)]
+    #[builder(field(
+        type = "Option<Vec<ThemeBuilder>>",
+        build = "self.core_themes.as_ref().map(|themes| themes.iter().map(|theme| theme.build()).collect::<Result<Vec<Theme>, ThemeBuilderError>>()).transpose()?.unwrap_or_else(|| vec![])"
+    ))]
     pub core_themes: Vec<Theme>,
-    #[builder(default)]
+    #[builder(field(
+        type = "Option<Option<ThemeBuilder>>",
+        build = "self.crew_theme.as_ref().map(|ct| ct.as_ref().map(|ct| ct.build())).flatten().transpose()?"
+    ))]
     pub crew_theme: Option<Theme>,
-    #[builder(default)]
+    #[builder(field(
+        type = "Option<Vec<ThemeBuilder>>",
+        build = "self.extra_themes.as_ref().map(|themes| themes.iter().map(|theme| theme.build()).collect::<Result<Vec<Theme>, ThemeBuilderError>>()).transpose()?.unwrap_or_else(|| vec![])"
+    ))]
     pub extra_themes: Vec<Theme>,
 }
 
+impl From<ThemeBuilderError> for CharacterBuilderError {
+    fn from(err: ThemeBuilderError) -> Self {
+        match err {
+            ThemeBuilderError::UninitializedField(field) => {
+                CharacterBuilderError::UninitializedField(field)
+            }
+            ThemeBuilderError::ValidationError(msg) => CharacterBuilderError::ValidationError(msg),
+        }
+    }
+}
+
 #[cfg(feature = "db")]
-use entity::character;
-#[cfg(feature = "db")]
-use entity::sea_orm::ActiveValue::*;
-#[cfg(feature = "db")]
-use entity::theme;
+use entity::{character, sea_orm::ActiveValue::*, theme};
 
 #[cfg(feature = "db")]
 impl From<character::Model> for Character {
@@ -91,6 +108,30 @@ impl Into<(character::ActiveModel, Vec<theme::ActiveModel>)> for Character {
             .chain(self.crew_theme.iter())
             .chain(self.extra_themes.iter())
             .map(|theme| -> (theme::ActiveModel,) { theme.clone().into() })
+            .map(|t| t.0)
+            .collect();
+
+        (character_model, themes)
+    }
+}
+
+#[cfg(feature = "db")]
+impl Into<(character::ActiveModel, Vec<theme::ActiveModel>)> for CharacterBuilder {
+    fn into(self: Self) -> (character::ActiveModel, Vec<theme::ActiveModel>) {
+        let character_model = character::ActiveModel {
+            id: self.id.flatten().map_or_else(|| NotSet, Set),
+            name: self.name.map_or_else(|| NotSet, Set),
+            mythos: self.mythos.map_or_else(|| NotSet, Set),
+            logos: self.logos.map_or_else(|| NotSet, Set),
+        };
+
+        let themes: Vec<theme::ActiveModel> = self
+            .core_themes
+            .unwrap_or_else(|| vec![])
+            .iter()
+            .chain(self.crew_theme.flatten().iter())
+            .chain(self.extra_themes.unwrap_or_else(|| vec![]).iter())
+            .map(|theme: &ThemeBuilder| -> (theme::ActiveModel,) { theme.clone().into() })
             .map(|t| t.0)
             .collect();
 
