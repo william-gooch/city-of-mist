@@ -1,10 +1,15 @@
-use crate::components::socket::*;
+use crate::components::{
+    socket::*,
+    utils::autoresize::Autoresize,
+};
 use crate::state::State;
 use common::theme::*;
 use data::*;
 use serde_json::json;
+use wasm_bindgen::JsCast;
+use web_sys::HtmlTextAreaElement;
 use std::rc::Rc;
-use web_sys::console::log_1;
+use web_sys::{console::log_1, HtmlInputElement};
 use yew::prelude::*;
 use yew_agent::{Bridge, Bridged};
 use yewdux::prelude::*;
@@ -32,6 +37,7 @@ pub struct ThemeCard {
 pub enum ThemeCardMsg {
     State(Rc<State>),
     Flip,
+    SetTitle(String),
     UpdateAttention(i8),
     UpdateDegrade(i8),
     Noop,
@@ -60,9 +66,7 @@ impl Component for ThemeCard {
     fn create(ctx: &Context<Self>) -> Self {
         Self {
             dispatch: Dispatch::bridge_state(ctx.link().callback(ThemeCardMsg::State)),
-            socket: SocketConnection::bridge(ctx.link().callback(move |evt| match evt {
-                _ => ThemeCardMsg::Noop,
-            })),
+            socket: SocketConnection::bridge(ctx.link().batch_callback(move |_| None)),
             state: Default::default(),
             flipped: false,
         }
@@ -77,6 +81,26 @@ impl Component for ThemeCard {
             ThemeCardMsg::Flip => {
                 self.flipped = !self.flipped;
                 true
+            }
+            ThemeCardMsg::SetTitle(title) => {
+                let character_id = self.state.character.as_ref().unwrap().id.unwrap();
+                let theme = Self::get_theme(&self.state, ctx.props().card);
+                log_1(&"updating title".into());
+                self.socket.send(SocketMessage(
+                    "character/modify".to_owned(),
+                    json!({
+                        "cid": character_id,
+                        "character": {
+                            "core_themes": [
+                                {
+                                    "id": theme.id,
+                                    "title": title,
+                                }
+                            ]
+                        }
+                    }),
+                ));
+                false
             }
             ThemeCardMsg::UpdateAttention(i) => {
                 let character_id = self.state.character.as_ref().unwrap().id.unwrap();
@@ -121,6 +145,7 @@ impl Component for ThemeCard {
         }
     }
 
+    #[rustfmt::skip]
     fn view(&self, ctx: &Context<Self>) -> Html {
         if let None = self.state.character {
             return html! {};
@@ -133,10 +158,11 @@ impl Component for ThemeCard {
         let class = format!(
             "card {}theme theme-{}",
             if self.flipped { "card-flipped " } else { "" },
-            if *theme.descriptor().theme_type() == ThemeType::Mythos {
-                "mythos"
-            } else {
-                "logos"
+            match *theme.descriptor().theme_type() {
+                ThemeType::Mythos => "mythos",
+                ThemeType::Logos => "logos",
+                ThemeType::Crew => "crew",
+                ThemeType::Extra => "extra",
             }
         );
 
@@ -157,6 +183,11 @@ impl Component for ThemeCard {
                 <img alt="Theme Card" src="assets/crew-improvements.png" />
             },
         };
+
+        let onchange_title = ctx.link().batch_callback(|e: Option<String>| {
+            log_1(&"onchange title".into());
+            e.map(|v| ThemeCardMsg::SetTitle(v))
+        });
 
         let _state = state.clone();
         let onmousedown_attention = ctx.link().callback(move |e: MouseEvent| {
@@ -207,51 +238,51 @@ impl Component for ThemeCard {
         html! {
             <div class={class}>
                 <div class="card-inner">
-                <div class="card-front">
-                {front_image}
-            <h5 class="card-type">{ &theme.descriptor().name() }</h5>
-                <h1 class="card-title">{ &theme.title() }</h1>
-                <div class="card-attention" onmousedown={onmousedown_attention}>
-                {for (1..*theme.attention()+1).map(|_| html! { <span class="card-tick" /> })}
+                    <div class="card-front">
+                        {front_image}
+                        <h5 class="card-type">{ &theme.descriptor().name() }</h5>
+                        <Autoresize class="card-title" default_font_size="5vh" expected_length=30 value={theme.title().clone()} onchange={onchange_title} />
+                        <div class="card-attention" onmousedown={onmousedown_attention}>
+                            {for (1..*theme.attention()+1).map(|_| html! { <span class="card-tick" /> })}
+                        </div>
+                        <div class="card-degrade" onmousedown={onmousedown_degrade}>
+                            {for (1..*theme.fade_or_crack()+1).map(|_| html! { <span class="card-tick" /> })}
+                        </div>
+                        <h3 class="card-phrase">{ &theme.mystery_or_identity() }</h3>
+                        <ul class="card-power-tags">
+                            {for theme.tags().iter().filter_map(|tag| {
+                                match tag {
+                                    Tag::Power { name, burned } => Some(html! {
+                                        <li>
+                                        {name}
+                                        {if *burned { html! {<span class="burned-indicator">{"⚫"}</span>} } else { html! {<></>} }}
+                                        </li>
+                                    }),
+                                    _ => None,
+                                }
+                            })}
+                        </ul>
+                        <ul class="card-weakness-tags">
+                            {for theme.tags().iter().filter_map(|tag| {
+                                match tag {
+                                    Tag::Weakness { name, invoked } => Some(html! {
+                                        <li>
+                                        {name}
+                                        {if *invoked { html! {<span class="burned-indicator">{"⚫"}</span>} } else { html! {<></>} }}
+                                        </li>
+                                    }),
+                                    _ => None,
+                                }
+                            })}
+                        </ul>
+                        <div class="flip-button" onclick={ctx.link().callback(|_| ThemeCardMsg::Flip)}>{ "Flip" }</div>
+                    </div>
+                    <div class="card-back">
+                        {back_image}
+                        <div class="flip-button" onclick={ctx.link().callback(|_| ThemeCardMsg::Flip)}>{ "Flip" }</div>
+                    </div>
+                </div>
             </div>
-                <div class="card-degrade" onmousedown={onmousedown_degrade}>
-                {for (1..*theme.fade_or_crack()+1).map(|_| html! { <span class="card-tick" /> })}
-            </div>
-                <h3 class="card-phrase">{ &theme.mystery_or_identity() }</h3>
-                <ul class="card-power-tags">
-                {for theme.tags().iter().filter_map(|tag| {
-                    match tag {
-                        Tag::Power { name, burned } => Some(html! {
-                            <li>
-                            {name}
-                            {if *burned { html! {<span class="burned-indicator">{"⚫"}</span>} } else { html! {<></>} }}
-                            </li>
-                        }),
-                        _ => None,
-                    }
-                })}
-            </ul>
-                <ul class="card-weakness-tags">
-                {for theme.tags().iter().filter_map(|tag| {
-                    match tag {
-                        Tag::Weakness { name, invoked } => Some(html! {
-                            <li>
-                            {name}
-                            {if *invoked { html! {<span class="burned-indicator">{"⚫"}</span>} } else { html! {<></>} }}
-                            </li>
-                        }),
-                        _ => None,
-                    }
-                })}
-            </ul>
-                <div class="flip-button" onclick={ctx.link().callback(|_| ThemeCardMsg::Flip)}>{ "Flip" }</div>
-                </div>
-                <div class="card-back">
-                {back_image}
-            <div class="flip-button" onclick={ctx.link().callback(|_| ThemeCardMsg::Flip)}>{ "Flip" }</div>
-                </div>
-                </div>
-                </div>
         }
     }
 }

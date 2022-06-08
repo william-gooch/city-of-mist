@@ -93,7 +93,7 @@ impl Component for App {
                         { for character.extra_themes.iter().enumerate().map(|(i, theme)| {
                             html! {
                                 <ThemeCard
-                                    key={theme.title.to_string()}
+                                    key={i}
                                     card={ThemeCardType::Extra(i)}
                                 />
                             }
@@ -103,7 +103,7 @@ impl Component for App {
                         { for character.core_themes.iter().enumerate().map(|(i, theme)| {
                             html! {
                                 <ThemeCard
-                                    key={theme.title.to_string()}
+                                    key={i}
                                     card={ThemeCardType::Core(i)}
                                 />
                             }

@@ -126,6 +126,21 @@ impl SocketConnection {
             callback.forget();
         }
     }
+
+    fn on_disconnected(connections: &Rc<RefCell<HashSet<HandlerId>>>, id: HandlerId) {
+        if let Ok(mut conns) = connections.try_borrow_mut() {
+            conns.remove(&id);
+        } else {
+            let connections = connections.clone();
+            let callback = Closure::wrap(
+                Box::new(move || Self::on_disconnected(&connections, id)) as Box<dyn Fn()>
+            );
+            web_sys::window()
+                .unwrap()
+                .set_timeout_with_callback(callback.as_ref().unchecked_ref());
+            callback.forget();
+        }
+    }
 }
 
 impl Agent for SocketConnection {
@@ -205,6 +220,6 @@ impl Agent for SocketConnection {
     }
 
     fn disconnected(&mut self, id: HandlerId) {
-        self.connections.borrow_mut().remove(&id);
+        Self::on_disconnected(&self.connections, id);
     }
 }
