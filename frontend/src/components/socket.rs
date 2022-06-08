@@ -41,6 +41,26 @@ pub struct SocketConnection {
 }
 
 impl SocketConnection {
+    async fn try_connect() -> Option<JsSocket> {
+        let (ws_meta, ws_stream) = WsMeta::connect("ws://localhost:3030/ws", None)
+            .await
+            .ok()?;
+        let socket = JsSocket::new(ws_meta, ws_stream);
+        Some(socket)
+    }
+
+    async fn retry_connect() -> JsSocket {
+        loop {
+            if let Some(socket) = Self::try_connect().await {
+                log_1(&"Connected!".into());
+                break socket;
+            } else {
+                log_1(&"Couldn't connect, retrying...".into());
+                gloo_timers::future::TimeoutFuture::new(100).await;
+            }
+        }
+    }
+
     fn respond_callback(
         &self,
         callback: impl Fn((JsSocket, serde_json::Value)) -> <Self as Agent>::Output
@@ -151,12 +171,7 @@ impl Agent for SocketConnection {
 
     fn create(link: AgentLink<Self>) -> Self {
         link.send_future(async move {
-            log_1(&"hello from socket agent!".into());
-            let (ws_meta, ws_stream) = WsMeta::connect("ws://localhost:3030/ws", None)
-                .await
-                .unwrap();
-            let socket = JsSocket::new(ws_meta, ws_stream);
-
+            let socket = Self::retry_connect().await;
             SocketState::InitSocket(socket)
         });
 
