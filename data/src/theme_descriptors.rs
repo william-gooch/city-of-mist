@@ -1,4 +1,4 @@
-use common::theme_descriptor::ThemeDescriptor;
+use common::models::theme_descriptor::ThemeDescriptor;
 use include_dir::{include_dir, Dir};
 use lazy_static::lazy_static;
 use std::collections::HashMap;

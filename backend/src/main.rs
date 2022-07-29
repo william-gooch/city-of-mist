@@ -20,13 +20,16 @@ async fn main() {
 
     let service_module = Arc::new(
         ServiceModule::builder()
-            .with_component_parameters::<DbImpl>(service::database::DbImplParameters {
-                db: Arc::new(
-                    Database::connect(env::var("DATABASE_URL").unwrap())
-                        .await
-                        .unwrap(),
-                ),
-            })
+            .with_component_parameters::<DbImpl>(
+                service::database::DbImplParameters {
+                    db:
+                        Arc::new(
+                            Database::connect(env::var("DATABASE_URL").unwrap())
+                                .await
+                                .unwrap(),
+                        ),
+                },
+            )
             .build(),
     );
 

@@ -1,0 +1,16 @@
+[package]
+name = "db"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+common = { path = "../common", features = ["db"] }
+diesel = { git = "https://github.com/diesel-rs/diesel.git", features = ["mysql", "serde_json"] } 
+diesel-derive-enum = { git = "https://github.com/adwhit/diesel-derive-enum.git", features = ["mysql"] }
+dotenv = "0.15.0"
+parking_lot = "0.12.1"
+serde = "1.0.137"
+serde_json = "1.0.82"
+shaku = "0.6.1"

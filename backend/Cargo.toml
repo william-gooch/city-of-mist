@@ -9,8 +9,9 @@ edition = "2021"
 argon2 = "0.4.0"
 async-session = "3.0.0"
 async-trait = "0.1.53"
-common = { path = "../common", features = ["db"] }
+common = { path = "../common" }
 data = { path = "../data" }
+db = { path = "../db" }
 dotenv = "0.15.0"
 futures = "0.3.21"
 nanoid = "0.4.0"

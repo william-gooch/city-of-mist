@@ -1,0 +1,18 @@
+8a9,10
+>     use common::models::campaign::MemberTypeMapping;
+>     use diesel::sql_types::*;
+13c15
+<         member_type -> Enum,
+---
+>         member_type -> MemberTypeMapping,
+33a36,37
+>     use common::models::theme::ThemeTypeMapping;
+>     use diesel::sql_types::*;
+39c43
+<         theme_type -> Enum,
+---
+>         theme_type -> ThemeTypeMapping,
+42c46
+<         tags -> Longtext,
+---
+>         tags -> Json,

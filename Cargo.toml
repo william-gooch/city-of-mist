@@ -1,6 +1,6 @@
 
 [workspace]
-members = ["common", "entity", "migration", "data", "socket", "backend", "frontend"]
+members = ["common", "data", "db", "socket", "backend", "frontend"]
 
 
 [profile.dev]

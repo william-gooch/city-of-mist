@@ -1,0 +1,46 @@
+@import "global";
+
+.character {
+    .card-title {
+        @include card-title;
+        position: absolute;
+        font-size: 5vh;
+        top: 7.6%;
+        left: 12%;
+        height: 11%;
+        width: 76%;
+        line-height: 4.2vh;
+        background: none;
+        border: none;
+        resize: none;
+        overflow: hidden;
+    }
+
+    .card-mythos {
+        position: absolute;
+        font-size: 3vh;
+        top: 25.5%;
+        left: 12.5%;
+        height: 10%;
+        width: 76%;
+        line-height: 3.5vh;
+        background: none;
+        border: none;
+        resize: none;
+        overflow: hidden;
+    }
+
+    .card-logos {
+        position: absolute;
+        font-size: 3vh;
+        top: 38.5%;
+        left: 12.5%;
+        height: 10%;
+        width: 76%;
+        line-height: 3.5vh;
+        background: none;
+        border: none;
+        resize: none;
+        overflow: hidden;
+    }
+}

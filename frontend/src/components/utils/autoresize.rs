@@ -8,7 +8,7 @@ pub struct AutoresizeProps {
     pub value: String,
     pub default_font_size: String,
     pub expected_length: i32,
-    pub onchange: Callback<Option<String>>
+    pub onchange: Callback<Option<String>>,
 }
 
 fn calc_size_mod(value: &str, expected_length: i32) -> f32 {
@@ -23,7 +23,8 @@ pub fn autoresize(props: &AutoresizeProps) -> Html {
         let onchange = props.onchange.clone();
 
         Callback::from(move |e: html::onchange::Event| {
-            let value = e.target()
+            let value = e
+                .target()
                 .and_then(|t| t.dyn_into::<HtmlTextAreaElement>().ok())
                 .map(|t| t.value());
             onchange.emit(value);
@@ -39,7 +40,7 @@ pub fn autoresize(props: &AutoresizeProps) -> Html {
             sm.set(calc_size_mod(&value, expected_length));
         })
     };
-    
+
     html! {
         <textarea
             id="#textarea"

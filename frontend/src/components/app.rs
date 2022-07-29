@@ -89,22 +89,11 @@ impl Component for App {
                     }
                     <div class="card-row">
                         <CharacterCard />
-                        <ThemeCard card={ThemeCardType::Crew} />
-                        { for character.extra_themes.iter().enumerate().map(|(i, theme)| {
+                        { for self.state.themes.iter().enumerate().map(|(i, theme)| {
                             html! {
                                 <ThemeCard
                                     key={i}
-                                    card={ThemeCardType::Extra(i)}
-                                />
-                            }
-                        }) }
-                    </div>
-                    <div class="card-row">
-                        { for character.core_themes.iter().enumerate().map(|(i, theme)| {
-                            html! {
-                                <ThemeCard
-                                    key={i}
-                                    card={ThemeCardType::Core(i)}
+                                    card={i}
                                 />
                             }
                         }) }

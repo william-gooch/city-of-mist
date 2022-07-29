@@ -1,13 +1,7 @@
-use common::character::*;
-use yewdux::prelude::*;
+use common::models::{character::*, theme::*};
 
-#[derive(Clone, PartialEq)]
+#[derive(Default, Clone, PartialEq)]
 pub struct State {
     pub character: Option<Character>,
-}
-
-impl Default for State {
-    fn default() -> Self {
-        Self { character: None }
-    }
+    pub themes: Vec<Theme>,
 }

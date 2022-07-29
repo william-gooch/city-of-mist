@@ -1,13 +1,10 @@
-use crate::components::{
-    socket::*,
-    utils::autoresize::Autoresize,
-};
+use crate::components::{socket::*, utils::autoresize::Autoresize};
 use crate::state::State;
-use std::rc::Rc;
 use serde_json::json;
+use std::rc::Rc;
 use wasm_bindgen::JsCast;
-use web_sys::HtmlTextAreaElement;
 use web_sys::console::log_1;
+use web_sys::HtmlTextAreaElement;
 use yew::prelude::*;
 use yew_agent::{Bridge, Bridged};
 use yewdux::prelude::*;
@@ -30,7 +27,7 @@ pub enum CharacterCardMsg {
 
 impl CharacterCard {
     fn send_update(&mut self, character: serde_json::Value) {
-        let character_id = self.state.character.as_ref().unwrap().id.unwrap();
+        let character_id = self.state.character.as_ref().unwrap().id;
         self.socket.send(SocketMessage(
             "character/modify".to_owned(),
             json!({
@@ -65,21 +62,15 @@ impl Component for CharacterCard {
                 true
             }
             CharacterCardMsg::SetName(name) => {
-                self.send_update(json!({
-                    "name": name
-                }));
+                self.send_update(json!({ "name": name }));
                 false
             }
             CharacterCardMsg::SetMythos(mythos) => {
-                self.send_update(json!({
-                    "mythos": mythos
-                }));
+                self.send_update(json!({ "mythos": mythos }));
                 false
             }
             CharacterCardMsg::SetLogos(logos) => {
-                self.send_update(json!({
-                    "logos": logos
-                }));
+                self.send_update(json!({ "logos": logos }));
                 false
             }
         }

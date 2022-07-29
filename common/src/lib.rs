@@ -1,10 +1,8 @@
 #[cfg(feature = "db")]
-pub use entity;
-#[cfg(feature = "db")]
-pub use entity::sea_orm;
+#[macro_use]
+pub extern crate diesel;
 
-pub mod campaign;
-pub mod character;
-pub mod theme;
-pub mod theme_descriptor;
-pub mod user;
+pub mod managers;
+pub mod models;
+
+pub type Id = u64;

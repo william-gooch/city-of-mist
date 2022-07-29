@@ -1,0 +1,124 @@
+@import "global";
+
+.theme {
+    &.theme-mythos {
+        filter: invert(1);
+    }
+
+    .card-type {
+        @include card-title;
+        position: absolute;
+        font-size: 1.6vh;
+        top: 1.3%;
+        left: 25%;
+        height: 11%;
+        width: 82%;
+        line-height: 4.5vh;
+    }
+
+    .card-title {
+        @include card-title;
+        position: absolute;
+        font-size: 5vh;
+        top: 7%;
+        left: 10%;
+        height: 11%;
+        width: 78%;
+        line-height: 4.2vh;
+        background: none;
+        border: none;
+        resize: none;
+        overflow: hidden;
+    }
+
+    .card-attention, .card-degrade {
+        position: absolute;
+        font-size: 3vh;
+        height: 5%;
+        width: 81%;
+        font-variant: small-caps;
+        font-weight: bolder;
+        line-height: 4.5vh;
+        width: 6.3vh;
+        cursor: pointer;
+    }
+
+    &.theme-logos, &.theme-mythos {
+        .card-tick:before {
+            content: "•";
+            text-align: center;
+            display: inline-block;
+            width: 2.1vh;
+        }
+
+        .card-degrade {
+            top: 18.2%;
+            left: 36.3%;
+        }
+
+        .card-attention {
+            top: 18.5%;
+            left: 11.6%;
+        }
+
+        .card-phrase {
+            top: 29%;
+            left: 10%;
+        }
+    }
+
+    .card-phrase {
+        position: absolute;
+        font-size: 2.08vh;
+        height: 11%;
+        width: 82%;
+        line-height: 3.5vh;
+    }
+
+    // Positioning is slightly different for crew and extra themes.
+    &.theme-crew, &.theme-extra {
+        .card-tick:before {
+            content: "•";
+            text-align: center;
+            display: inline-block;
+            width: 2.0vh;
+        }
+        
+        .card-attention {
+            top: 18.1%;
+            left: 12.5%;
+        }
+        
+        .card-degrade {
+            top: 17.8%;
+            left: 36.0%;
+        }
+
+        .card-phrase {
+            top: 28%;
+            left: 11%;
+        }
+    }
+
+    .card-power-tags, .card-weakness-tags {
+        position: absolute;
+        font-size: 2.08vh;
+        line-height: 3.56vh;
+        left: 20%;
+        width: 60%;
+
+        &.card-power-tags {
+            top: 42.5%;
+        }
+
+        &.card-weakness-tags {
+            top: 77.8%;
+        }
+
+        .burned-indicator {
+            position: absolute;
+            display: block;
+            left: 106.5%;
+        }
+    }
+}

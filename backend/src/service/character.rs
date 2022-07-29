@@ -1,19 +1,16 @@
 use crate::service::database::Db;
 use async_trait::async_trait;
-use common::character::Character;
-use common::character::CharacterBuilder;
-use common::entity::character;
-use common::entity::character_theme;
-use common::entity::theme;
-use common::sea_orm::prelude::*;
-use common::sea_orm::ActiveModelTrait;
-use common::sea_orm::ActiveValue::*;
+use common::models::character::*;
 use shaku::{Component, Interface};
 use std::collections::HashMap;
 use std::ops::{Deref, DerefMut};
 use std::sync::Arc;
 use tokio::runtime::Handle;
 use tokio::sync::{MappedMutexGuard, Mutex, MutexGuard};
+use db::{
+    diesel,
+    diesel::prelude::*
+};
 
 #[async_trait]
 pub trait CharacterManager: Interface {
@@ -32,16 +29,16 @@ pub trait CharacterManager: Interface {
 pub struct CharacterManagerImpl {
     #[shaku(inject)]
     db: Arc<dyn Db>,
-    #[shaku(default)]
+    #[shaku(default = Mutex::new(HashMap::new()))]
     loaded_characters: Mutex<HashMap<i32, Character>>,
 }
 
 pub struct CharacterHandle<'a> {
-    guard: MappedMutexGuard<'a, Character>,
+    guard: MappedMutexGuard<'a, CharacterWithThemes>,
 }
 
 impl<'a> Deref for CharacterHandle<'a> {
-    type Target = Character;
+    type Target = CharacterWithThemes;
 
     fn deref(&self) -> &Self::Target {
         self.guard.deref()
@@ -49,12 +46,12 @@ impl<'a> Deref for CharacterHandle<'a> {
 }
 
 pub struct CharacterHandleMut<'a> {
-    guard: MappedMutexGuard<'a, Character>,
+    guard: MappedMutexGuard<'a, CharacterWithThemes>,
     db: Arc<dyn Db>,
 }
 
 impl<'a> Deref for CharacterHandleMut<'a> {
-    type Target = Character;
+    type Target = CharacterWithThemes;
 
     fn deref(&self) -> &Self::Target {
         self.guard.deref()
@@ -69,17 +66,11 @@ impl<'a> DerefMut for CharacterHandleMut<'a> {
 
 impl<'a> Drop for CharacterHandleMut<'a> {
     fn drop(&mut self) {
-        tokio::task::block_in_place(move || {
-            Handle::current().block_on(async move {
-                let character = self.guard.clone();
-                let (m_character, m_themes): (character::ActiveModel, Vec<theme::ActiveModel>) =
-                    character.clone().into();
-                m_character.save(self.db.get()).await.unwrap();
-                for m_theme in m_themes.into_iter() {
-                    m_theme.save(self.db.get()).await.unwrap();
-                }
-            })
-        })
+        let character = self.guard.clone();
+        diesel::update(character::table).set(&character);
+        for theme in character.themes.into_iter() {
+            diesel::update(theme::table).set(&theme);
+        }
     }
 }
 
@@ -215,7 +206,8 @@ impl CharacterManager for CharacterManagerImpl {
         } else {
             character::Entity::find_by_id(id)
                 .one(self.db.get())
-                .await.map_err(|err| format!("Couldn't get character: {}", err))?
+                .await
+                .map_err(|err| format!("Couldn't get character: {}", err))?
                 .ok_or("No such character.")?
         };
 

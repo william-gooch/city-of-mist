@@ -1,5 +1,5 @@
 use crate::state::*;
-use common::character::Character;
+use common::models::character::Character;
 use send_wrapper::SendWrapper;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
@@ -42,9 +42,7 @@ pub struct SocketConnection {
 
 impl SocketConnection {
     async fn try_connect() -> Option<JsSocket> {
-        let (ws_meta, ws_stream) = WsMeta::connect("ws://localhost:3030/ws", None)
-            .await
-            .ok()?;
+        let (ws_meta, ws_stream) = WsMeta::connect("ws://localhost:3030/ws", None).await.ok()?;
         let socket = JsSocket::new(ws_meta, ws_stream);
         Some(socket)
     }
@@ -142,7 +140,8 @@ impl SocketConnection {
             );
             web_sys::window()
                 .unwrap()
-                .set_timeout_with_callback(callback.as_ref().unchecked_ref());
+                .set_timeout_with_callback(callback.as_ref().unchecked_ref())
+                .unwrap();
             callback.forget();
         }
     }
@@ -157,7 +156,8 @@ impl SocketConnection {
             );
             web_sys::window()
                 .unwrap()
-                .set_timeout_with_callback(callback.as_ref().unchecked_ref());
+                .set_timeout_with_callback(callback.as_ref().unchecked_ref())
+                .unwrap();
             callback.forget();
         }
     }
@@ -224,8 +224,14 @@ impl Agent for SocketConnection {
         );
         if let Some(s) = &self.socket {
             let s = s.clone();
-            spawn_local(async move {
-                s.emit(event_type, event_args).await;
+            self.link.send_future(async move {
+                if let Err(err) = s.emit(event_type, event_args).await {
+                    log_1(&err.to_string().into());
+                    let socket = Self::retry_connect().await;
+                    SocketState::InitSocket(socket)
+                } else {
+                    SocketState::Noop
+                }
             });
         }
     }

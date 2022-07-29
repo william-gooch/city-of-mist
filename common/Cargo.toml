@@ -6,15 +6,15 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-entity = { path = "../entity", optional = true }
-migration = { path = "../migration", optional = true }
-
 derive-getters = "0.2.0"
 derive-new = "0.5.9"
 derive_builder = "0.11.2"
+diesel = { git = "https://github.com/diesel-rs/diesel.git", features = ["mysql"], optional = true } 
+diesel-derive-enum = { git = "https://github.com/adwhit/diesel-derive-enum.git", features = ["mysql"], optional = true }
 serde = { version = "1.0.136", features = ["derive"] }
 serde_json = "1.0.78"
+shaku = "0.6.1"
 
 [features]
 default = []
-db = ["migration", "entity"]
+db = ["diesel", "diesel-derive-enum"]

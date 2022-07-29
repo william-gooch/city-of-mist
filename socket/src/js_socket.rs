@@ -8,7 +8,7 @@ use std::pin::Pin;
 use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::spawn_local;
-use web_sys::console::log_2;
+use web_sys::console::{log_1, log_2};
 use ws_stream_wasm::*;
 
 type EventHandlerReturnType = Result<(), String>;
@@ -50,14 +50,42 @@ pub trait Socket {
     type EventHandler: Deref<Target = EventHandlerFunc<(Self::EventContext, Self::EventArgs)>>;
 
     fn on(&self, event_type: Self::EventType, callback: Self::EventHandler);
-    async fn emit(&self, event_type: Self::EventType, event_args: Self::EventArgs);
+    async fn emit(
+        &self,
+        event_type: Self::EventType,
+        event_args: Self::EventArgs,
+    ) -> Result<(), WsErr>;
+}
+
+pub struct JsMeta(Option<WsMeta>);
+
+impl std::ops::Deref for JsMeta {
+    type Target = Option<WsMeta>;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl Drop for JsMeta {
+    fn drop(&mut self) {
+        let ws_meta = std::mem::take(&mut self.0);
+        spawn_local(async move {
+            log_1(&"Closing socket...".into());
+            if let Some(ws_meta) = ws_meta {
+                if ws_meta.ready_state() == WsState::Open {
+                    ws_meta.close().await.unwrap();
+                }
+            }
+        })
+    }
 }
 
 #[derive(Clone)]
 pub struct JsSocket {
     id: Rc<RefCell<String>>,
 
-    ws_meta: Rc<RefCell<WsMeta>>,
+    ws_meta: Rc<RefCell<JsMeta>>,
     ws_send: Rc<RefCell<Box<dyn Sink<WsMessage, Error = WsErr> + Unpin>>>,
     ws_recv: Rc<RefCell<Box<dyn Stream<Item = WsMessage> + Unpin>>>,
 
@@ -72,7 +100,7 @@ impl JsSocket {
         let socket_id = "".to_owned();
         let mut new_self = Self {
             id: Rc::new(RefCell::new(socket_id.clone())),
-            ws_meta: Rc::new(RefCell::new(ws_meta)),
+            ws_meta: Rc::new(RefCell::new(JsMeta(Some(ws_meta)))),
             ws_send: Rc::new(RefCell::new(Box::new(send))),
             ws_recv: Rc::new(RefCell::new(Box::new(recv))),
 
@@ -179,7 +207,11 @@ impl Socket for JsSocket {
     type EventArgs = serde_json::Value;
     type EventHandler = EventHandler<(Self::EventContext, Self::EventArgs)>;
 
-    async fn emit(&self, event_type: Self::EventType, event_args: Self::EventArgs) {
+    async fn emit(
+        &self,
+        event_type: Self::EventType,
+        event_args: Self::EventArgs,
+    ) -> Result<(), WsErr> {
         self.send(WsMessage::from(
             serde_json::to_string(&json!({
                 "type": event_type,
@@ -188,7 +220,6 @@ impl Socket for JsSocket {
             .unwrap(),
         ))
         .await
-        .unwrap();
     }
 
     fn on(&self, event_type: Self::EventType, callback: Self::EventHandler) {

@@ -1,29 +1,18 @@
-use crate::components::{
-    socket::*,
-    utils::autoresize::Autoresize,
-};
+use crate::components::{socket::*, utils::autoresize::Autoresize};
 use crate::state::State;
-use common::theme::*;
+use common::models::theme::*;
 use data::*;
 use serde_json::json;
-use wasm_bindgen::JsCast;
-use web_sys::HtmlTextAreaElement;
 use std::rc::Rc;
+use wasm_bindgen::JsCast;
 use web_sys::{console::log_1, HtmlInputElement};
 use yew::prelude::*;
 use yew_agent::{Bridge, Bridged};
 use yewdux::prelude::*;
 
-#[derive(Copy, Clone, PartialEq)]
-pub enum ThemeCardType {
-    Core(usize),
-    Crew,
-    Extra(usize),
-}
-
 #[derive(Clone, Properties, PartialEq)]
 pub struct ThemeCardProps {
-    pub card: ThemeCardType,
+    pub card: usize,
 }
 
 pub struct ThemeCard {
@@ -38,24 +27,14 @@ pub enum ThemeCardMsg {
     State(Rc<State>),
     Flip,
     SetTitle(String),
-    UpdateAttention(i8),
-    UpdateDegrade(i8),
+    UpdateAttention(u8),
+    UpdateDegrade(u8),
     Noop,
 }
 
 impl ThemeCard {
-    fn get_theme<'a>(state: &'a State, card: ThemeCardType) -> &'a Theme {
-        match card {
-            ThemeCardType::Core(idx) => &state.character.as_ref().unwrap().core_themes[idx],
-            ThemeCardType::Crew => state
-                .character
-                .as_ref()
-                .unwrap()
-                .crew_theme
-                .as_ref()
-                .unwrap(),
-            ThemeCardType::Extra(idx) => &state.character.as_ref().unwrap().extra_themes[idx],
-        }
+    fn get_theme<'a>(state: &'a State, card: usize) -> &'a Theme {
+        &state.themes[card]
     }
 }
 
@@ -83,7 +62,7 @@ impl Component for ThemeCard {
                 true
             }
             ThemeCardMsg::SetTitle(title) => {
-                let character_id = self.state.character.as_ref().unwrap().id.unwrap();
+                let character_id = self.state.character.as_ref().unwrap().id;
                 let theme = Self::get_theme(&self.state, ctx.props().card);
                 log_1(&"updating title".into());
                 self.socket.send(SocketMessage(
@@ -103,7 +82,7 @@ impl Component for ThemeCard {
                 false
             }
             ThemeCardMsg::UpdateAttention(i) => {
-                let character_id = self.state.character.as_ref().unwrap().id.unwrap();
+                let character_id = self.state.character.as_ref().unwrap().id;
                 let theme = Self::get_theme(&self.state, ctx.props().card);
                 log_1(&"updating attention".into());
                 self.socket.send(SocketMessage(
@@ -123,7 +102,7 @@ impl Component for ThemeCard {
                 false
             }
             ThemeCardMsg::UpdateDegrade(i) => {
-                let character_id = self.state.character.as_ref().unwrap().id.unwrap();
+                let character_id = self.state.character.as_ref().unwrap().id;
                 let theme = Self::get_theme(&self.state, ctx.props().card);
                 self.socket.send(SocketMessage(
                     "character/modify".to_owned(),
